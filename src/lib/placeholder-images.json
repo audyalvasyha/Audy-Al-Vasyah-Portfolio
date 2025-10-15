@@ -1,10 +1,16 @@
 {
   "placeholderImages": [
     {
-      "id": "tire-inspection",
+      "id": "ai-tire-inspection",
       "description": "Image for the AI tire inspection project card",
       "imageUrl": "/images/truck-inspection.jpg",
       "imageHint": "tire inspection"
+    },
+    {
+      "id": "ml-delivery-scheduling",
+      "description": "Image for the ML-powered delivery scheduling system project card",
+      "imageUrl": "/images/saldoin.png",
+      "imageHint": "toko top up game online"
     }
   ]
 }
