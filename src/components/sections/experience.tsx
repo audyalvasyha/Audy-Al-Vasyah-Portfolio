@@ -53,32 +53,28 @@ const Experience = () => {
           </div>
         </div>
         <div className="relative mt-12 max-w-3xl mx-auto">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+          {/* Timeline line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
           {experienceData.map((job, index) => (
             <div
               key={index}
               className={cn(
-                'relative mb-8 flex w-full items-center',
-                index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
+                'relative flex items-center mb-8',
+                index % 2 === 0 ? 'justify-start' : 'justify-end'
               )}
             >
-              <div className="md:w-1/2 pl-12 md:pl-0">
-                <div
-                  className={cn(
-                    'absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full z-10 left-[1.3rem] md:left-1/2 md:-translate-x-1/2'
-                  )}
-                />
-                <Card
-                  className={cn(
-                    'w-full',
-                     index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'
-                  )}
-                >
+              {/* Dot */}
+              <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full z-10" />
+
+              <div
+                className={cn('w-1/2', index % 2 === 0 ? 'pr-8' : 'pl-8')}
+              >
+                <Card>
                   <CardHeader>
                     <div
                       className={cn(
                         'flex flex-col md:flex-row justify-between md:items-start gap-2',
-                         index % 2 !== 0 && 'md:flex-row-reverse'
+                        index % 2 !== 0 && 'md:flex-row-reverse'
                       )}
                     >
                       <div className={cn(index % 2 !== 0 && 'md:text-right')}>
@@ -102,7 +98,7 @@ const Experience = () => {
                       )}
                     >
                       {job.achievements.map((ach, i) => (
-                        <li key={i} className={cn(index % 2 !== 0 && 'md:text-right')}>{highlightMetric(ach)}</li>
+                        <li key={i} className={cn(index % 2 !== 0 && 'md:pr-5')}>{highlightMetric(ach)}</li>
                       ))}
                     </ul>
                   </CardContent>
