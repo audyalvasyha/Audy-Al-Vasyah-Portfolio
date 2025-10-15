@@ -79,17 +79,18 @@ input[type=number] {
     radial-gradient(ellipse 80% 50% at 50% -20%, hsla(var(--primary), 0.3), transparent),
     radial-gradient(circle at 50% 50%, transparent 0, hsl(var(--background)) 100%),
     repeating-radial-gradient(circle at 50% 50%, hsla(var(--primary), 0.15) 0, hsla(var(--primary), 0.15) 1px, transparent 1px, transparent 100%);
-  background-repeat: no-repeat, no-repeat, repeat;
+  background-repeat: no-repeat;
   background-size: 100% 100%, 100% 100%, 16px 16px;
-  background-position: 50% 50%;
+  background-position: 0 0, 0 0, 0 0;
   animation: move-grid 20s linear infinite;
 }
 
 @keyframes move-grid {
   from {
-    background-position: 50% 50%;
+    background-position: 0 0, 0 0, 0 0;
   }
   to {
-    background-position: 50% calc(50% + 16px); /* Move one grid cell down */
+    background-position: 0 0, 0 0, 0 16px; /* Move only the third background (the grid) */
   }
 }
+
