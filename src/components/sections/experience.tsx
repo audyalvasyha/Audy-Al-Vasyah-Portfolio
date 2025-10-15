@@ -53,21 +53,35 @@ const Experience = () => {
           </div>
         </div>
         <div className="relative mt-12 max-w-3xl mx-auto">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+          {/* Timeline line for desktop */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden md:block"></div>
+          
+          {/* Timeline line for mobile */}
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-border ml-2 md:hidden"></div>
+
           {experienceData.map((job, index) => (
             <div
               key={index}
               className={cn(
-                'relative flex items-center mb-8',
-                index % 2 === 0 ? 'justify-start' : 'justify-end'
+                'relative mb-8 flex items-start',
+                'md:items-center', // Center items vertically on desktop
+                index % 2 === 0 ? 'md:justify-start' : 'md:justify-end',
+                'flex-row-reverse md:flex-row' // For mobile: icon on the right
               )}
             >
               {/* Dot */}
-              <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full z-10" />
-
+              <div className={cn(
+                "w-8 flex-shrink-0 flex justify-center", // container for the dot
+                "md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2" // desktop positioning
+                )}>
+                <div className="w-4 h-4 bg-primary rounded-full z-10 mt-1 md:mt-0" />
+              </div>
+              
               <div
-                className={cn('w-1/2', index % 2 === 0 ? 'pr-8' : 'pl-8')}
+                className={cn(
+                  'w-full pl-4 md:w-1/2', // Mobile: full width, padding left. Desktop: half width.
+                  index % 2 === 0 ? 'md:pr-8 md:pl-0' : 'md:pl-8'
+                )}
               >
                 <Card>
                   <CardHeader>
