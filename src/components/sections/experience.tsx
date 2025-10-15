@@ -53,73 +53,66 @@ const Experience = () => {
           </div>
         </div>
         <div className="relative mt-12 max-w-3xl mx-auto">
-          {/* Timeline line for desktop */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden md:block"></div>
+          {/* Timeline line */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
           
-          {/* Timeline line for mobile */}
-          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-border ml-2 md:hidden"></div>
-
-          {experienceData.map((job, index) => (
-            <div
-              key={index}
-              className={cn(
-                'relative mb-8 flex items-start',
-                'md:items-center', // Center items vertically on desktop
-                index % 2 === 0 ? 'md:justify-start' : 'md:justify-end',
-                'flex-row-reverse md:flex-row' // For mobile: icon on the right
-              )}
-            >
-              {/* Dot */}
-              <div className={cn(
-                "w-8 flex-shrink-0 flex justify-center", // container for the dot
-                "md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2" // desktop positioning
-                )}>
-                <div className="w-4 h-4 bg-primary rounded-full z-10 mt-1 md:mt-0" />
-              </div>
-              
+          <div className="space-y-8">
+            {experienceData.map((job, index) => (
               <div
+                key={index}
                 className={cn(
-                  'w-full pl-4 md:w-1/2', // Mobile: full width, padding left. Desktop: half width.
-                  index % 2 === 0 ? 'md:pr-8 md:pl-0' : 'md:pl-8'
+                  'relative flex items-start gap-4',
+                  'md:gap-8',
+                  index % 2 !== 0 && 'md:flex-row-reverse'
                 )}
               >
-                <Card>
-                  <CardHeader>
-                    <div
-                      className={cn(
-                        'flex flex-col md:flex-row justify-between md:items-start gap-2',
-                        index % 2 !== 0 && 'md:flex-row-reverse'
-                      )}
-                    >
-                      <div className={cn(index % 2 !== 0 && 'md:text-right')}>
-                        <CardTitle className="font-headline text-xl">
-                          {job.role}
-                        </CardTitle>
-                        <p className="text-sm text-muted-foreground">
-                          {job.company}
-                        </p>
+                {/* Dot */}
+                <div className="z-10 absolute left-6 md:left-1/2 top-1 w-4 h-4 bg-primary rounded-full -translate-x-1/2" />
+                
+                <div
+                  className={cn(
+                    'w-full pl-12 md:pl-0', // Mobile padding
+                    'md:w-1/2' // Desktop width
+                  )}
+                >
+                  <Card>
+                    <CardHeader>
+                      <div
+                        className={cn(
+                          'flex flex-col md:flex-row justify-between md:items-start gap-2',
+                          index % 2 !== 0 && 'md:flex-row-reverse'
+                        )}
+                      >
+                        <div className={cn(index % 2 !== 0 && 'md:text-right')}>
+                          <CardTitle className="font-headline text-xl">
+                            {job.role}
+                          </CardTitle>
+                          <p className="text-sm text-muted-foreground">
+                            {job.company}
+                          </p>
+                        </div>
+                        <Badge variant="destructive" className="self-start md:self-auto">
+                          {job.period}
+                        </Badge>
                       </div>
-                      <Badge variant="destructive" className="self-start md:self-auto">
-                        {job.period}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul
-                      className={cn(
-                        'list-disc pl-5 space-y-2 text-sm',
-                        index % 2 !== 0 && 'md:text-right md:list-none md:pl-0'
-                      )}
-                    >
-                      {job.achievements.map((ach, i) => (
-                        <li key={i} className={cn(index % 2 !== 0 && 'md:pr-5')}>{highlightMetric(ach)}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent>
+                      <ul
+                        className={cn(
+                          'list-disc pl-5 space-y-2 text-sm',
+                           index % 2 !== 0 && 'md:text-right md:list-none md:pl-0'
+                        )}
+                      >
+                        {job.achievements.map((ach, i) => (
+                          <li key={i} className={cn(index % 2 !== 0 && 'md:pr-5')}>{highlightMetric(ach)}</li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
