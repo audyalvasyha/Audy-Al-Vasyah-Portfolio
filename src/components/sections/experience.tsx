@@ -6,26 +6,26 @@ import { cn } from '@/lib/utils';
 const experienceData = [
   {
     role: 'Transport Planner',
-    company: 'Company',
+    company: 'PT. Pekanbaru Distribusindo Raya (Wings Group)',
     period: '2024 - Sekarang',
     achievements: [
-      'Merancang dan mengimplementasikan sistem penjadwalan pengiriman berbasis Machine Learning & AI, menghasilkan optimasi rute dan efisiensi waktu sebesar 44.21%.',
+      'Merancang dan mengimplementasikan sistem penjadwalan pengiriman berbasis Machine Learning & AI, menghasilkan optimasi rute dan efisiensi waktu sebesar 44.21%',
       'Memimpin proyek digitalisasi dan automasi alur kerja tim transportasi.',
     ],
   },
   {
     role: 'Warehouse Checker',
-    company: 'Company',
+    company: 'PT. Pekanbaru Distribusindo Raya (Wings Group)',
     period: '2021 - 2023',
     achievements: [
-      'Mengembangkan dan memanfaatkan Automation Tools (Auto Clicker) untuk mempercepat proses Post Good Issue, mengurangi potensi human error sebesar 90%.',
+      'Mengembangkan dan memanfaatkan Automation Tools (Auto Clicker) untuk mempercepat proses Post Good Issue, mengurangi potensi human error sebesar 90%',
     ],
   },
 ];
 
 const Experience = () => {
   const highlightMetric = (text: string) => {
-    const regex = /(\d+(\.\d+)?%)/g;
+    const regex = /(\d+(?:\.\d+)?%)/g;
     return text.split(regex).map((part, index) => {
       if (regex.test(part)) {
         return (
@@ -52,8 +52,7 @@ const Experience = () => {
             </p>
           </div>
         </div>
-        <div className="relative mt-12 max-w-3xl mx-auto">
-          {/* Timeline line */}
+        <div className="relative mt-12 max-w-5xl mx-auto">
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
           
           <div className="space-y-8">
@@ -66,24 +65,22 @@ const Experience = () => {
                   index % 2 !== 0 && 'md:flex-row-reverse'
                 )}
               >
-                {/* Dot */}
                 <div className="z-10 absolute left-6 md:left-1/2 top-1 w-4 h-4 bg-primary rounded-full -translate-x-1/2" />
                 
                 <div
                   className={cn(
-                    'w-full pl-12 md:pl-0', // Mobile padding
-                    'md:w-1/2 md:px-8' // Desktop width
+                    'w-full pl-12', 
+                    'md:w-1/2 md:px-8'
                   )}
                 >
                   <Card>
                     <CardHeader>
                       <div
                         className={cn(
-                          'flex flex-col md:flex-row justify-between md:items-start gap-2',
-                          index % 2 !== 0 && 'md:flex-row-reverse'
+                          'flex flex-col md:flex-row justify-between md:items-start gap-2'
                         )}
                       >
-                        <div className={cn(index % 2 !== 0 && 'md:text-right')}>
+                        <div> 
                           <CardTitle className="font-headline text-xl">
                             {job.role}
                           </CardTitle>
@@ -99,8 +96,7 @@ const Experience = () => {
                     <CardContent>
                       <ul
                         className={cn(
-                          'list-disc pl-5 space-y-2 text-sm',
-                           index % 2 !== 0 && 'md:text-right md:list-none md:pl-0'
+                          'list-disc pl-5 space-y-2 text-sm'
                         )}
                       >
                         {job.achievements.map((ach, i) => (
