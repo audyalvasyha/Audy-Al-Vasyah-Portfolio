@@ -52,28 +52,26 @@ const Experience = () => {
           </div>
         </div>
         <div className="relative mt-12 max-w-3xl mx-auto">
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-1/2"></div>
           {experienceData.map((job, index) => (
             <div
               key={index}
-              className={`relative mb-8 flex w-full items-center ${
-                index % 2 === 0 ? 'justify-start' : 'justify-end'
-              }`}
+              className="relative mb-8 flex w-full items-center justify-start"
             >
               <div
-                className={`relative w-1/2 ${
-                  index % 2 === 0 ? 'pr-8' : 'pl-8'
-                }`}
+                className="relative w-full pl-12 md:pl-0 md:w-1/2 md:pr-8"
               >
-                <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full z-10" style={index % 2 === 0 ? {right: '-8px'} : {left: '-8px'}}></div>
+                <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full z-10 left-[16px] md:left-auto md:right-[-8px]"></div>
                 <Card>
                   <CardHeader>
-                    <div className="flex justify-between items-start">
+                    <div className="flex flex-col md:flex-row justify-between md:items-start gap-2">
                       <div>
-                        <CardTitle className="font-headline">{job.role}</CardTitle>
+                        <CardTitle className="font-headline text-xl">
+                          {job.role}
+                        </CardTitle>
                         <p className="text-sm text-muted-foreground">{job.company}</p>
                       </div>
-                      <Badge variant="secondary">{job.period}</Badge>
+                      <Badge variant="destructive" className='self-start'>{job.period}</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
