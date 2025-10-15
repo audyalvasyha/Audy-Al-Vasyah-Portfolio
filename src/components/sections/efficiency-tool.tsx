@@ -28,11 +28,11 @@ import { Button } from '@/components/ui/button';
 import { Loader2, ArrowDown, ArrowUp } from 'lucide-react';
 
 const formSchema = z.object({
-  currentDeliveryTime: z.coerce.number().min(1, 'Must be at least 1 hour'),
-  currentWarehouseTime: z.coerce.number().min(1, 'Must be at least 1 hour'),
+  currentDeliveryTime: z.coerce.number().min(1, 'Minimal harus 1 jam'),
+  currentWarehouseTime: z.coerce.number().min(1, 'Minimal harus 1 jam'),
   automationStrategy: z
     .string()
-    .min(10, 'Please describe your strategy in at least 10 characters.'),
+    .min(10, 'Harap jelaskan strategi Anda dalam setidaknya 10 karakter.'),
 });
 
 const EfficiencyTool = () => {
@@ -58,7 +58,7 @@ const EfficiencyTool = () => {
       const prediction = await getEfficiencyPrediction(values);
       setResult(prediction);
     } catch (e) {
-      setError('Failed to get prediction. Please try again.');
+      setError('Gagal mendapatkan prediksi. Silakan coba lagi.');
     } finally {
       setIsLoading(false);
     }
@@ -98,20 +98,19 @@ const EfficiencyTool = () => {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">
-              Efficiency Prediction Tool
+              Alat Prediksi Efisiensi
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Use this AI-powered tool to forecast potential improvements in
-              delivery and warehouse times.
+              Gunakan alat bertenaga AI ini untuk memperkirakan potensi peningkatan waktu pengiriman dan gudang.
             </p>
           </div>
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline">Input Parameters</CardTitle>
+              <CardTitle className="font-headline">Parameter Masukan</CardTitle>
               <CardDescription>
-                Provide your current metrics and proposed strategy.
+                Berikan metrik Anda saat ini dan strategi yang diusulkan.
               </CardDescription>
             </CardHeader>
             <Form {...form}>
@@ -122,7 +121,7 @@ const EfficiencyTool = () => {
                     name="currentDeliveryTime"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Current Delivery Time (hours)</FormLabel>
+                        <FormLabel>Waktu Pengiriman Saat Ini (jam)</FormLabel>
                         <FormControl>
                           <Input type="number" {...field} />
                         </FormControl>
@@ -135,7 +134,7 @@ const EfficiencyTool = () => {
                     name="currentWarehouseTime"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Current Warehouse Time (hours)</FormLabel>
+                        <FormLabel>Waktu Gudang Saat Ini (jam)</FormLabel>
                         <FormControl>
                           <Input type="number" {...field} />
                         </FormControl>
@@ -148,7 +147,7 @@ const EfficiencyTool = () => {
                     name="automationStrategy"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Automation Strategy</FormLabel>
+                        <FormLabel>Strategi Otomatisasi</FormLabel>
                         <FormControl>
                           <Textarea rows={4} {...field} />
                         </FormControl>
@@ -162,7 +161,7 @@ const EfficiencyTool = () => {
                     {isLoading && (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     )}
-                    {isLoading ? 'Predicting...' : 'Predict Efficiency'}
+                    {isLoading ? 'Memprediksi...' : 'Prediksi Efisiensi'}
                   </Button>
                 </CardFooter>
               </form>
@@ -171,9 +170,9 @@ const EfficiencyTool = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline">AI Prediction</CardTitle>
+              <CardTitle className="font-headline">Prediksi AI</CardTitle>
               <CardDescription>
-                Predicted outcomes based on your inputs.
+                Hasil yang diprediksi berdasarkan masukan Anda.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -186,18 +185,18 @@ const EfficiencyTool = () => {
               {result && (
                 <div className="space-y-6">
                   <div className="flex justify-around text-center border rounded-lg p-4 bg-background">
-                    <TimeChange label="Delivery Time" oldTime={form.getValues('currentDeliveryTime')} newTime={result.predictedDeliveryTime} />
-                    <TimeChange label="Warehouse Time" oldTime={form.getValues('currentWarehouseTime')} newTime={result.predictedWarehouseTime} />
+                    <TimeChange label="Waktu Pengiriman" oldTime={form.getValues('currentDeliveryTime')} newTime={result.predictedDeliveryTime} />
+                    <TimeChange label="Waktu Gudang" oldTime={form.getValues('currentWarehouseTime')} newTime={result.predictedWarehouseTime} />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Reasoning:</h4>
+                    <h4 className="font-semibold mb-2">Alasan:</h4>
                     <p className="text-sm text-muted-foreground">{result.reasoning}</p>
                   </div>
                 </div>
               )}
                {!isLoading && !result && !error && (
                 <div className="flex justify-center items-center h-48 text-muted-foreground">
-                    <p>Results will be displayed here.</p>
+                    <p>Hasil akan ditampilkan di sini.</p>
                 </div>
               )}
             </CardContent>

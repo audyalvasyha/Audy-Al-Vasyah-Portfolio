@@ -70,7 +70,11 @@ export async function getEfficiencyPrediction(
   data: EfficiencyPredictionInput
 ): Promise<EfficiencyPredictionOutput> {
   try {
-    const prediction = await efficiencyPredictionTool(data);
+    const instructedData: EfficiencyPredictionInput = {
+      ...data,
+      automationStrategy: `${data.automationStrategy}. Tolong berikan kolom 'reasoning' dalam Bahasa Indonesia.`
+    };
+    const prediction = await efficiencyPredictionTool(instructedData);
     return prediction;
   } catch (error) {
     console.error('Error in efficiency prediction flow: ', error);
