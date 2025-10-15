@@ -72,7 +72,7 @@ const Experience = () => {
                 <div
                   className={cn(
                     'w-full pl-12 md:pl-0', // Mobile padding
-                    'md:w-1/2' // Desktop width
+                    'md:w-1/2 md:px-8' // Desktop width
                   )}
                 >
                   <Card>
