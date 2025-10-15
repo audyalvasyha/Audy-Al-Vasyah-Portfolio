@@ -65,13 +65,13 @@ const Experience = () => {
               <div className="md:w-1/2 pl-12 md:pl-0">
                 <div
                   className={cn(
-                    'absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full z-10 left-[16px] md:left-1/2 md:-translate-x-1/2'
+                    'absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full z-10 left-[1.3rem] md:left-1/2 md:-translate-x-1/2'
                   )}
                 />
                 <Card
                   className={cn(
-                    'md:ml-8',
-                    index % 2 !== 0 && 'md:ml-0 md:-ml-8'
+                    'w-full',
+                     index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'
                   )}
                 >
                   <CardHeader>
@@ -102,7 +102,7 @@ const Experience = () => {
                       )}
                     >
                       {job.achievements.map((ach, i) => (
-                        <li key={i}>{highlightMetric(ach)}</li>
+                        <li key={i} className={cn(index % 2 !== 0 && 'md:text-right')}>{highlightMetric(ach)}</li>
                       ))}
                     </ul>
                   </CardContent>
