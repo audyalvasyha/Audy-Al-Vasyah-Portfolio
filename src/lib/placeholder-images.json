@@ -7,8 +7,8 @@
       "imageHint": "tire inspection"
     },
     {
-      "id": "ml-delivery-scheduling",
-      "description": "Image for the ML-powered delivery scheduling system project card",
+      "id": "saldoin-topup",
+      "description": "Pengembangan platform e-commerce (Top Up dan Voucher Game) yang berfokus pada kecepatan transaksi dan keamanan data. Proyek ini dibangun dengan arsitektur modern untuk menjamin skalabilitas dan pengalaman pengguna (UX) yang optimal.",
       "imageUrl": "/images/saldoin.png",
       "imageHint": "toko top up game online"
     }

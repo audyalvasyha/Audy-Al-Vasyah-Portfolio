@@ -32,16 +32,17 @@ const projectDetails = [
     imageHint: 'Gambar aplikasi inspeksi ban berbasis AI',
   },
   {
-    id: 'ml-delivery-scheduling',
-    title: 'Sistem Penjadwalan Pengiriman Bertenaga ML',
+    id: 'saldoin-topup',
+    title: 'SaldoIn - Top Up Game & Voucher E-commerce',
     description:
-      'Mengoptimalkan rute pengiriman dan jadwal menggunakan machine learning untuk meningkatkan efisiensi dan mengurangi biaya operasional.',
+      'Pengembangan platform e-commerce (Top Up dan Voucher Game) yang berfokus pada kecepatan transaksi dan keamanan data. Proyek ini dibangun dengan arsitektur modern untuk menjamin skalabilitas dan pengalaman pengguna (UX) yang optimal.',
     features: [
-      'Penjadwalan dan perutean pengiriman otomatis.',
-      'Dasbor untuk memantau status pengiriman dan kinerja armada.',
-      'Prediksi waktu pengiriman yang akurat.',
+      'Implementasi sistem pembayaran yang terintegrasi untuk berbagai metode (misalnya QRIS, Virtual Account).',
+      'Manajemen inventaris digital (voucher dan produk game) secara real-time.',
+      'Dirancang dengan keamanan data pengguna dan transaksi yang solid, memanfaatkan keahlian di Google Cloud Platform (GCP) dan Firebase.',
+      'Antarmuka pengguna yang responsif, modern, dan sederhana untuk navigasi produk yang cepat.',
     ],
-    imageHint: 'Gambar sistem penjadwalan pengiriman bertenaga ML',
+    imageId: 'topup-ecommerce', // Ganti dengan ID gambar placeholder yang sesuai
   },
 ];
 
