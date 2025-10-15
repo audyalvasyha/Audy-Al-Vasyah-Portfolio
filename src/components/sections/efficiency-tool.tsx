@@ -46,7 +46,7 @@ const EfficiencyTool = () => {
       currentDeliveryTime: 24,
       currentWarehouseTime: 8,
       automationStrategy:
-        'Implementing an AI-powered route optimization and automated warehouse sorting system.',
+        'Menerapkan sistem pengoptimalan rute bertenaga AI dan penyortiran gudang otomatis.',
     },
   });
 

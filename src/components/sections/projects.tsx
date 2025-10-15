@@ -20,7 +20,7 @@ const Projects = async () => {
     console.error('Failed to fetch project details:', error);
     // Fallback data
     projectDetails = {
-      title: 'Mitra Armada AI - AI-Based Tire Inspection App',
+      title: 'Mitra Armada AI - (AI-Based Tire Inspection App)',
       description:
         'Simplifies tire inspections using AI technology to enhance fleet safety and efficiency, featuring a supervisor dashboard for real-time monitoring.',
       features: [
