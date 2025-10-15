@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 const experienceData = [
   {
@@ -52,30 +53,54 @@ const Experience = () => {
           </div>
         </div>
         <div className="relative mt-12 max-w-3xl mx-auto">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-1/2"></div>
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
           {experienceData.map((job, index) => (
             <div
               key={index}
-              className="relative mb-8 flex w-full items-center justify-start"
+              className={cn(
+                'relative mb-8 flex w-full items-center',
+                index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
+              )}
             >
-              <div
-                className="relative w-full pl-12 md:pl-0 md:w-1/2 md:pr-8"
-              >
-                <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full z-10 left-[16px] md:left-auto md:right-[-8px]"></div>
-                <Card>
+              <div className="md:w-1/2 pl-12 md:pl-0">
+                <div
+                  className={cn(
+                    'absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full z-10 left-[16px] md:left-1/2 md:-translate-x-1/2'
+                  )}
+                />
+                <Card
+                  className={cn(
+                    'md:ml-8',
+                    index % 2 !== 0 && 'md:ml-0 md:-ml-8'
+                  )}
+                >
                   <CardHeader>
-                    <div className="flex flex-col md:flex-row justify-between md:items-start gap-2">
-                      <div>
+                    <div
+                      className={cn(
+                        'flex flex-col md:flex-row justify-between md:items-start gap-2',
+                         index % 2 !== 0 && 'md:flex-row-reverse'
+                      )}
+                    >
+                      <div className={cn(index % 2 !== 0 && 'md:text-right')}>
                         <CardTitle className="font-headline text-xl">
                           {job.role}
                         </CardTitle>
-                        <p className="text-sm text-muted-foreground">{job.company}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {job.company}
+                        </p>
                       </div>
-                      <Badge variant="destructive" className='self-start'>{job.period}</Badge>
+                      <Badge variant="destructive" className="self-start md:self-auto">
+                        {job.period}
+                      </Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <ul className="list-disc pl-5 space-y-2 text-sm">
+                    <ul
+                      className={cn(
+                        'list-disc pl-5 space-y-2 text-sm',
+                        index % 2 !== 0 && 'md:text-right md:list-none md:pl-0'
+                      )}
+                    >
                       {job.achievements.map((ach, i) => (
                         <li key={i}>{highlightMetric(ach)}</li>
                       ))}
