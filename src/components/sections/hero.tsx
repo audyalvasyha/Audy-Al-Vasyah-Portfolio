@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full h-[80dvh] min-h-[500px] flex items-center justify-center text-center overflow-hidden"
+      className="relative w-full h-[80dvh] min-h-[500px] flex items-center justify-center text-center overflow-hidden hero-bg"
     >
       <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
       <div className="relative z-10 container px-4 md:px-6">
