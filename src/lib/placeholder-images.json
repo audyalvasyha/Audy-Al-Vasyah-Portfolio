@@ -1,15 +1,9 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-background",
-      "description": "Abstract digital data background for the hero section",
-      "imageUrl": "https://picsum.photos/seed/hero/1920/1080",
-      "imageHint": "abstract digital"
-    },
-    {
       "id": "tire-inspection",
       "description": "Image for the AI tire inspection project card",
-      "imageUrl": "https://picsum.photos/seed/tires/600/400",
+      "imageUrl": "/images/truck-inspection.jpg",
       "imageHint": "tire inspection"
     }
   ]
