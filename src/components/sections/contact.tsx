@@ -54,7 +54,7 @@ const Contact = () => {
   }, [formState.success]);
 
   return (
-    <section id="contact" className="w-full py-20 md:py-32">
+    <section id="contact" className="w-full py-20 md:py-32 scroll-mt-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-6">

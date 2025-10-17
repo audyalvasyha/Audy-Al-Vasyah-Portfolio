@@ -8,7 +8,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative isolate bg-background">
+    <section id="home" className="relative isolate bg-background scroll-mt-20">
       <div className="px-6 pt-14 lg:px-8">
         <div
           aria-hidden="true"
