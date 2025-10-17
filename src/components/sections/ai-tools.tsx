@@ -6,6 +6,7 @@ import DeliverySchedulingTool from './delivery-scheduling-tool';
 import TireInspectionTool from './tire-inspection-tool';
 import { GaugeCircle, CalendarClock, ScanLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const tools = [
   {
@@ -44,25 +45,28 @@ const AiTools = () => {
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
           <Tabs defaultValue="efficiency-predictor" className="w-full">
-            <TabsList className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 bg-transparent p-0">
-              {tools.map((tool) => (
-                <TabsTrigger
-                  key={tool.value}
-                  value={tool.value}
-                  className={cn(
-                    'relative h-auto w-full p-6 rounded-lg border-2 border-transparent bg-card text-card-foreground shadow-md transition-all',
-                    'data-[state=active]:border-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 data-[state=active]:-translate-y-1',
-                    'hover:shadow-lg hover:border-accent hover:-translate-y-1'
-                  )}
-                >
-                  <div className="flex flex-col items-center text-center">
-                    {tool.icon}
-                    <p className="text-base font-semibold">{tool.title}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{tool.description}</p>
-                  </div>
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            <ScrollArea className="w-full whitespace-nowrap">
+              <TabsList className="inline-flex h-auto w-max space-x-4 bg-transparent p-4 lg:w-full lg:grid lg:grid-cols-3 lg:space-x-0 lg:gap-6">
+                {tools.map((tool) => (
+                  <TabsTrigger
+                    key={tool.value}
+                    value={tool.value}
+                    className={cn(
+                      'relative h-auto w-full min-w-[240px] p-6 rounded-lg border-2 border-transparent bg-card text-card-foreground shadow-md transition-all whitespace-normal',
+                      'data-[state=active]:border-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 data-[state=active]:-translate-y-1',
+                      'hover:shadow-lg hover:border-accent hover:-translate-y-1'
+                    )}
+                  >
+                    <div className="flex flex-col items-center text-center">
+                      {tool.icon}
+                      <p className="text-base font-semibold">{tool.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{tool.description}</p>
+                    </div>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              <ScrollBar orientation="horizontal" className="lg:hidden" />
+            </ScrollArea>
             <TabsContent value="efficiency-predictor">
               <EfficiencyTool />
             </TabsContent>
