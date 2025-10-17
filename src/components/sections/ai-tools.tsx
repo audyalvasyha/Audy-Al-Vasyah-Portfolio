@@ -4,6 +4,29 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EfficiencyTool from './efficiency-tool';
 import DeliverySchedulingTool from './delivery-scheduling-tool';
 import TireInspectionTool from './tire-inspection-tool';
+import { GaugeCircle, CalendarClock, ScanLine } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const tools = [
+  {
+    value: 'efficiency-predictor',
+    title: 'Efficiency Predictor',
+    description: 'Forecast potential time savings.',
+    icon: <GaugeCircle className="w-8 h-8 mb-2 text-primary" />,
+  },
+  {
+    value: 'delivery-scheduler',
+    title: 'Delivery Scheduling',
+    description: 'Learn about the ML-powered system.',
+    icon: <CalendarClock className="w-8 h-8 mb-2 text-primary" />,
+  },
+  {
+    value: 'tire-inspection',
+    title: 'Tire Inspection',
+    description: 'Analyze tire condition with AI.',
+    icon: <ScanLine className="w-8 h-8 mb-2 text-primary" />,
+  },
+];
 
 const AiTools = () => {
   return (
@@ -21,19 +44,33 @@ const AiTools = () => {
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
           <Tabs defaultValue="efficiency-predictor" className="w-full">
-            <TabsList className="grid w-full grid-cols-1 h-auto sm:h-10 sm:grid-cols-3 mb-6">
-              <TabsTrigger value="efficiency-predictor">Efficiency Predictor</TabsTrigger>
-              <TabsTrigger value="delivery-scheduler">Delivery Scheduling</TabsTrigger>
-              <TabsTrigger value="tire-inspection">Tire Inspection</TabsTrigger>
+            <TabsList className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 bg-transparent p-0">
+              {tools.map((tool) => (
+                <TabsTrigger
+                  key={tool.value}
+                  value={tool.value}
+                  className={cn(
+                    'relative h-auto w-full p-6 rounded-lg border-2 border-transparent bg-card text-card-foreground shadow-md transition-all',
+                    'data-[state=active]:border-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 data-[state=active]:-translate-y-1',
+                    'hover:shadow-lg hover:border-accent hover:-translate-y-1'
+                  )}
+                >
+                  <div className="flex flex-col items-center text-center">
+                    {tool.icon}
+                    <p className="text-base font-semibold">{tool.title}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{tool.description}</p>
+                  </div>
+                </TabsTrigger>
+              ))}
             </TabsList>
             <TabsContent value="efficiency-predictor">
-                <EfficiencyTool />
+              <EfficiencyTool />
             </TabsContent>
             <TabsContent value="delivery-scheduler">
-                <DeliverySchedulingTool />
+              <DeliverySchedulingTool />
             </TabsContent>
             <TabsContent value="tire-inspection">
-                <TireInspectionTool />
+              <TireInspectionTool />
             </TabsContent>
           </Tabs>
         </div>
