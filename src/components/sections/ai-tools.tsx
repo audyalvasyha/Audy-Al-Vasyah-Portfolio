@@ -11,6 +11,12 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const tools = [
   {
+    value: 'tire-inspection',
+    title: 'Tire Inspection',
+    description: 'Analyze tire condition with AI.',
+    icon: <ScanLine className="w-8 h-8 mb-2 text-primary" />,
+  },
+  {
     value: 'efficiency-predictor',
     title: 'Efficiency Predictor',
     description: 'Forecast potential time savings.',
@@ -21,12 +27,6 @@ const tools = [
     title: 'Delivery Scheduling',
     description: 'Learn about the ML-powered system.',
     icon: <CalendarClock className="w-8 h-8 mb-2 text-primary" />,
-  },
-  {
-    value: 'tire-inspection',
-    title: 'Tire Inspection',
-    description: 'Analyze tire condition with AI.',
-    icon: <ScanLine className="w-8 h-8 mb-2 text-primary" />,
   },
 ];
 
@@ -45,7 +45,7 @@ const AiTools = () => {
           </div>
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
-          <Tabs defaultValue="efficiency-predictor" className="w-full">
+          <Tabs defaultValue="tire-inspection" className="w-full">
             <TabsList className="inline-flex h-auto w-full p-1 bg-transparent justify-center lg:grid lg:grid-cols-3 lg:gap-6 lg:p-0">
               {tools.map((tool) => (
                 <TabsTrigger
