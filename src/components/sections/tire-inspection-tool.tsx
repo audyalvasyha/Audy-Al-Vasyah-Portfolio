@@ -30,7 +30,7 @@ const TireInspectionTool = () => {
   const processFile = (selectedFile: File | null) => {
     if (selectedFile) {
       if (selectedFile.size > 4 * 1024 * 1024) {
-        setError('File is too large. Please select a file smaller than 4MB.');
+        setError('File terlalu besar. Pilih file yang lebih kecil dari 4MB.');
         setFile(null);
         setPreviewUrl(null);
         return;
@@ -72,7 +72,7 @@ const TireInspectionTool = () => {
 
   const handleAnalyzeClick = async () => {
     if (!file) {
-      setError('Please select an image file first.');
+      setError('Silakan pilih file gambar terlebih dahulu.');
       return;
     }
 
@@ -91,18 +91,18 @@ const TireInspectionTool = () => {
           });
           setAnalysis(response);
         } catch (e) {
-          setError('Failed to analyze the tire. Please try again.');
+          setError('Gagal menganalisis ban. Silakan coba lagi.');
           console.error(e);
         } finally {
           setIsLoading(false);
         }
       };
       reader.onerror = () => {
-        setError('Failed to read the file.');
+        setError('Gagal membaca file.');
         setIsLoading(false);
       };
     } catch (e) {
-      setError('Failed to analyze the tire. Please try again.');
+      setError('Gagal menganalisis ban. Silakan coba lagi.');
       console.error(e);
       setIsLoading(false);
     }
@@ -110,29 +110,29 @@ const TireInspectionTool = () => {
 
   const getConditionBadge = (condition: string) => {
     switch (condition) {
-      case 'Good':
+      case 'Baik':
         return (
           <Badge variant="default" className="bg-green-500 hover:bg-green-600">
-            <Check className="mr-2 h-4 w-4" /> Good
+            <Check className="mr-2 h-4 w-4" /> Baik
           </Badge>
         );
-      case 'Worn':
+      case 'Aus':
         return (
           <Badge
             variant="secondary"
             className="bg-yellow-500 hover:bg-yellow-600 text-black"
           >
-            <AlertTriangle className="mr-2 h-4 w-4" /> Worn
+            <AlertTriangle className="mr-2 h-4 w-4" /> Aus
           </Badge>
         );
-      case 'Damaged':
+      case 'Rusak':
         return (
           <Badge variant="destructive">
-            <X className="mr-2 h-4 w-4" /> Damaged
+            <X className="mr-2 h-4 w-4" /> Rusak
           </Badge>
         );
       default:
-        return <Badge variant="outline">Unknown</Badge>;
+        return <Badge variant="outline">Tidak Diketahui</Badge>;
     }
   };
 
@@ -140,9 +140,9 @@ const TireInspectionTool = () => {
     <div className="mt-12 grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Tire Image Analyzer</CardTitle>
+          <CardTitle className="font-headline">Penganalisis Gambar Ban</CardTitle>
           <CardDescription>
-            Upload an image of a tire to get an AI-powered condition analysis.
+            Unggah gambar ban untuk mendapatkan analisis kondisi bertenaga AI.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -167,7 +167,7 @@ const TireInspectionTool = () => {
               <div className="relative w-full h-64">
                 <Image
                   src={previewUrl}
-                  alt="Tire Preview"
+                  alt="Pratinjau Ban"
                   fill
                   className="object-contain rounded-md"
                 />
@@ -175,8 +175,8 @@ const TireInspectionTool = () => {
             ) : (
               <div className="flex flex-col items-center gap-2 text-muted-foreground">
                 <UploadCloud className="w-12 h-12" />
-                <p>Click to upload or drag & drop</p>
-                <p className="text-xs">PNG, JPG, or WEBP (Max 4MB)</p>
+                <p>Klik untuk mengunggah atau seret & jatuhkan</p>
+                <p className="text-xs">PNG, JPG, atau WEBP (Maks 4MB)</p>
               </div>
             )}
           </div>
@@ -191,15 +191,15 @@ const TireInspectionTool = () => {
             className="w-full"
           >
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {isLoading ? 'Analyzing...' : 'Analyze Tire'}
+            {isLoading ? 'Menganalisis...' : 'Analisis Ban'}
           </Button>
         </CardFooter>
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Analysis Result</CardTitle>
+          <CardTitle className="font-headline">Hasil Analisis</CardTitle>
           <CardDescription>
-            AI-generated report on the tire's condition.
+            Laporan kondisi ban yang dihasilkan oleh AI.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -212,19 +212,19 @@ const TireInspectionTool = () => {
           {analysis && (
             <div className="space-y-4 text-sm">
               <div className="flex justify-between items-center">
-                <span className="text-muted-foreground">Overall Condition</span>
+                <span className="text-muted-foreground">Kondisi Keseluruhan</span>
                 {getConditionBadge(analysis.condition)}
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-muted-foreground">Wear Level</span>
+                <span className="text-muted-foreground">Tingkat Keausan</span>
                 <span className="font-semibold">{analysis.wearLevel}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-muted-foreground">Detected Damage</span>
+                <span className="text-muted-foreground">Kerusakan Terdeteksi</span>
                 <span className="font-semibold">{analysis.detectedDamage}</span>
               </div>
               <div className="pt-4">
-                <h4 className="font-semibold mb-2">Recommendation:</h4>
+                <h4 className="font-semibold mb-2">Rekomendasi:</h4>
                 <p className="text-muted-foreground p-3 bg-muted/50 rounded-md">
                   {analysis.recommendation}
                 </p>
@@ -234,8 +234,8 @@ const TireInspectionTool = () => {
           {!isLoading && !analysis && !error && (
             <div className="flex justify-center items-center h-48 text-muted-foreground text-center">
               <p>
-                Upload a tire image and click "Analyze Tire" to see the results
-                here.
+                Unggah gambar ban dan klik "Analisis Ban" untuk melihat hasilnya
+                di sini.
               </p>
             </div>
           )}

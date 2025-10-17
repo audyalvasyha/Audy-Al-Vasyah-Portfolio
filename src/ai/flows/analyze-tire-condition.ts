@@ -23,17 +23,17 @@ export type AnalyzeTireConditionInput = z.infer<
 
 const AnalyzeTireConditionOutputSchema = z.object({
   condition: z
-    .enum(['Good', 'Worn', 'Damaged', 'Unknown'])
-    .describe('The overall condition of the tire.'),
+    .enum(['Baik', 'Aus', 'Rusak', 'Tidak Diketahui'])
+    .describe('Kondisi keseluruhan ban.'),
   wearLevel: z
     .string()
-    .describe('A brief description of the tire tread wear level (e.g., "Normal Wear", "Severe Wear", "Uneven Wear").'),
+    .describe('Deskripsi singkat tentang tingkat keausan tapak ban (misalnya, "Keausan Normal", "Keausan Parah", "Keausan Tidak Merata").'),
   detectedDamage: z
     .string()
-    .describe('Description of any detected damage like cuts, bulges, or punctures. "None" if no damage is found.'),
+    .describe('Deskripsi kerusakan yang terdeteksi seperti sobekan, benjolan, atau tusukan. "Tidak ada" jika tidak ditemukan kerusakan.'),
   recommendation: z
     .string()
-    .describe('A brief recommendation for the tire (e.g., "Continue use", "Requires immediate replacement", "Monitor closely").'),
+    .describe('Rekomendasi singkat untuk ban (misalnya, "Lanjutkan penggunaan", "Perlu segera diganti", "Pantau dengan cermat").'),
 });
 export type AnalyzeTireConditionOutput = z.infer<
   typeof AnalyzeTireConditionOutputSchema
@@ -43,13 +43,13 @@ const prompt = ai.definePrompt({
   name: 'analyzeTireConditionPrompt',
   input: {schema: AnalyzeTireConditionInputSchema},
   output: {schema: AnalyzeTireConditionOutputSchema},
-  prompt: `You are a professional tire inspector. Analyze the provided image of a single vehicle tire.
+  prompt: `Anda adalah seorang inspektur ban profesional. Analisis gambar ban kendaraan yang disediakan.
 
-Based on the image, determine the tire's overall condition, tread wear level, and identify any visible damage (cuts, bulges, punctures, etc.).
+Berdasarkan gambar, tentukan kondisi keseluruhan ban, tingkat keausan tapak, dan identifikasi kerusakan yang terlihat (sobekan, benjolan, tusukan, dll.).
 
-Provide a concise, professional assessment and a clear recommendation.
+Berikan penilaian yang ringkas, profesional, dan rekomendasi yang jelas dalam Bahasa Indonesia.
 
-Tire Image: {{media url=photoDataUri}}`,
+Gambar Ban: {{media url=photoDataUri}}`,
 });
 
 const analyzeTireConditionFlow = ai.defineFlow(
