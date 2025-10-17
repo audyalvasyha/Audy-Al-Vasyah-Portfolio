@@ -30,6 +30,8 @@ const projectDetails = [
       'Dasbor supervisor untuk pemantauan status inspeksi waktu nyata.',
     ],
     imageHint: 'Gambar aplikasi inspeksi ban berbasis AI',
+    imageWidth: 1280,
+    imageHeight: 832,
   },
   {
     id: 'saldoin-topup',
@@ -42,7 +44,9 @@ const projectDetails = [
       'Dirancang dengan keamanan data pengguna dan transaksi yang solid, memanfaatkan keahlian di Google Cloud Platform (GCP) dan Firebase.',
       'Antarmuka pengguna yang responsif, modern, dan sederhana untuk navigasi produk yang cepat.',
     ],
-    imageId: 'topup-ecommerce', // Ganti dengan ID gambar placeholder yang sesuai
+    imageHint: 'toko top up game online',
+    imageWidth: 1080,
+    imageHeight: 1080,
   },
 ];
 
@@ -69,7 +73,7 @@ const Projects = () => {
                 );
                 return (
                   <CarouselItem key={index}>
-                    <Card className="transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+                    <Card className="transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden">
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="p-6">
                           <CardHeader>
@@ -82,8 +86,8 @@ const Projects = () => {
                           </CardHeader>
                           <CardContent>
                             <ul className="space-y-4">
-                              {project.features.map((feature, index) => (
-                                <li key={index} className="flex items-start">
+                              {project.features.map((feature, i) => (
+                                <li key={i} className="flex items-start">
                                   <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
                                   <span>{feature}</span>
                                 </li>
@@ -96,8 +100,10 @@ const Projects = () => {
                             <Image
                               src={projectImage.imageUrl}
                               alt={project.title || 'Proyek Unggulan'}
-                              fill
-                              className="object-cover rounded-r-lg"
+                              width={project.imageWidth}
+                              height={project.imageHeight}
+                              priority={false}
+                              className="object-cover md:rounded-r-lg"
                               data-ai-hint={project.imageHint}
                             />
                           </div>

@@ -189,7 +189,7 @@ const EfficiencyTool = () => {
           )}
            {!isLoading && !result && !error && (
             <div className="flex justify-center items-center h-48 text-muted-foreground">
-                <p>Hasil akan ditampilkan di sini.</p>
+                <p>Hasil prediksi akan ditampilkan di sini.</p>
             </div>
           )}
         </CardContent>

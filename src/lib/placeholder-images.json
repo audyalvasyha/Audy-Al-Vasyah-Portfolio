@@ -4,13 +4,17 @@
       "id": "ai-tire-inspection",
       "description": "Image for the AI tire inspection project card",
       "imageUrl": "/images/truck-inspection.jpg",
-      "imageHint": "tire inspection"
+      "imageHint": "tire inspection",
+      "width": 1280,
+      "height": 832
     },
     {
       "id": "saldoin-topup",
       "description": "Pengembangan platform e-commerce (Top Up dan Voucher Game) yang berfokus pada kecepatan transaksi dan keamanan data. Proyek ini dibangun dengan arsitektur modern untuk menjamin skalabilitas dan pengalaman pengguna (UX) yang optimal.",
       "imageUrl": "/images/saldoin.png",
-      "imageHint": "toko top up game online"
+      "imageHint": "toko top up game online",
+      "width": 1080,
+      "height": 1080
     }
   ]
 }

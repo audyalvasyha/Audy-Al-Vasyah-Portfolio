@@ -70,7 +70,7 @@ const Header = () => {
 
         <div className="flex flex-1 items-center justify-end space-x-4">
           <Button asChild>
-            <a href="/Audy Al Vasyah 10-25.pdf" download>Download CV</a>
+            <a href="/Audy Al Vasyah 10-25.pdf" download="Audy Al Vasyah CV.pdf">Download CV</a>
           </Button>
         </div>
       </div>
