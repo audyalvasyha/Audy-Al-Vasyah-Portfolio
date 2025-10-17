@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, ChangeEvent, DragEvent } from 'react';
+import { useState, useRef, ChangeEvent, DragEvent, useEffect } from 'react';
 import {
   analyzeTireCondition,
 } from '@/ai/flows/analyze-tire-condition';
@@ -76,11 +76,18 @@ const TireInspectionTool = () => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = async () => {
-        const base64data = reader.result as string;
-        const response = await analyzeTireCondition({
-          photoDataUri: base64data,
-        });
-        setAnalysis(response);
+        try {
+          const base64data = reader.result as string;
+          const response = await analyzeTireCondition({
+            photoDataUri: base64data,
+          });
+          setAnalysis(response);
+        } catch (e) {
+            setError('Failed to analyze the tire. Please try again.');
+            console.error(e);
+        } finally {
+            setIsLoading(false);
+        }
       };
       reader.onerror = () => {
         setError('Failed to read the file.');
@@ -92,11 +99,6 @@ const TireInspectionTool = () => {
       setIsLoading(false);
     }
   };
-  
-  // This effect handles the change of analysis state
-  useState(() => {
-      if(analysis) setIsLoading(false);
-  });
 
   const getConditionBadge = (condition: string) => {
     switch (condition) {
