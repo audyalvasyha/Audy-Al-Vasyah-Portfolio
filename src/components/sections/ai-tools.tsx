@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EfficiencyTool from './efficiency-tool';
@@ -45,28 +46,34 @@ const AiTools = () => {
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
           <Tabs defaultValue="efficiency-predictor" className="w-full">
-            <ScrollArea className="w-full whitespace-nowrap">
-              <TabsList className="inline-flex h-auto w-max space-x-4 bg-transparent p-4 lg:w-full lg:grid lg:grid-cols-3 lg:space-x-0 lg:gap-6">
-                {tools.map((tool) => (
-                  <TabsTrigger
-                    key={tool.value}
-                    value={tool.value}
-                    className={cn(
-                      'relative h-auto w-full min-w-[240px] p-6 rounded-lg border-2 border-transparent bg-card text-card-foreground shadow-md transition-all whitespace-normal',
-                      'data-[state=active]:border-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 data-[state=active]:-translate-y-1',
-                      'hover:shadow-lg hover:border-accent hover:-translate-y-1'
-                    )}
-                  >
-                    <div className="flex flex-col items-center text-center">
-                      {tool.icon}
-                      <p className="text-base font-semibold">{tool.title}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{tool.description}</p>
-                    </div>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              <ScrollBar orientation="horizontal" className="lg:hidden" />
-            </ScrollArea>
+            <TabsList className="inline-flex h-auto w-full p-1 bg-transparent justify-center lg:grid lg:grid-cols-3 lg:gap-6 lg:p-0">
+              {tools.map((tool) => (
+                <TabsTrigger
+                  key={tool.value}
+                  value={tool.value}
+                  className={cn(
+                    'flex-1 p-2 justify-center items-center text-center',
+                    'lg:relative lg:h-auto lg:p-6 lg:rounded-lg lg:border-2 lg:border-transparent lg:bg-card lg:text-card-foreground lg:shadow-md lg:transition-all lg:whitespace-normal',
+                    'lg:data-[state=active]:border-primary lg:data-[state=active]:shadow-lg lg:data-[state=active]:shadow-primary/20 lg:data-[state=active]:-translate-y-1',
+                    'lg:hover:shadow-lg lg:hover:border-accent lg:hover:-translate-y-1',
+                    'data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:shadow-none rounded-md',
+                    'lg:data-[state=active]:bg-card'
+                  )}
+                >
+                  {/* Desktop View */}
+                  <div className="hidden lg:flex lg:flex-col lg:items-center">
+                    {tool.icon}
+                    <p className="text-base font-semibold">{tool.title}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{tool.description}</p>
+                  </div>
+                  {/* Mobile View */}
+                  <div className="lg:hidden flex flex-col items-center text-center text-xs p-1">
+                     {React.cloneElement(tool.icon, { className: "w-5 h-5 mb-1 text-primary" })}
+                    <p className="font-semibold">{tool.title}</p>
+                  </div>
+                </TabsTrigger>
+              ))}
+            </TabsList>
             <TabsContent value="efficiency-predictor">
               <EfficiencyTool />
             </TabsContent>
