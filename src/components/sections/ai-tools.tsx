@@ -21,7 +21,7 @@ const AiTools = () => {
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
           <Tabs defaultValue="efficiency-predictor" className="w-full">
-            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-6">
+            <TabsList className="grid w-full grid-cols-1 h-auto sm:h-10 sm:grid-cols-3 mb-6">
               <TabsTrigger value="efficiency-predictor">Efficiency Predictor</TabsTrigger>
               <TabsTrigger value="delivery-scheduler">Delivery Scheduling</TabsTrigger>
               <TabsTrigger value="tire-inspection">Tire Inspection</TabsTrigger>
