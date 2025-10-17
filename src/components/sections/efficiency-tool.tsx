@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { getEfficiencyPrediction } from '@/lib/actions';
+import { efficiencyPredictionTool } from '@/ai/flows/efficiency-prediction-tool';
 import type { EfficiencyPredictionOutput } from '@/ai/flows/efficiency-prediction-tool';
 import {
   Card,
@@ -55,10 +55,15 @@ const EfficiencyTool = () => {
     setError(null);
     setResult(null);
     try {
-      const prediction = await getEfficiencyPrediction(values);
+      const instructedData = {
+        ...values,
+        automationStrategy: `${values.automationStrategy}. Tolong berikan kolom 'reasoning' dalam Bahasa Indonesia.`
+      };
+      const prediction = await efficiencyPredictionTool(instructedData);
       setResult(prediction);
     } catch (e) {
       setError('Gagal mendapatkan prediksi. Silakan coba lagi.');
+      console.error(e);
     } finally {
       setIsLoading(false);
     }
@@ -93,117 +98,103 @@ const EfficiencyTool = () => {
   };
 
   return (
-    <section id="tool" className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">
-              Alat Prediksi Efisiensi
-            </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Gunakan alat bertenaga AI ini untuk memperkirakan potensi peningkatan waktu pengiriman dan gudang.
-            </p>
-          </div>
-        </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline">Parameter Masukan</CardTitle>
-              <CardDescription>
-                Berikan metrik Anda saat ini dan strategi yang diusulkan.
-              </CardDescription>
-            </CardHeader>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)}>
-                <CardContent className="space-y-4">
-                  <FormField
-                    control={form.control}
-                    name="currentDeliveryTime"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Waktu Pengiriman Saat Ini (jam)</FormLabel>
-                        <FormControl>
-                          <Input type="number" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="currentWarehouseTime"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Waktu Gudang Saat Ini (jam)</FormLabel>
-                        <FormControl>
-                          <Input type="number" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="automationStrategy"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Strategi Otomatisasi</FormLabel>
-                        <FormControl>
-                          <Textarea rows={4} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </CardContent>
-                <CardFooter>
-                  <Button type="submit" disabled={isLoading}>
-                    {isLoading && (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    )}
-                    {isLoading ? 'Memprediksi...' : 'Prediksi Efisiensi'}
-                  </Button>
-                </CardFooter>
-              </form>
-            </Form>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline">Prediksi AI</CardTitle>
-              <CardDescription>
-                Hasil yang diprediksi berdasarkan masukan Anda.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {isLoading && (
-                <div className="flex justify-center items-center h-full">
-                  <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                </div>
-              )}
-              {error && <p className="text-destructive">{error}</p>}
-              {result && (
-                <div className="space-y-6">
-                  <div className="flex justify-around text-center border rounded-lg p-4 bg-background">
-                    <TimeChange label="Waktu Pengiriman" oldTime={form.getValues('currentDeliveryTime')} newTime={result.predictedDeliveryTime} />
-                    <TimeChange label="Waktu Gudang" oldTime={form.getValues('currentWarehouseTime')} newTime={result.predictedWarehouseTime} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Alasan:</h4>
-                    <p className="text-sm text-muted-foreground">{result.reasoning}</p>
-                  </div>
-                </div>
-              )}
-               {!isLoading && !result && !error && (
-                <div className="flex justify-center items-center h-48 text-muted-foreground">
-                    <p>Hasil akan ditampilkan di sini.</p>
-                </div>
-              )}
+    <div className="mt-12 grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-headline">Parameter Masukan</CardTitle>
+          <CardDescription>
+            Berikan metrik Anda saat ini dan strategi yang diusulkan.
+          </CardDescription>
+        </CardHeader>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <CardContent className="space-y-4">
+              <FormField
+                control={form.control}
+                name="currentDeliveryTime"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Waktu Pengiriman Saat Ini (jam)</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="currentWarehouseTime"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Waktu Gudang Saat Ini (jam)</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="automationStrategy"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Strategi Otomatisasi</FormLabel>
+                    <FormControl>
+                      <Textarea rows={4} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
+            <CardFooter>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading && (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                )}
+                {isLoading ? 'Memprediksi...' : 'Prediksi Efisiensi'}
+              </Button>
+            </CardFooter>
+          </form>
+        </Form>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-headline">Prediksi AI</CardTitle>
+          <CardDescription>
+            Hasil yang diprediksi berdasarkan masukan Anda.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {isLoading && (
+            <div className="flex justify-center items-center h-full">
+              <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
+          )}
+          {error && <p className="text-destructive">{error}</p>}
+          {result && (
+            <div className="space-y-6">
+              <div className="flex justify-around text-center border rounded-lg p-4 bg-background">
+                <TimeChange label="Waktu Pengiriman" oldTime={form.getValues('currentDeliveryTime')} newTime={result.predictedDeliveryTime} />
+                <TimeChange label="Waktu Gudang" oldTime={form.getValues('currentWarehouseTime')} newTime={result.predictedWarehouseTime} />
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Alasan:</h4>
+                <p className="text-sm text-muted-foreground">{result.reasoning}</p>
+              </div>
+            </div>
+          )}
+           {!isLoading && !result && !error && (
+            <div className="flex justify-center items-center h-48 text-muted-foreground">
+                <p>Hasil akan ditampilkan di sini.</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

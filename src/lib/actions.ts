@@ -6,8 +6,15 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import {
   efficiencyPredictionTool,
   type EfficiencyPredictionInput,
-  type EfficiencyPredictionOutput,
 } from '@/ai/flows/efficiency-prediction-tool';
+import {
+  mlPoweredDeliverySchedulingSystem,
+  type MlPoweredDeliverySchedulingSystemInput,
+} from '@/ai/flows/ml-powered-delivery-scheduling-system';
+import {
+  aiBasedTireInspectionAppDisplay,
+  type AiBasedTireInspectionAppDisplayInput,
+} from '@/ai/flows/ai-based-tire-inspection-app-display';
 import { revalidatePath } from 'next/cache';
 
 // Contact Form
@@ -62,22 +69,5 @@ export async function submitContactForm(
       message: 'An internal error occurred. Please try again later.',
       status: 'error',
     };
-  }
-}
-
-// Efficiency Prediction Tool
-export async function getEfficiencyPrediction(
-  data: EfficiencyPredictionInput
-): Promise<EfficiencyPredictionOutput> {
-  try {
-    const instructedData: EfficiencyPredictionInput = {
-      ...data,
-      automationStrategy: `${data.automationStrategy}. Tolong berikan kolom 'reasoning' dalam Bahasa Indonesia.`
-    };
-    const prediction = await efficiencyPredictionTool(instructedData);
-    return prediction;
-  } catch (error) {
-    console.error('Error in efficiency prediction flow: ', error);
-    throw new Error('Failed to get efficiency prediction.');
   }
 }

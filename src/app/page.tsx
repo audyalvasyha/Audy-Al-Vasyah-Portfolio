@@ -3,7 +3,7 @@ import Hero from '@/components/sections/hero';
 import Experience from '@/components/sections/experience';
 import Projects from '@/components/sections/projects';
 import Skills from '@/components/sections/skills';
-import EfficiencyTool from '@/components/sections/efficiency-tool';
+import AiTools from '@/components/sections/ai-tools';
 import Contact from '@/components/sections/contact';
 import Footer from '@/components/layout/footer';
 
@@ -16,7 +16,7 @@ export default function Home() {
         <Experience />
         <Projects />
         <Skills />
-        <EfficiencyTool />
+        <AiTools />
         <Contact />
       </main>
       <Footer />
