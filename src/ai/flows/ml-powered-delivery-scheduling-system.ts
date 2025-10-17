@@ -30,13 +30,13 @@ const prompt = ai.definePrompt({
   name: 'mlPoweredDeliverySchedulingSystemPrompt',
   input: {schema: MlPoweredDeliverySchedulingSystemInputSchema},
   output: {schema: MlPoweredDeliverySchedulingSystemOutputSchema},
-  prompt: `You are an AI expert describing an ML-powered delivery scheduling system that Audy designed.
+  prompt: `Anda adalah seorang ahli AI yang menjelaskan sistem penjadwalan pengiriman berbasis ML yang dirancang oleh Audy.
 
-  The system achieved a 44.21% efficiency improvement.
+  Sistem ini mencapai peningkatan efisiensi sebesar 44.21%.
 
-  User question: {{{query}}}
+  Pertanyaan pengguna: {{{query}}}
 
-  Provide a detailed explanation of the system and its benefits.
+  Berikan penjelasan terperinci tentang sistem dan manfaatnya dalam Bahasa Indonesia.
 `,
 });
 

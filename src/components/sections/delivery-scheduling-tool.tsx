@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 
 const formSchema = z.object({
-  query: z.string().min(10, 'Please ask a question with at least 10 characters.'),
+  query: z.string().min(10, 'Silakan ajukan pertanyaan minimal 10 karakter.'),
 });
 
 const DeliverySchedulingTool = () => {
@@ -23,7 +23,7 @@ const DeliverySchedulingTool = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      query: 'Tell me about the efficiency improvement of this system.',
+      query: 'Ceritakan tentang peningkatan efisiensi dari sistem ini.',
     },
   });
 
@@ -35,7 +35,7 @@ const DeliverySchedulingTool = () => {
       const response = await mlPoweredDeliverySchedulingSystem(values);
       setResult(response);
     } catch (e) {
-      setError('Failed to get details. Please try again.');
+      setError('Gagal mendapatkan detail. Silakan coba lagi.');
       console.error(e);
     } finally {
       setIsLoading(false);
@@ -46,9 +46,9 @@ const DeliverySchedulingTool = () => {
     <div className="mt-12 grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Ask About the System</CardTitle>
+          <CardTitle className="font-headline">Tanya Tentang Sistem</CardTitle>
           <CardDescription>
-            Ask a question to the AI about the ML-Powered Delivery Scheduling System.
+            Ajukan pertanyaan kepada AI tentang Sistem Penjadwalan Pengiriman Berbasis ML.
           </CardDescription>
         </CardHeader>
         <Form {...form}>
@@ -59,7 +59,7 @@ const DeliverySchedulingTool = () => {
                 name="query"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your Question</FormLabel>
+                    <FormLabel>Pertanyaan Anda</FormLabel>
                     <FormControl>
                       <Textarea rows={4} {...field} />
                     </FormControl>
@@ -71,7 +71,7 @@ const DeliverySchedulingTool = () => {
             <CardFooter>
               <Button type="submit" disabled={isLoading}>
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isLoading ? 'Asking...' : 'Ask AI'}
+                {isLoading ? 'Menanyakan...' : 'Tanya AI'}
               </Button>
             </CardFooter>
           </form>
@@ -79,8 +79,8 @@ const DeliverySchedulingTool = () => {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">AI Response</CardTitle>
-          <CardDescription>The AI's explanation of the system.</CardDescription>
+          <CardTitle className="font-headline">Respons AI</CardTitle>
+          <CardDescription>Penjelasan sistem dari AI.</CardDescription>
         </CardHeader>
         <CardContent>
           {isLoading && (
@@ -96,7 +96,7 @@ const DeliverySchedulingTool = () => {
           )}
           {!isLoading && !result && !error && (
             <div className="flex justify-center items-center h-48 text-muted-foreground">
-              <p>AI response will appear here.</p>
+              <p>Respons AI akan muncul di sini.</p>
             </div>
           )}
         </CardContent>
