@@ -65,7 +65,6 @@ const TireInspectionTool = () => {
     
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
       processFile(event.dataTransfer.files[0]);
-      // Clean up to prevent re-using the same file list
       event.dataTransfer.clearData();
     }
   };
