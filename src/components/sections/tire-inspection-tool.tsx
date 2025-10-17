@@ -211,15 +211,15 @@ const TireInspectionTool = () => {
 
           {analysis && (
             <div className="space-y-4 text-sm">
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
                 <span className="text-muted-foreground">Kondisi Keseluruhan</span>
                 {getConditionBadge(analysis.condition)}
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
                 <span className="text-muted-foreground">Tingkat Keausan</span>
                 <span className="font-semibold">{analysis.wearLevel}</span>
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
                 <span className="text-muted-foreground">Kerusakan Terdeteksi</span>
                 <span className="font-semibold">{analysis.detectedDamage}</span>
               </div>
