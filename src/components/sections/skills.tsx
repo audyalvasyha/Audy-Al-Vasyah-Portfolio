@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const skillsData = [
   {
@@ -18,16 +19,12 @@ const skillsData = [
   },
   {
     category: 'Sistem Enterprise',
-    skills: [
-      { name: 'SAP ERP (SD & WM Modules)', level: 75 },
-    ],
+    skills: [{ name: 'SAP ERP (SD & WM Modules)', level: 75 }],
   },
   {
     category: 'Google Workspace',
-    skills: [
-        { name: 'Sheets, Docs, Apps Script', level: 90 },
-    ]
-  }
+    skills: [{ name: 'Sheets, Docs, Apps Script', level: 90 }],
+  },
 ];
 
 const SkillBar = ({ level }: { level: number }) => (
@@ -53,22 +50,38 @@ const Skills = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
-          {skillsData.map((category) => (
-            <Card key={category.category}>
-              <CardHeader>
-                <CardTitle className="font-headline text-xl text-primary">{category.category}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {category.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <p className="mb-2 text-sm font-medium">{skill.name}</p>
-                    <SkillBar level={skill.level} />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          ))}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <Tabs defaultValue={skillsData[0].category} className="w-full">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-6">
+              {skillsData.map((category) => (
+                <TabsTrigger key={category.category} value={category.category}>
+                  {category.category}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            {skillsData.map((category) => (
+              <TabsContent
+                key={category.category}
+                value={category.category}
+              >
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="font-headline text-xl text-primary">
+                      {category.category}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    {category.skills.map((skill) => (
+                      <div key={skill.name}>
+                        <p className="mb-2 text-sm font-medium">{skill.name}</p>
+                        <SkillBar level={skill.level} />
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </div>
     </section>
