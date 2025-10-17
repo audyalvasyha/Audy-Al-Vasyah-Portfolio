@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, ChangeEvent } from 'react';
+import { useState, useRef, ChangeEvent, DragEvent } from 'react';
 import {
   analyzeTireCondition,
 } from '@/ai/flows/analyze-tire-condition';
@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2, UploadCloud, AlertTriangle, Check, X } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 const TireInspectionTool = () => {
   const [analysis, setAnalysis] = useState<AnalyzeTireConditionOutput | null>(
@@ -26,15 +27,39 @@ const TireInspectionTool = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0];
+  const processFile = (selectedFile: File | undefined) => {
     if (selectedFile) {
+      if (selectedFile.size > 4 * 1024 * 1024) { 
+        setError('File is too large. Please select a file smaller than 4MB.');
+        return;
+      }
       setFile(selectedFile);
       setPreviewUrl(URL.createObjectURL(selectedFile));
       setAnalysis(null);
       setError(null);
     }
+  }
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    processFile(event.target.files?.[0]);
+  };
+
+  const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsDragging(false);
+  };
+  
+  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsDragging(false);
+    processFile(event.dataTransfer.files?.[0]);
   };
 
   const handleAnalyzeClick = async () => {
@@ -109,8 +134,14 @@ const TireInspectionTool = () => {
         </CardHeader>
         <CardContent>
           <div
-            className="border-2 border-dashed border-muted-foreground rounded-lg p-6 text-center cursor-pointer hover:border-primary transition-colors"
+            className={cn(
+              "border-2 border-dashed border-muted-foreground rounded-lg p-6 text-center cursor-pointer hover:border-primary transition-colors",
+              isDragging && "border-primary bg-primary/10"
+            )}
             onClick={() => fileInputRef.current?.click()}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
           >
             <input
               type="file"
@@ -132,12 +163,13 @@ const TireInspectionTool = () => {
               <div className="flex flex-col items-center gap-2 text-muted-foreground">
                 <UploadCloud className="w-12 h-12" />
                 <p>Click to upload or drag & drop</p>
-                <p className="text-xs">PNG, JPG, or WEBP</p>
+                <p className="text-xs">PNG, JPG, or WEBP (Max 4MB)</p>
               </div>
             )}
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex-col items-stretch gap-4">
+           {error && <p className="text-destructive text-center text-sm">{error}</p>}
           <Button
             onClick={handleAnalyzeClick}
             disabled={isLoading || !file}
@@ -159,7 +191,7 @@ const TireInspectionTool = () => {
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
             </div>
           )}
-          {error && <p className="text-destructive text-center">{error}</p>}
+          
           {analysis && (
             <div className="space-y-4 text-sm">
                 <div className="flex justify-between items-center">
