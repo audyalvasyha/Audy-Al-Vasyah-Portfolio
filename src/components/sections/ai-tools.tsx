@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EfficiencyTool from './efficiency-tool';
 import DeliverySchedulingTool from './delivery-scheduling-tool';
 import TireInspectionTool from './tire-inspection-tool';
-import { GaugeCircle, CalendarClock, ScanLine } from 'lucide-react';
+import { GaugeCircle, CalendarClock, ScanLine, Lightbulb, Sparkles, ScanSearch } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
@@ -46,7 +46,7 @@ const AiTools = () => {
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
           <Tabs defaultValue="tire-inspection" className="w-full">
-          <ScrollArea className="w-full">
+            <ScrollArea className="w-full lg:overflow-visible">
               <TabsList className="inline-flex h-auto w-full p-1 bg-transparent justify-start lg:grid lg:grid-cols-3 lg:gap-6 lg:p-0">
                 {tools.map((tool) => (
                   <TabsTrigger
@@ -55,10 +55,11 @@ const AiTools = () => {
                     className={cn(
                       'flex-1 p-2 justify-center items-center text-center',
                       'lg:relative lg:h-auto lg:p-6 lg:rounded-lg lg:border-2 lg:border-transparent lg:bg-card lg:text-card-foreground lg:shadow-md lg:transition-all lg:whitespace-normal',
-                      'lg:data-[state=active]:border-primary lg:data-[state=active]:shadow-lg lg:data-[state=active]:shadow-primary/20 lg:data-[state=active]:-translate-y-1',
-                      'lg:hover:shadow-lg lg:hover:border-accent lg:hover:-translate-y-1',
+                      'lg:data-[state=active]:border-primary lg:data-[state=active]:shadow-lg lg:data-[state=active]:shadow-primary/20',
+                      'lg:hover:shadow-lg lg:hover:border-accent',
                       'data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:shadow-none rounded-md',
-                      'lg:data-[state=active]:bg-card'
+                      'lg:data-[state=active]:bg-card',
+                      'lg:data-[state=active]:border-b-4'
                     )}
                   >
                     {/* Desktop View */}

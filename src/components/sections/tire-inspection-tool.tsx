@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, UploadCloud, AlertTriangle, Check, X } from 'lucide-react';
+import { Loader2, UploadCloud, AlertTriangle, Check, X, ScanSearch } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -232,11 +232,9 @@ const TireInspectionTool = () => {
             </div>
           )}
           {!isLoading && !analysis && !error && (
-            <div className="flex justify-center items-center h-48 text-muted-foreground text-center">
-              <p>
-                Unggah gambar ban dan klik "Analisis Ban" untuk melihat hasilnya
-                di sini.
-              </p>
+             <div className="flex flex-col text-center justify-center items-center h-48 text-muted-foreground">
+                <ScanSearch className="h-10 w-10 mb-4 text-primary/50" />
+                <p>Unggah gambar ban dan klik "Analisis Ban" untuk melihat hasilnya di sini.</p>
             </div>
           )}
         </CardContent>

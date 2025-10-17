@@ -25,7 +25,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Loader2, ArrowDown, ArrowUp } from 'lucide-react';
+import { Loader2, ArrowDown, ArrowUp, Lightbulb } from 'lucide-react';
 
 const formSchema = z.object({
   currentDeliveryTime: z.coerce.number().min(1, 'Minimal harus 1 jam'),
@@ -188,8 +188,9 @@ const EfficiencyTool = () => {
             </div>
           )}
            {!isLoading && !result && !error && (
-            <div className="flex justify-center items-center h-48 text-muted-foreground">
-                <p>Hasil prediksi akan ditampilkan di sini.</p>
+             <div className="flex flex-col text-center justify-center items-center h-48 text-muted-foreground">
+                <Lightbulb className="h-10 w-10 mb-4 text-primary/50" />
+                <p>Masukkan parameter dan jalankan prediksi untuk melihat potensi peningkatan efisiensi.</p>
             </div>
           )}
         </CardContent>

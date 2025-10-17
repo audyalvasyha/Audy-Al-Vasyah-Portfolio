@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Sparkles } from 'lucide-react';
 
 const formSchema = z.object({
   query: z.string().min(10, 'Silakan ajukan pertanyaan minimal 10 karakter.'),
@@ -95,8 +95,9 @@ const DeliverySchedulingTool = () => {
             </div>
           )}
           {!isLoading && !result && !error && (
-            <div className="flex justify-center items-center h-48 text-muted-foreground">
-              <p>Respons AI akan muncul di sini.</p>
+            <div className="flex flex-col text-center justify-center items-center h-48 text-muted-foreground">
+                <Sparkles className="h-10 w-10 mb-4 text-primary/50" />
+                <p>Respons AI akan muncul di sini setelah Anda mengajukan pertanyaan.</p>
             </div>
           )}
         </CardContent>
