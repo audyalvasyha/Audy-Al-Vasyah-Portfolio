@@ -63,7 +63,6 @@ export function Hero3D() {
         camera={{ position: [0, 0, 30] }}
         gl={{ antialias: false, alpha: true }}
       >
-        <color attach="background" args={['#000000']} alpha={0} />
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <Spheres />
