@@ -20,7 +20,7 @@ function SubmitButton() {
 const socialLinks = [
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/audy-al-vasyah-58316a247/',
+    href: 'https://www.linkedin.com/in/audy-al-vasyah-8b6135206/',
     icon: <Linkedin className="h-6 w-6" />,
   },
   {
@@ -30,7 +30,7 @@ const socialLinks = [
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/your-profile',
+    href: 'https://www.instagram.com/_audysignin/',
     icon: <Instagram className="h-6 w-6" />,
   },
 ]
