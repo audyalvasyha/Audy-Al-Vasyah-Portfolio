@@ -3,7 +3,8 @@ import type {NextConfig} from 'next';
 const nextConfig: NextConfig = {
   /* config options here */
   allowedDevOrigins: [
-    'http://localhost:9004'
+    'http://localhost:9004',
+    'http://localhost:6000'
   ],
   typescript: {
     ignoreBuildErrors: true,
