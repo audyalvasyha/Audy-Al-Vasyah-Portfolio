@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 
-// Definisikan tipe untuk instance efek Vanta agar TypeScript memahaminya
+// Definisikan tipe untuk instance efek Vanta
 interface VantaEffect {
   destroy: () => void;
 }
@@ -23,7 +23,7 @@ const VantaBackground = () => {
   const [vantaLoaded, setVantaLoaded] = useState(false);
 
   useEffect(() => {
-    // Inisialisasi Vanta hanya ketika kedua skrip dimuat dan efek belum dibuat
+    // Inisialisasi Vanta HANYA ketika kedua skrip dimuat dan efek belum dibuat
     if (threeLoaded && vantaLoaded && !vantaEffectRef.current) {
       if (window.VANTA && window.THREE) {
         vantaEffectRef.current = window.VANTA.GLOBE({
@@ -34,10 +34,10 @@ const VantaBackground = () => {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          color: 0x9bf2d4, // Warna aksen untuk globe
-          backgroundColor: 0x111827, // Warna latar belakang mode gelap
+          scale: 1.0, // Ukuran standar untuk desktop
+          scaleMobile: 0.6, // Ukuran globe diperkecil di mobile
+          color: 0x9bf2d4, // Diperbarui: Warna globe dikembalikan ke hijau-cyan
+          backgroundColor: 0x111827,
         });
       }
     }
@@ -53,12 +53,12 @@ const VantaBackground = () => {
 
   return (
     <>
+      {/* Skrip sekarang dimuat di semua perangkat untuk mendukung scaleMobile */}
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
         strategy="lazyOnload"
         onLoad={() => setThreeLoaded(true)}
       />
-      {/* Diperbarui: Muat skrip Vanta.GLOBE */}
       {threeLoaded && (
         <Script
           src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"
@@ -66,7 +66,6 @@ const VantaBackground = () => {
           onLoad={() => setVantaLoaded(true)}
         />
       )}
-
       <div ref={vantaRef} className="absolute inset-0 -z-10" />
     </>
   );
