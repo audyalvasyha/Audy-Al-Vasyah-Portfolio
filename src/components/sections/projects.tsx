@@ -92,7 +92,7 @@ const Projects = () => {
                           data-ai-hint={project.imageHint}
                         />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-300 group-hover:from-black/90"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/10 transition-all duration-300 group-hover:from-black/95"></div>
                       <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
                         <CardHeader className="p-0">
                           <CardTitle className="font-headline text-2xl md:text-3xl text-white">
