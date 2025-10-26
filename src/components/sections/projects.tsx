@@ -106,7 +106,7 @@ const Projects = () => {
                             data-ai-hint={project.imageHint}
                           />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/20"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent"></div>
                         <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
                           <CardHeader className="p-0">
                             <CardTitle className="font-headline text-2xl md:text-3xl text-white">
@@ -124,9 +124,9 @@ const Projects = () => {
                         </div>
                       </Card>
 
-                      <DialogContent className="max-w-3xl p-0">
+                      <DialogContent className="max-w-3xl p-0 grid grid-rows-[auto_1fr] max-h-[90vh] overflow-hidden">
                         {projectImage && (
-                          <div className="relative w-full h-64 md:h-80">
+                          <div className="relative w-full h-64 md:h-80 flex-shrink-0">
                             <Image
                               src={projectImage.imageUrl}
                               alt={project.title}
@@ -135,26 +135,28 @@ const Projects = () => {
                             />
                           </div>
                         )}
-                        <DialogHeader className="p-6">
-                          <DialogTitle className="text-2xl font-headline">
-                            {project.title}
-                          </DialogTitle>
-                          <DialogDescription className="pt-2 text-base text-muted-foreground">
-                            {project.description}
-                          </DialogDescription>
-                        </DialogHeader>
-                        <div className="px-6 pb-6">
-                          <h4 className="font-semibold text-foreground mb-3">
-                            Fitur Utama:
-                          </h4>
-                          <ul className="space-y-3 text-muted-foreground">
-                            {project.features.map((feature, i) => (
-                              <li key={i} className="flex items-start">
-                                <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
+                        <div className="overflow-y-auto">
+                            <DialogHeader className="p-6">
+                              <DialogTitle className="text-2xl font-headline">
+                                {project.title}
+                              </DialogTitle>
+                              <DialogDescription className="pt-2 text-base text-muted-foreground">
+                                {project.description}
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="px-6 pb-6">
+                              <h4 className="font-semibold text-foreground mb-3">
+                                Fitur Utama:
+                              </h4>
+                              <ul className="space-y-3 text-muted-foreground">
+                                {project.features.map((feature, i) => (
+                                  <li key={i} className="flex items-start">
+                                    <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                                    <span>{feature}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                         </div>
                       </DialogContent>
                     </Dialog>
