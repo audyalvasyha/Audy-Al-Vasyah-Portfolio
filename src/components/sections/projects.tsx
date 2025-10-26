@@ -73,41 +73,38 @@ const Projects = () => {
                 );
                 return (
                   <CarouselItem key={index}>
-                    <Card className="transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div className="p-6">
-                          <CardHeader>
-                            <CardTitle className="font-headline text-2xl text-primary">
-                              {project.title}
-                            </CardTitle>
-                            <CardDescription className="pt-2">
-                              {project.description}
-                            </CardDescription>
-                          </CardHeader>
-                          <CardContent>
-                            <ul className="space-y-4">
-                              {project.features.map((feature, i) => (
-                                <li key={i} className="flex items-start">
-                                  <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-                                  <span>{feature}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </CardContent>
-                        </div>
-                        {projectImage && (
-                          <div className="relative h-64 md:h-full w-full">
-                            <Image
-                              src={projectImage.imageUrl}
-                              alt={project.title || 'Proyek Unggulan'}
-                              width={project.imageWidth}
-                              height={project.imageHeight}
-                              priority={false}
-                              className="object-cover md:rounded-r-lg"
-                              data-ai-hint={project.imageHint}
-                            />
-                          </div>
-                        )}
+                    <Card className="relative group overflow-hidden rounded-lg shadow-lg border-0">
+                      {projectImage && (
+                        <Image
+                          src={projectImage.imageUrl}
+                          alt={project.title || 'Proyek Unggulan'}
+                          width={project.imageWidth}
+                          height={project.imageHeight}
+                          priority={false}
+                          className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105"
+                          data-ai-hint={project.imageHint}
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-300 group-hover:from-black/90"></div>
+                      <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                        <CardHeader className="p-0">
+                          <CardTitle className="font-headline text-2xl md:text-3xl text-white">
+                            {project.title}
+                          </CardTitle>
+                          <CardDescription className="pt-2 text-gray-300">
+                            {project.description}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-0 mt-4">
+                          <ul className="space-y-3 text-gray-200">
+                            {project.features.map((feature, i) => (
+                              <li key={i} className="flex items-start">
+                                <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
                       </div>
                     </Card>
                   </CarouselItem>
