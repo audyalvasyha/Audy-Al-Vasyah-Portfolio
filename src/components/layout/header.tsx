@@ -6,7 +6,7 @@ import { Menu, Code2 } from 'lucide-react';
 
 import { NAV_LINKS } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 const Header = () => {
   const [isSheetOpen, setSheetOpen] = useState(false);
@@ -44,6 +44,9 @@ const Header = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+              </SheetHeader>
               <Link
                 href="/"
                 className="flex items-center"
