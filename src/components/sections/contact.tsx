@@ -9,11 +9,31 @@ import { useFormStatus } from 'react-dom';
 import { useActionState, useEffect, useRef } from 'react';
 import { sendEmail, FormState } from '@/app/actions';
 import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import Link from 'next/link';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   return <Button type="submit" className="w-full" disabled={pending}>{pending ? 'Sending...' : 'Send Message'}</Button>;
 }
+
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/audy-al-vasyah-58316a247/',
+    icon: <Linkedin className="h-6 w-6" />,
+  },
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/your-profile',
+    icon: <Facebook className="h-6 w-6" />,
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/your-profile',
+    icon: <Instagram className="h-6 w-6" />,
+  },
+]
 
 const Contact = () => {
   const initialState: FormState = { message: '', success: false };
@@ -30,62 +50,57 @@ const Contact = () => {
     <section id="contact" className="w-full py-20 md:py-32 scroll-mt-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Contact Information</h2>
-              <p className="text-gray-500 dark:text-gray-400">
+          <div className="space-y-8">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Contact Information</h2>
+              <p className="text-muted-foreground">
                 Feel free to reach out to me directly or through the form. I'll get back to you as soon as possible.
               </p>
             </div>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <Phone className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
+                <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                 <div>
                   <h3 className="font-semibold">Phone</h3>
-                  <a href="tel:+6289616035368" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">+62 896-1603-5368</a>
+                  <a href="tel:+6289616035368" className="text-muted-foreground hover:text-primary transition-colors">+62 896-1603-5368</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <Mail className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
+                <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <a href="mailto:audialfasha@gmail.com" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">audialfasha@gmail.com</a>
+                  <a href="mailto:audialfasha@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">audialfasha@gmail.com</a>
                 </div>
               </div>
                <div className="flex items-start gap-4">
-                <MapPin className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
+                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                 <div>
                   <h3 className="font-semibold">Address</h3>
-                  <p className="text-gray-500 dark:text-gray-400">Bagan Batu, Riau - Indonesia</p>
+                  <p className="text-muted-foreground">Bagan Batu, Riau - Indonesia</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <Linkedin className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
-                <div>
-                  <h3 className="font-semibold">LinkedIn</h3>
-                  <a href="https://www.linkedin.com/in/audy-al-vasyah-58316a247/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
-                    audy-al-vasyah-58316a247
-                  </a>
+            </div>
+            <div className="space-y-4 pt-4 border-t">
+              <h3 className="font-semibold">Find me on Social Media</h3>
+              <TooltipProvider>
+                <div className="flex gap-4">
+                  {socialLinks.map((social) => (
+                    <Tooltip key={social.name}>
+                      <TooltipTrigger asChild>
+                        <Button asChild variant="outline" size="icon" className="rounded-full">
+                          <Link href={social.href} target="_blank" rel="noopener noreferrer">
+                            {social.icon}
+                            <span className="sr-only">{social.name}</span>
+                          </Link>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{social.name}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
                 </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Facebook className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
-                <div>
-                  <h3 className="font-semibold">Facebook</h3>
-                  <a href="https://www.facebook.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
-                    Your Facebook Profile
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Instagram className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
-                <div>
-                  <h3 className="font-semibold">Instagram</h3>
-                  <a href="https://www.instagram.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
-                    @your_instagram
-                  </a>
-                </div>
-              </div>
+              </TooltipProvider>
             </div>
           </div>
           <Card>
