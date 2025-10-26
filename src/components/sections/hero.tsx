@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
+import Typewriter from '@/components/ui/typewriter';
 
 const MotionBackground = dynamic(() => import('@/components/ui/motion-background').then(mod => mod.MotionBackground), {
   ssr: false,
@@ -22,11 +22,12 @@ const Hero = () => {
         <h1 className="text-4xl font-headline font-semibold tracking-tight text-foreground sm:text-6xl">
           Audy Al Vasyah
         </h1>
-        <p className="mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8">
-          Seorang praktisi IT dengan rekam jejak lebih dari 3 tahun dalam
-          meningkatkan efisiensi operasional melalui implementasi sistem
-          digital dan automasi proses.
-        </p>
+        <Typewriter 
+          text="Seorang praktisi IT dengan rekam jejak lebih dari 3 tahun dalam meningkatkan efisiensi operasional melalui implementasi sistem digital dan automasi proses."
+          className="mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8 min-h-[112px] sm:min-h-[64px]"
+          speed={20}
+          triggerOnView={true}
+        />
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Button asChild size="lg">
             <Link href="#projects">Lihat Proyek</Link>
@@ -39,7 +40,6 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Gradient overlay for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent pointer-events-none z-20"></div>
     </section>
   );

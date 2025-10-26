@@ -9,33 +9,37 @@ interface TypewriterProps {
   triggerOnView?: boolean;
 }
 
-const Typewriter: FC<TypewriterProps> = ({ text, speed = 100, className, triggerOnView = false }) => {
-  const [displayedText, setDisplayedText] = useState(triggerOnView ? '' : text);
+const Typewriter: FC<TypewriterProps> = ({ text, speed = 50, className, triggerOnView = false }) => {
+  const [displayedText, setDisplayedText] = useState('');
   const [startAnimation, setStartAnimation] = useState(!triggerOnView);
-  const ref = useRef<HTMLHeadingElement>(null);
+  const ref = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (!triggerOnView) return;
+    if (!triggerOnView) {
+      setDisplayedText(''); // Clear text if not in view
+      return;
+    };
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        setStartAnimation(true);
-      } else {
-        setStartAnimation(false);
-        setDisplayedText('');
+        if (!startAnimation) {
+          setDisplayedText('');
+          setStartAnimation(true);
+        }
       }
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, [triggerOnView]);
+  }, [triggerOnView, startAnimation]);
 
   useEffect(() => {
     if (!startAnimation) return;
@@ -47,21 +51,29 @@ const Typewriter: FC<TypewriterProps> = ({ text, speed = 100, className, trigger
       return () => clearTimeout(timeoutId);
     }
   }, [displayedText, startAnimation, text, speed]);
-
-  const showCursor = startAnimation && displayedText.length < text.length;
+  
+  // Render the full text for SEO if animation is not active
+  if (!startAnimation && triggerOnView) {
+    return (
+      <p ref={ref} className={className}>
+        <span className="opacity-0">{text}</span>
+      </p>
+    );
+  }
 
   return (
-    <h1 ref={ref} className={className}>
+    <p ref={ref} className={className}>
       {displayedText}
-      {showCursor && (
+      {displayedText.length < text.length && (
          <span
           style={{
             display: 'inline-block',
-            width: '3px',
+            width: '2px',
             height: '1em',
-            backgroundColor: 'hsl(var(--foreground))',
-            marginLeft: '8px',
+            backgroundColor: 'hsl(var(--primary))',
+            marginLeft: '4px',
             animation: 'blink 1s step-end infinite',
+            verticalAlign: 'bottom',
           }}
         />
       )}
@@ -71,7 +83,7 @@ const Typewriter: FC<TypewriterProps> = ({ text, speed = 100, className, trigger
           50% { opacity: 0 }
         }
       `}</style>
-    </h1>
+    </p>
   );
 };
 
