@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CheckCircle } from 'lucide-react';
+import Autoplay from "embla-carousel-autoplay"
 
 // Static project details to avoid slow AI calls on page load
 const projectDetails = [
@@ -65,7 +66,14 @@ const Projects = () => {
           </div>
         </div>
         <div className="mt-12 max-w-4xl mx-auto">
-          <Carousel>
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 4000,
+                stopOnInteraction: true,
+              }),
+            ]}
+          >
             <CarouselContent>
               {projectDetails.map((project, index) => {
                 const projectImage = PlaceHolderImages.find(

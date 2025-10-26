@@ -55,11 +55,7 @@ const EfficiencyTool = () => {
     setError(null);
     setResult(null);
     try {
-      const instructedData = {
-        ...values,
-        automationStrategy: `${values.automationStrategy}. Tolong berikan kolom 'reasoning' dalam Bahasa Indonesia.`
-      };
-      const prediction = await efficiencyPredictionTool(instructedData);
+      const prediction = await efficiencyPredictionTool(values);
       setResult(prediction);
     } catch (e) {
       setError('Gagal mendapatkan prediksi. Silakan coba lagi.');

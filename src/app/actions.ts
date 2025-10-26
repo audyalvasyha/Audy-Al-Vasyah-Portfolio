@@ -28,6 +28,8 @@ export async function sendEmail(
       success: false,
     };
   }
+  
+  await new Promise(resolve => setTimeout(resolve, 1000));
 
   const validatedFields = contactFormSchema.safeParse({
     name: formData.get('name'),

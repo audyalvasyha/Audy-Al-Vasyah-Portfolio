@@ -57,7 +57,7 @@ const prompt = ai.definePrompt({
   name: 'efficiencyPredictionPrompt',
   input: {schema: EfficiencyPredictionInputSchema},
   output: {schema: EfficiencyPredictionOutputSchema},
-  prompt: `You are an expert in logistics and supply chain efficiency. Based on the current delivery and warehouse times, and the proposed automation strategy, you will predict the new delivery and warehouse times after the automation is implemented.\n\nCurrent Delivery Time: {{currentDeliveryTime}} hours\nCurrent Warehouse Time: {{currentWarehouseTime}} hours\nAutomation Strategy: {{automationStrategy}}\n\nProvide a reasoning for your prediction. Return the predicted delivery and warehouse times in hours.
+  prompt: `You are an expert in logistics and supply chain efficiency. Based on the current delivery and warehouse times, and the proposed automation strategy, you will predict the new delivery and warehouse times after the automation is implemented.\n\nCurrent Delivery Time: {{currentDeliveryTime}} hours\nCurrent Warehouse Time: {{currentWarehouseTime}} hours\nAutomation Strategy: {{automationStrategy}}\n\nProvide a reasoning for your prediction. Return the predicted delivery and warehouse times in hours. The 'reasoning' field must be in Indonesian.
 \nOutput:
 `,
 });

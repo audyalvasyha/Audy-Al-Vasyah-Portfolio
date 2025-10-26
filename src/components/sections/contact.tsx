@@ -17,14 +17,14 @@ function SubmitButton() {
 
 const Contact = () => {
   const initialState: FormState = { message: '', success: false };
-  const [formState, formAction] = useActionState(sendEmail, initialState);
+  const [formState, formAction, isPending] = useActionState(sendEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (formState.success) {
+    if (formState.success && !isPending) {
       formRef.current?.reset();
     }
-  }, [formState.success]);
+  }, [formState.success, isPending]);
 
   return (
     <section id="contact" className="w-full py-20 md:py-32 scroll-mt-20">
@@ -83,7 +83,7 @@ const Contact = () => {
                 </div>
                 <div className="flex flex-col items-center gap-4">
                   <SubmitButton />
-                  {formState.message && (
+                  {formState.message && !isPending && (
                     <p className={formState.success ? 'text-green-500' : 'text-red-500'}>
                       {formState.message}
                     </p>
