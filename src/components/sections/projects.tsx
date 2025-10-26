@@ -74,7 +74,7 @@ const Projects = () => {
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">
               Proyek Unggulan
             </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Contoh bagaimana saya memanfaatkan teknologi untuk memecahkan
               masalah dunia nyata.
             </p>

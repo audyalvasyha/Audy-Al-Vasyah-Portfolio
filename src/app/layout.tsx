@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Varela_Round } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import VantaBackground from '@/components/VantaBackground';
 
 const varelaRound = Varela_Round({
   subsets: ['latin'],
@@ -40,7 +41,11 @@ export default function RootLayout({
       className={`${varelaRound.variable} dark`}
     >
       <body className="font-body antialiased">
-        {children}
+        <VantaBackground />
+        {/* Efek Vignette telah dihapus dari sini untuk diterapkan secara lokal di seksi hero */}
+        <div className="relative z-10"> 
+          {children}
+        </div>
         <Toaster />
       </body>
     </html>

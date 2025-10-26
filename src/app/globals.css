@@ -68,30 +68,9 @@
         }
         body {
           color: hsl(var(--foreground));
+          /* background-color is handled by Vanta.js, but we can keep a fallback */
           background-color: hsl(var(--background));
-          background-image: 
-            radial-gradient(at 0% 0%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
-            radial-gradient(at 95% 20%, hsl(var(--secondary) / 0.15) 0px, transparent 50%),
-            radial-gradient(at 20% 90%, hsl(var(--accent) / 0.1) 0px, transparent 50%);
-          animation: background-gradient 20s ease-in-out infinite;
-        }
-      }
-
-      @keyframes background-gradient {
-        0% {
-          background-position: 0% 50%, 50% 50%, 50% 50%;
-        }
-        25% {
-          background-position: 25% 25%, 75% 0%, 0% 75%;
-        }
-        50% {
-          background-position: 100% 50%, 50% 50%, 50% 50%;
-        }
-        75% {
-           background-position: 75% 75%, 25% 100%, 100% 25%;
-        }
-        100% {
-          background-position: 0% 50%, 50% 50%, 50% 50%;
+          /* The background-image and animation properties have been removed */
         }
       }
     

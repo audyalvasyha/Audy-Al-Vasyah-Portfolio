@@ -1,22 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import Typewriter from '@/components/ui/typewriter';
 
-const MotionBackground = dynamic(() => import('@/components/ui/motion-background').then(mod => mod.MotionBackground), {
-  ssr: false,
-  loading: () => <div className="absolute inset-0 -z-10 bg-transparent" />,
-});
-
 const Hero = () => {
   return (
-    <section id="home" className="relative isolate bg-background scroll-mt-20 h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
-      <Suspense fallback={null}>
-        <MotionBackground />
-      </Suspense>
+    <section id="home" className="relative isolate bg-transparent scroll-mt-20 h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
+
+      {/* Diperbarui: Memperkuat vignette dengan mengurangi area transparan untuk memisahkan teks dari animasi secara lebih tegas */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
 
       <div className="mx-auto max-w-3xl text-center z-10 px-6">
         <h1 className="text-4xl font-headline font-semibold tracking-tight text-foreground sm:text-6xl">
@@ -24,7 +17,7 @@ const Hero = () => {
         </h1>
         <Typewriter 
           text="Seorang praktisi IT dengan rekam jejak lebih dari 3 tahun dalam meningkatkan efisiensi operasional melalui implementasi sistem digital dan automasi proses."
-          className="mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8 min-h-[112px] sm:min-h-[64px]"
+          className="mt-8 text-lg font-medium text-pretty text-slate-200 sm:text-xl/8 min-h-[112px] sm:min-h-[64px]"
           speed={20}
           triggerOnView={true}
         />
