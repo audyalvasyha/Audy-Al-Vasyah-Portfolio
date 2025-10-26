@@ -5,9 +5,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
+import { useActionState, useEffect, useRef } from 'react';
 import { sendEmail, FormState } from '@/app/actions';
-import { useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 function SubmitButton() {
@@ -17,7 +17,7 @@ function SubmitButton() {
 
 const Contact = () => {
   const initialState: FormState = { message: '', success: false };
-  const [formState, formAction] = useFormState(sendEmail, initialState);
+  const [formState, formAction] = useActionState(sendEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
