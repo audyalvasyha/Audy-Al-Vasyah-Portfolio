@@ -67,8 +67,8 @@
           @apply scroll-smooth;
         }
         body {
-          @apply bg-background text-foreground;
-          background-size: 400% 400%;
+          color: hsl(var(--foreground));
+          background-color: hsl(var(--background));
           background-image: linear-gradient(
             -45deg,
             hsl(var(--background)) 0%,
@@ -77,6 +77,7 @@
             hsl(var(--primary) / 0.1) 75%,
             hsl(var(--background)) 100%
           );
+          background-size: 400% 400%;
           animation: background-gradient 20s ease infinite;
         }
       }
