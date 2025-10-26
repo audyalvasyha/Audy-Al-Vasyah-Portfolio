@@ -6,16 +6,16 @@ import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const Hero3D = dynamic(() => import('@/components/ui/hero-3d').then(mod => mod.Hero3D), {
+const MotionBackground = dynamic(() => import('@/components/ui/motion-background').then(mod => mod.MotionBackground), {
   ssr: false,
   loading: () => <div className="absolute inset-0 -z-10 bg-transparent" />,
 });
 
 const Hero = () => {
   return (
-    <section id="home" className="relative isolate bg-background scroll-mt-20 h-[100vh] min-h-[700px] flex items-center justify-center">
+    <section id="home" className="relative isolate bg-background scroll-mt-20 h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
       <Suspense fallback={null}>
-        <Hero3D />
+        <MotionBackground />
       </Suspense>
 
       <div className="mx-auto max-w-3xl text-center z-10 px-6">
