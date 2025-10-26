@@ -11,9 +11,22 @@ const varelaRound = Varela_Round({
 });
 
 export const metadata: Metadata = {
-  title: 'Audy Al Vasyah - Portfolio',
+  title: 'Audy Al Vasyah - AI & Automation Portfolio',
   description:
-    'A professional portfolio for Audy Al Vasyah, showcasing expertise in AI, ML, and operational efficiency.',
+    'Portofolio profesional Audy Al Vasyah. Menampilkan keahlian dalam implementasi AI, Machine Learning, dan automasi untuk efisiensi operasional.',
+  keywords: [
+    'Audy Al Vasyah',
+    'Portfolio',
+    'AI',
+    'Machine Learning',
+    'Automasi',
+    'Efisiensi Operasional',
+    'Transport Planner',
+    'Web Developer',
+    'Next.js',
+    'Firebase',
+    'Google Cloud',
+  ],
 };
 
 export default function RootLayout({

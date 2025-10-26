@@ -42,6 +42,7 @@ const projectDetails = [
     imageHint: 'Gambar aplikasi inspeksi ban berbasis AI',
     imageWidth: 1280,
     imageHeight: 832,
+    alt: 'Tampilan antarmuka aplikasi inspeksi ban berbasis AI yang menampilkan dasbor analitik.',
   },
   {
     id: 'saldoin-topup',
@@ -57,6 +58,7 @@ const projectDetails = [
     imageHint: 'toko top up game online',
     imageWidth: 1080,
     imageHeight: 1080,
+    alt: 'Halaman utama platform e-commerce SaldoIn untuk top up game dan voucher.',
   },
 ];
 
@@ -99,7 +101,7 @@ const Projects = () => {
                         {projectImage && (
                           <Image
                             src={projectImage.imageUrl}
-                            alt={project.title || 'Proyek Unggulan'}
+                            alt={project.alt || project.title}
                             fill
                             priority={false}
                             className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105"
@@ -129,7 +131,7 @@ const Projects = () => {
                           <div className="relative w-full h-64 md:h-80 flex-shrink-0">
                             <Image
                               src={projectImage.imageUrl}
-                              alt={project.title}
+                              alt={project.alt || project.title}
                               fill
                               className="object-cover rounded-t-lg"
                             />
