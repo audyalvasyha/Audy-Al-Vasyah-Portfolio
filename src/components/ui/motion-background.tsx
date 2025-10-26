@@ -11,7 +11,7 @@ export function MotionBackground() {
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: 1.5 + Math.random() * 4,
+      size: 1.5 + Math.random() * 6, // Increased max size for more variation
       duration: 15 + Math.random() * 20,
       delay: Math.random() * 15,
       directionX: Math.random() > 0.5 ? 1 : -1,
@@ -19,8 +19,46 @@ export function MotionBackground() {
     }));
   }, []);
 
+  const mainStar = useMemo(() => ({
+    id: 'main-star',
+    x: 20 + Math.random() * 60, // Position it more centrally
+    y: 30 + Math.random() * 40,
+    size: 40 + Math.random() * 20, // Significantly larger
+    duration: 50 + Math.random() * 30, // Slower, more majestic movement
+    delay: Math.random() * 5,
+    directionX: Math.random() > 0.5 ? 1 : -1,
+    directionY: Math.random() > 0.5 ? 1 : -1,
+  }), []);
+
   return (
     <div className="absolute inset-0 -z-10 w-full h-full overflow-hidden">
+      {/* Main Star / Planet */}
+      <motion.div
+        key={mainStar.id}
+        className="absolute rounded-full bg-primary/20" // Slightly more opaque
+        style={{
+          left: `${mainStar.x}%`,
+          top: `${mainStar.y}%`,
+          width: `${mainStar.size}px`,
+          height: `${mainStar.size}px`,
+          filter: 'blur(8px)', // Add a glow effect
+        }}
+        animate={{
+            x: [0, (Math.random() * 100 - 50) * mainStar.directionX, 0],
+            y: [0, (Math.random() * 100 - 50) * mainStar.directionY, 0],
+            scale: [1, 1.1, 1],
+            opacity: [0, 0.8, 0],
+        }}
+        transition={{
+            duration: mainStar.duration,
+            delay: mainStar.delay,
+            repeat: Infinity,
+            repeatType: 'loop',
+            ease: 'easeInOut',
+        }}
+      />
+
+      {/* Smaller Stars */}
       {particles.map((p) => (
         <motion.div
           key={p.id}
