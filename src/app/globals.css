@@ -68,6 +68,28 @@
         }
         body {
           @apply bg-background text-foreground;
+          background-size: 400% 400%;
+          background-image: linear-gradient(
+            -45deg,
+            hsl(var(--background)) 0%,
+            hsl(var(--secondary)) 25%,
+            hsl(var(--background)) 50%,
+            hsl(var(--primary) / 0.1) 75%,
+            hsl(var(--background)) 100%
+          );
+          animation: background-gradient 20s ease infinite;
+        }
+      }
+
+      @keyframes background-gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
         }
       }
     
