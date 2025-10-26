@@ -21,8 +21,12 @@ const skillsData = [
     skills: [{ name: 'SAP ERP (SD & WM Modules)', level: 75 }],
   },
   {
+    category: 'Pengembangan Web',
+    skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS', level: 90 }],
+  },
+  {
     category: 'Google Workspace',
-    skills: [{ name: 'Sheets, Docs, Apps Script', level: 90 }],
+    skills: [{ name: 'Sheets, Docs, Slide, Apps Script', level: 90 }],
   },
 ];
 
@@ -49,7 +53,7 @@ const Skills = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 max-w-6xl mx-auto">
           {skillsData.map((category) => (
             <Card key={category.category}>
               <CardHeader>
