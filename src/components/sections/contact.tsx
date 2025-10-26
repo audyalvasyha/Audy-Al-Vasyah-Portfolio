@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useFormStatus } from 'react-dom';
 import { useActionState, useEffect, useRef } from 'react';
 import { sendEmail, FormState } from '@/app/actions';
-import { Phone, Mail, MapPin, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -65,6 +65,24 @@ const Contact = () => {
                   <h3 className="font-semibold">LinkedIn</h3>
                   <a href="https://www.linkedin.com/in/audy-al-vasyah-58316a247/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
                     audy-al-vasyah-58316a247
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Facebook className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
+                <div>
+                  <h3 className="font-semibold">Facebook</h3>
+                  <a href="https://www.facebook.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
+                    Your Facebook Profile
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Instagram className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
+                <div>
+                  <h3 className="font-semibold">Instagram</h3>
+                  <a href="https://www.instagram.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
+                    @your_instagram
                   </a>
                 </div>
               </div>
