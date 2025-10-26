@@ -37,7 +37,7 @@ const projectDetails = [
     id: 'saldoin-topup',
     title: 'SaldoIn - Top Up Game & Voucher E-commerce',
     description:
-      'Pengembangan platform e-commerce (Top Up dan Voucher Game) yang berfokus pada kecepatan transaksi dan keamanan data. Proyek ini dibangun dengan arsitektur modern untuk menjamin skalabilitas dan pengalaman pengguna (UX) yang optimal.',
+      'Platform e-commerce untuk top-up game dan voucher yang mengutamakan kecepatan transaksi, keamanan data, dan pengalaman pengguna yang optimal dengan arsitektur modern.',
     features: [
       'Implementasi sistem pembayaran yang terintegrasi untuk berbagai metode (misalnya QRIS, Virtual Account).',
       'Manajemen inventaris digital (voucher dan produk game) secara real-time.',
@@ -73,13 +73,12 @@ const Projects = () => {
                 );
                 return (
                   <CarouselItem key={index}>
-                    <Card className="relative group overflow-hidden rounded-lg shadow-lg border-0">
+                    <Card className="relative group overflow-hidden rounded-lg shadow-lg border-0 h-[550px]">
                       {projectImage && (
                         <Image
                           src={projectImage.imageUrl}
                           alt={project.title || 'Proyek Unggulan'}
-                          width={project.imageWidth}
-                          height={project.imageHeight}
+                          fill
                           priority={false}
                           className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105"
                           data-ai-hint={project.imageHint}
