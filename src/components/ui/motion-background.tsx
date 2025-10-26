@@ -11,7 +11,7 @@ export function MotionBackground() {
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: 1 + Math.random() * 2.5,
+      size: 1.5 + Math.random() * 4,
       duration: 15 + Math.random() * 20,
       delay: Math.random() * 15,
       directionX: Math.random() > 0.5 ? 1 : -1,
