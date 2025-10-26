@@ -8,8 +8,8 @@ const Hero = () => {
   return (
     <section id="home" className="relative isolate bg-transparent scroll-mt-20 h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
 
-      {/* Diperbarui: Memperkuat vignette dengan mengurangi area transparan untuk memisahkan teks dari animasi secara lebih tegas */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
+      {/* Diperbarui: Kekuatan filter gelap dikurangi menjadi 50% untuk keseimbangan antara kontras dan kecerahan */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--background)/0.5)_20%,hsl(var(--background)))]"></div>
 
       <div className="mx-auto max-w-3xl text-center z-10 px-6">
         <h1 className="text-4xl font-headline font-semibold tracking-tight text-foreground sm:text-6xl">

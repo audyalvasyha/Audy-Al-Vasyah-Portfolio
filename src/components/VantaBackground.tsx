@@ -26,7 +26,7 @@ const VantaBackground = () => {
     // Inisialisasi Vanta hanya ketika kedua skrip dimuat dan efek belum dibuat
     if (threeLoaded && vantaLoaded && !vantaEffectRef.current) {
       if (window.VANTA && window.THREE) {
-        vantaEffectRef.current = window.VANTA.NET({
+        vantaEffectRef.current = window.VANTA.GLOBE({
           el: vantaRef.current,
           THREE: window.THREE,
           mouseControls: true,
@@ -36,10 +36,8 @@ const VantaBackground = () => {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0x1f4a8b, // Diperbarui: Warna animasi diubah menjadi biru yang lebih subtil
+          color: 0x9bf2d4, // Warna aksen untuk globe
           backgroundColor: 0x111827, // Warna latar belakang mode gelap
-          maxDistance: 22.00, 
-          spacing: 18.00 
         });
       }
     }
@@ -60,10 +58,10 @@ const VantaBackground = () => {
         strategy="lazyOnload"
         onLoad={() => setThreeLoaded(true)}
       />
-      {/* Muat skrip Vanta.NET hanya setelah Three.js dimuat */}
+      {/* Diperbarui: Muat skrip Vanta.GLOBE */}
       {threeLoaded && (
         <Script
-          src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"
+          src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"
           strategy="lazyOnload"
           onLoad={() => setVantaLoaded(true)}
         />
