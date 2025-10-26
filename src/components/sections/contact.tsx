@@ -25,7 +25,7 @@ const socialLinks = [
   },
   {
     name: 'Facebook',
-    href: 'https://www.facebook.com/your-profile',
+    href: 'https://web.facebook.com/audyalvasyah.audyalvasyah.1/',
     icon: <Facebook className="h-6 w-6" />,
   },
   {
