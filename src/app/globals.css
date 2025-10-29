@@ -68,9 +68,7 @@
         }
         body {
           color: hsl(var(--foreground));
-          /* background-color is handled by Vanta.js, but we can keep a fallback */
           background-color: hsl(var(--background));
-          /* The background-image and animation properties have been removed */
         }
       }
     
