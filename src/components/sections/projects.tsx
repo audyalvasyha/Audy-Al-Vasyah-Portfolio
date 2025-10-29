@@ -68,6 +68,7 @@ const Projects = () => {
       id="projects"
       className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
+      
       {/* Overlay Efek Vintage */}
       <div className="absolute inset-0 w-full h-full bg-transparent pointer-events-none z-0">
         <div className="absolute inset-0 w-full h-full bg-[repeating-linear-gradient(to_bottom,transparent_0,hsl(var(--background)/0.02)_1px,transparent_2px)]"></div>
