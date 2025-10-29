@@ -22,12 +22,12 @@ const WebGLBackground: React.FC = () => {
     
     threeScript.onload = () => {
       const vantaScript = document.createElement('script');
-      vantaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.topology.min.js';
+      vantaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.clouds.min.js';
       vantaScript.async = true;
 
       vantaScript.onload = () => {
-        if (window.VANTA && window.VANTA.TOPOLOGY) {
-          const effect = window.VANTA.TOPOLOGY({
+        if (window.VANTA && window.VANTA.CLOUDS) {
+          const effect = window.VANTA.CLOUDS({
             el: vantaRef.current,
             THREE: window.THREE, // Gunakan THREE dari window
             mouseControls: true,
@@ -35,10 +35,8 @@ const WebGLBackground: React.FC = () => {
             gyroControls: false,
             minHeight: 200.0,
             minWidth: 200.0,
-            scale: 1.0,
-            scaleMobile: 1.0,
-            color: 0x7df9ff,
-            backgroundColor: 0x121212,
+            skyColor: 0x121212,
+            cloudColor: 0x7df9ff,
           });
           setVantaEffect(effect);
         }
@@ -55,7 +53,7 @@ const WebGLBackground: React.FC = () => {
         vantaEffect.destroy();
       }
       // Hapus skrip yang ditambahkan secara dinamis
-      const scripts = document.querySelectorAll('script[src*="three.min.js"], script[src*="vanta.topology.min.js"]');
+      const scripts = document.querySelectorAll('script[src*="three.min.js"], script[src*="vanta.clouds.min.js"]');
       scripts.forEach(s => s.remove());
     };
   }, [vantaEffect]); // Hanya bergantung pada vantaEffect
