@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 // Make sure to add the correct vanta import
-import FOG from 'vanta/dist/vanta.fog.min';
+import RINGS from 'vanta/dist/vanta.rings.min';
 
 const WebGLBackground = () => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
@@ -12,7 +12,7 @@ const WebGLBackground = () => {
   useEffect(() => {
     if (!vantaEffect && vantaRef.current) {
       setVantaEffect(
-        FOG({
+        RINGS({
           el: vantaRef.current,
           THREE: THREE,
           mouseControls: true,
@@ -20,13 +20,10 @@ const WebGLBackground = () => {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0x93f2d2, // primary theme color
-          midtoneColor: 0x3d9a8c,   // a darker shade of the primary
-          lowlightColor: 0x1d2432, // background color
-          baseColor: 0x1d2432,      // background color
-          blurFactor: 0.4,
-          speed: 1.0,
-          zoom: 0.8,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          backgroundColor: 0x1d2432, // background color
+          color: 0x93f2d2, // primary theme color
         })
       );
     }
