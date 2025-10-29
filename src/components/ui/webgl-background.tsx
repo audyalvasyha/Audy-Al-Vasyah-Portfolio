@@ -27,7 +27,7 @@ const WebGLBackground = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     mountRef.current.appendChild(renderer.domElement);
     
-    const particlesCount = 5000;
+    const particlesCount = 1500;
     const positions = new Float32Array(particlesCount * 3);
     const velocities = new Float32Array(particlesCount * 3);
 
@@ -46,7 +46,7 @@ const WebGLBackground = () => {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-        color: 0x3aa398,
+        color: 0x226861,
         size: 2,
         blending: THREE.AdditiveBlending,
         transparent: true,
@@ -58,11 +58,13 @@ const WebGLBackground = () => {
 
     // Lines
     const linesGeometry = new THREE.BufferGeometry();
-    const linePositions = new Float32Array(particlesCount * particlesCount * 3);
+    // Pre-allocate a large enough buffer for lines. This is an estimate.
+    const maxLineConnections = particlesCount * 5; // Estimate max connections
+    const linePositions = new Float32Array(maxLineConnections * 3 * 2);
     linesGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3).setUsage(THREE.DynamicDrawUsage));
 
     const linesMaterial = new THREE.LineBasicMaterial({
-        color: 0x3aa398,
+        color: 0x226861,
         linewidth: 1,
         blending: THREE.AdditiveBlending,
         transparent: true,
@@ -79,46 +81,48 @@ const WebGLBackground = () => {
 
       const positions = particles.geometry.attributes.position.array as Float32Array;
       
-      let vertexpos = 0;
-      let linepos = 0;
-      
       for (let i = 0; i < particlesCount; i++) {
-        positions[i * 3] += velocities[i * 3];
-        positions[i * 3 + 1] += velocities[i * 3 + 1];
-        positions[i * 3 + 2] += velocities[i * 3 + 2];
+        const i3 = i * 3;
+        positions[i3] += velocities[i3];
+        positions[i3 + 1] += velocities[i3 + 1];
+        positions[i3 + 2] += velocities[i3 + 2];
         
-        if (positions[i * 3 + 1] < -400 || positions[i * 3 + 1] > 400) velocities[i * 3 + 1] *= -1;
-        if (positions[i * 3] < -400 || positions[i * 3] > 400) velocities[i * 3] *= -1;
-        if (positions[i * 3 + 2] < -400 || positions[i * 3 + 2] > 400) velocities[i * 3 + 2] *= -1;
+        if (positions[i3 + 1] < -400 || positions[i3 + 1] > 400) velocities[i3 + 1] *= -1;
+        if (positions[i3] < -400 || positions[i3] > 400) velocities[i3] *= -1;
+        if (positions[i3 + 2] < -400 || positions[i3 + 2] > 400) velocities[i3 + 2] *= -1;
       }
       
       const linePositions = (lines.geometry.attributes.position.array as Float32Array);
       let numConnected = 0;
       
-      const distanceThreshold = 40;
+      const distanceThreshold = 50;
 
       for (let i = 0; i < particlesCount; i++) {
           for (let j = i + 1; j < particlesCount; j++) {
-              const dx = positions[i * 3] - positions[j * 3];
-              const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
-              const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+              if (numConnected >= maxLineConnections -1) break;
+
+              const i3 = i * 3;
+              const j3 = j * 3;
+              const dx = positions[i3] - positions[j3];
+              const dy = positions[i3 + 1] - positions[j3 + 1];
+              const dz = positions[i3 + 2] - positions[j3 + 2];
               const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
               
               if (dist < distanceThreshold) {
-                  linePositions[numConnected * 3] = positions[i * 3];
-                  linePositions[numConnected * 3 + 1] = positions[i * 3 + 1];
-                  linePositions[numConnected * 3 + 2] = positions[i * 3 + 2];
-                  numConnected++;
+                  linePositions[numConnected * 6] = positions[i3];
+                  linePositions[numConnected * 6 + 1] = positions[i3 + 1];
+                  linePositions[numConnected * 6 + 2] = positions[i3 + 2];
                   
-                  linePositions[numConnected * 3] = positions[j * 3];
-                  linePositions[numConnected * 3 + 1] = positions[j * 3 + 1];
-                  linePositions[numConnected * 3 + 2] = positions[j * 3 + 2];
+                  linePositions[numConnected * 6 + 3] = positions[j3];
+                  linePositions[numConnected * 6 + 4] = positions[j3 + 1];
+                  linePositions[numConnected * 6 + 5] = positions[j3 + 2];
                   numConnected++;
               }
           }
+          if (numConnected >= maxLineConnections -1) break;
       }
       
-      lines.geometry.setDrawRange(0, numConnected);
+      lines.geometry.setDrawRange(0, numConnected * 2);
       lines.geometry.attributes.position.needsUpdate = true;
       particles.geometry.attributes.position.needsUpdate = true;
 
@@ -138,26 +142,32 @@ const WebGLBackground = () => {
 
     // Handle window resize
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      const currentMount = mountRef.current;
+      if (!currentMount) return;
+      camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     };
 
     window.addEventListener('resize', handleResize);
     document.addEventListener('mousemove', onDocumentMouseMove);
+    
+    // Initial size
+    handleResize();
 
     // Cleanup
+    const currentMount = mountRef.current;
     return () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('mousemove', onDocumentMouseMove);
-      if (mountRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        mountRef.current.removeChild(renderer.domElement);
+      if (currentMount) {
+        currentMount.removeChild(renderer.domElement);
       }
       particlesGeometry.dispose();
       particlesMaterial.dispose();
       linesGeometry.dispose();
       linesMaterial.dispose();
+      renderer.dispose();
     };
   }, []);
 
