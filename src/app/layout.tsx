@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Varela_Round } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { MotionBackground } from '@/components/ui/motion-background';
+import VantaBackground from '@/components/ui/vanta-background';
 
 const varelaRound = Varela_Round({
   subsets: ['latin'],
@@ -41,7 +41,7 @@ export default function RootLayout({
       className={`${varelaRound.variable} dark`}
     >
       <body className="font-body antialiased">
-        <MotionBackground />
+        <VantaBackground />
         <div className="relative z-10"> 
           {children}
         </div>
