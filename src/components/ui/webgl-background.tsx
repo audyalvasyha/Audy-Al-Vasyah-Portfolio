@@ -46,7 +46,7 @@ const WebGLBackground = () => {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-        color: 0x226861,
+        color: 0x93f2d2, // HSL(158, 77%, 70%)
         size: 2,
         blending: THREE.AdditiveBlending,
         transparent: true,
@@ -64,7 +64,7 @@ const WebGLBackground = () => {
     linesGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3).setUsage(THREE.DynamicDrawUsage));
 
     const linesMaterial = new THREE.LineBasicMaterial({
-        color: 0x226861,
+        color: 0x93f2d2, // HSL(158, 77%, 70%)
         linewidth: 1,
         blending: THREE.AdditiveBlending,
         transparent: true,
