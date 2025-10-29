@@ -68,7 +68,7 @@ const WebGLBackground = () => {
         linewidth: 1,
         blending: THREE.AdditiveBlending,
         transparent: true,
-        opacity: 0.15
+        opacity: 0.1
     });
 
     const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
