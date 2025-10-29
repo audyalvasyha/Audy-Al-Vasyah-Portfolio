@@ -4,9 +4,18 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, Code2 } from 'lucide-react';
 
-import { NAV_LINKS } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+
+const NAV_LINKS = [
+  { name: 'Home', href: '#home' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'AI Tool', href: '#tool' },
+  { name: 'Contact', href: '#contact' },
+];
+
 
 const Header = () => {
   const [isSheetOpen, setSheetOpen] = useState(false);
@@ -73,7 +82,7 @@ const Header = () => {
 
         <div className="flex flex-1 items-center justify-end space-x-4">
           <Button asChild>
-            <a href="/Audy Al Vasyah 10-25.pdf" download="Audy Al Vasyah CV.pdf">Download CV</a>
+            <a href="/Audy Al Vasyah 10-25.pdf" download="Audy-Al-Vasyah-CV.pdf">Download CV</a>
           </Button>
         </div>
       </div>
