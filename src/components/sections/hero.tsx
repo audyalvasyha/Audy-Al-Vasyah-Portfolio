@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative isolate bg-transparent scroll-mt-20 h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
 
-      {/* Efek Gradien Radial */}
+      {/* Efek Gradien Radial untuk Kontras Teks */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--background)/0.5)_20%,hsl(var(--background)))]"></div>
       
       {/* Overlay Efek Vintage */}
