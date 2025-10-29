@@ -10,43 +10,35 @@ const skillsData = [
     category: 'Automasi & Logika Sistem',
     icon: <Bot className="h-8 w-8 text-primary" />,
     skills: [
-      { name: 'Machine Learning & AI Implementation', level: 90 },
-      { name: 'Automation Tools Development', level: 95 },
+      { name: 'Machine Learning & AI Implementation' },
+      { name: 'Automation Tools Development' },
     ],
   },
   {
     category: 'Pengembangan Web',
     icon: <Code className="h-8 w-8 text-primary" />,
-    skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS', level: 90 }],
+    skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS' }],
   },
   {
     category: 'Google Cloud Platform',
     icon: <Cloud className="h-8 w-8 text-primary" />,
     skills: [
-      { name: 'Gemini API', level: 85 },
-      { name: 'Firebase', level: 80 },
+      { name: 'Gemini API' },
+      { name: 'Firebase' },
     ],
   },
   {
     category: 'Sistem Enterprise',
     icon: <BrainCircuit className="h-8 w-8 text-primary" />,
-    skills: [{ name: 'SAP ERP (SD & WM Modules)', level: 75 }],
+    skills: [{ name: 'SAP ERP (SD & WM Modules)' }],
   },
   {
     category: 'Google Workspace',
     icon: <AppWindow className="h-8 w-8 text-primary" />,
-    skills: [{ name: 'Sheets, Docs, Slide, Apps Script', level: 90 }],
+    skills: [{ name: 'Sheets, Docs, Slide, Apps Script' }],
   },
 ];
 
-const SkillBar = ({ level }: { level: number }) => (
-  <div className="w-full bg-muted rounded-full h-2">
-    <div
-      className="bg-primary h-2 rounded-full transition-all duration-500"
-      style={{ width: `${level}%` }}
-    ></div>
-  </div>
-);
 
 const Skills = () => {
   return (
@@ -84,14 +76,10 @@ const Skills = () => {
                   {category.category}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow space-y-6">
+              <CardContent className="flex-grow space-y-2">
                 {category.skills.map((skill) => (
                   <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-1">
-                      <p className="text-sm font-medium text-muted-foreground">{skill.name}</p>
-                      <p className="text-xs font-semibold text-primary">{skill.level}%</p>
-                    </div>
-                    <SkillBar level={skill.level} />
+                    <p className="text-sm font-medium text-muted-foreground">{skill.name}</p>
                   </div>
                 ))}
               </CardContent>
