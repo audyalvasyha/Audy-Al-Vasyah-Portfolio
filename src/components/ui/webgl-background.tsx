@@ -1,49 +1,61 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-// Jangan impor Vanta di sini untuk menghindari masalah SSR
+
+// Deklarasikan window.VANTA untuk menghindari error TypeScript
+declare global {
+  interface Window {
+    VANTA: any;
+  }
+}
 
 const WebGLBackground: React.FC = () => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let effect: any = null;
+    if (!vantaRef.current || vantaEffect) return;
 
-    const initializeVanta = async () => {
-      if (vantaRef.current && !effect) {
-        // Impor Vanta secara dinamis hanya di sisi klien
-        const vanta = await import('vanta/dist/vanta.topology.min.js');
-        const TOPOLOGY = vanta.default || vanta;
+    // Load vanta.js script dynamically
+    const script = document.createElement('script');
+    script.src =
+      'https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.topology.min.js';
+    script.async = true;
 
-        // Periksa apakah window.VANTA sudah tersedia
-        if (window.VANTA && window.VANTA.TOPOLOGY) {
-          effect = window.VANTA.TOPOLOGY({
-            el: vantaRef.current,
-            THREE: THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.0,
-            minWidth: 200.0,
-            scale: 1.0,
-            scaleMobile: 1.0,
-            color: 0x7df9ff, // Warna garis topologi
-            backgroundColor: 0x121212, // Warna latar belakang
-          });
-          setVantaEffect(effect);
-        }
+    script.onload = () => {
+      // Once the script is loaded, initialize Vanta
+      if (window.VANTA && window.VANTA.TOPOLOGY) {
+        const effect = window.VANTA.TOPOLOGY({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x7df9ff,
+          backgroundColor: 0x121212,
+        });
+        setVantaEffect(effect);
       }
     };
 
-    initializeVanta();
+    document.body.appendChild(script);
 
+    // Cleanup function
     return () => {
-      if (effect) {
-        effect.destroy();
+      if (vantaEffect) {
+        vantaEffect.destroy();
+      }
+      // Clean up the added script tag
+      const existingScript = document.querySelector(`script[src="${script.src}"]`);
+      if (existingScript) {
+        document.body.removeChild(existingScript);
       }
     };
-  }, []);
+  }, [vantaEffect]);
 
   return (
     <div
