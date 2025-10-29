@@ -1,17 +1,27 @@
 
+'use client';
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { BrainCircuit, Bot, Database, Code, AppWindow, GitBranch, Cloud } from 'lucide-react';
 
 const skillsData = [
   {
     category: 'Automasi & Logika Sistem',
+    icon: <Bot className="h-8 w-8 text-primary" />,
     skills: [
       { name: 'Machine Learning & AI Implementation', level: 90 },
       { name: 'Automation Tools Development', level: 95 },
     ],
   },
   {
+    category: 'Pengembangan Web',
+    icon: <Code className="h-8 w-8 text-primary" />,
+    skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS', level: 90 }],
+  },
+  {
     category: 'Google Cloud Platform',
+    icon: <Cloud className="h-8 w-8 text-primary" />,
     skills: [
       { name: 'Gemini API', level: 85 },
       { name: 'Firebase', level: 80 },
@@ -19,22 +29,20 @@ const skillsData = [
   },
   {
     category: 'Sistem Enterprise',
+    icon: <BrainCircuit className="h-8 w-8 text-primary" />,
     skills: [{ name: 'SAP ERP (SD & WM Modules)', level: 75 }],
   },
   {
-    category: 'Pengembangan Web',
-    skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS', level: 90 }],
-  },
-  {
     category: 'Google Workspace',
+    icon: <AppWindow className="h-8 w-8 text-primary" />,
     skills: [{ name: 'Sheets, Docs, Slide, Apps Script', level: 90 }],
   },
 ];
 
 const SkillBar = ({ level }: { level: number }) => (
-  <div className="w-full bg-muted rounded-full h-2.5">
+  <div className="w-full bg-muted rounded-full h-2">
     <div
-      className="bg-primary h-2.5 rounded-full"
+      className="bg-primary h-2 rounded-full transition-all duration-500"
       style={{ width: `${level}%` }}
     ></div>
   </div>
@@ -67,18 +75,22 @@ const Skills = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 max-w-6xl mx-auto">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {skillsData.map((category) => (
-            <Card key={category.category}>
-              <CardHeader>
-                <CardTitle className="font-headline text-xl text-primary">
+            <Card key={category.category} className="flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
+              <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-4">
+                {category.icon}
+                <CardTitle className="font-headline text-lg text-foreground">
                   {category.category}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="flex-grow space-y-6">
                 {category.skills.map((skill) => (
                   <div key={skill.name}>
-                    <p className="mb-2 text-sm font-medium">{skill.name}</p>
+                    <div className="flex justify-between items-center mb-1">
+                      <p className="text-sm font-medium text-muted-foreground">{skill.name}</p>
+                      <p className="text-xs font-semibold text-primary">{skill.level}%</p>
+                    </div>
                     <SkillBar level={skill.level} />
                   </div>
                 ))}
