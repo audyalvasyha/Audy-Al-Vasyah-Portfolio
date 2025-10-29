@@ -21,7 +21,7 @@ const VantaBackground = () => {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0x4fd1c5, // hsl(158, 77%, 75%) -> approx 0x4fd1c5
+          color: 0x3aa398, // A darker shade of the primary color
           backgroundColor: 0x1a202c, // dark background
           points: 10.00,
           maxDistance: 25.00,
