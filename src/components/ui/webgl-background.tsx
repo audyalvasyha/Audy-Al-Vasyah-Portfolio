@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
-import DOTS from 'vanta/dist/vanta.dots.min';
+import HALO from 'vanta/dist/vanta.halo.min';
 
 const WebGLBackground = () => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
@@ -12,7 +12,7 @@ const WebGLBackground = () => {
     if (!vantaEffect && vantaRef.current) {
       const initializeVanta = async () => {
         setVantaEffect(
-          DOTS({
+          HALO({
             el: vantaRef.current,
             THREE: THREE, 
             mouseControls: true,
@@ -20,14 +20,10 @@ const WebGLBackground = () => {
             gyroControls: false,
             minHeight: 200.0,
             minWidth: 200.0,
-            scale: 1.0,
-            scaleMobile: 1.0,
+            baseColor: 0x226861,
             backgroundColor: 0x1d2432,
-            color: 0x7DF9FF,
-            color2: 0xA7FF83,
-            size: 2.5,
-            spacing: 30.00,
-            showLines: false,
+            amplitudeFactor: 1.5,
+            size: 1.2
           })
         );
       };
