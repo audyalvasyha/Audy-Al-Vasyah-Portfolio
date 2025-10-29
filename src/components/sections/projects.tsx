@@ -68,6 +68,10 @@ const Projects = () => {
       id="projects"
       className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
+      {/* Darkening Gradient Overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]"></div>
+      </div>
       
       {/* Overlay Efek Vintage */}
       <div className="absolute inset-0 w-full h-full bg-transparent pointer-events-none z-0">
