@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // Deklarasikan window.VANTA dan window.THREE untuk menghindari error TypeScript
 declare global {
@@ -14,49 +14,71 @@ const WebGLBackground: React.FC = () => {
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (vantaEffect || !vantaRef.current) return;
+    if (!vantaRef.current || vantaEffect) return;
 
-    const threeScript = document.createElement('script');
-    threeScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
-    threeScript.async = true;
-    
-    threeScript.onload = () => {
-      const vantaScript = document.createElement('script');
-      vantaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.clouds.min.js';
-      vantaScript.async = true;
+    let effect: any = null;
 
-      vantaScript.onload = () => {
-        if (window.VANTA && window.VANTA.CLOUDS) {
-          const effect = window.VANTA.CLOUDS({
-            el: vantaRef.current,
-            THREE: window.THREE, // Gunakan THREE dari window
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.0,
-            minWidth: 200.0,
-            skyColor: 0x121212,
-            cloudColor: 0x7df9ff,
-          });
-          setVantaEffect(effect);
+    const loadScriptsAndInit = () => {
+      // Fungsi untuk memuat skrip
+      const loadScript = (src: string, onCondition: () => boolean, onLoad: () => void) => {
+        if (onCondition()) {
+          onLoad();
+          return;
         }
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = onLoad;
+        document.body.appendChild(script);
       };
       
-      document.body.appendChild(vantaScript);
+      // 1. Muat THREE.js terlebih dahulu
+      loadScript(
+        'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js',
+        () => !!window.THREE,
+        () => {
+          // 2. Setelah THREE.js dimuat, muat skrip Vanta
+          loadScript(
+            'https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.clouds.min.js',
+            () => !!(window.VANTA && window.VANTA.CLOUDS),
+            () => {
+              // 3. Setelah kedua skrip dimuat, inisialisasi Vanta
+              if (vantaRef.current && !effect) {
+                effect = window.VANTA.CLOUDS({
+                  el: vantaRef.current,
+                  THREE: window.THREE,
+                  mouseControls: true,
+                  touchControls: true,
+                  gyroControls: false,
+                  minHeight: 200.0,
+                  minWidth: 200.0,
+                  skyColor: 0x121212,
+                  cloudColor: 0x2c6b67, // Warna lebih lembut
+                });
+                setVantaEffect(effect);
+              }
+            }
+          );
+        }
+      );
     };
 
-    document.body.appendChild(threeScript);
+    loadScriptsAndInit();
 
     // Cleanup function
     return () => {
-      if (vantaEffect) {
-        vantaEffect.destroy();
+      if (effect) {
+        effect.destroy();
       }
-      // Hapus skrip yang ditambahkan secara dinamis
+      // Hapus skrip yang ditambahkan secara dinamis untuk kebersihan
       const scripts = document.querySelectorAll('script[src*="three.min.js"], script[src*="vanta.clouds.min.js"]');
-      scripts.forEach(s => s.remove());
+      scripts.forEach(s => {
+        if (s.parentNode) {
+            s.parentNode.removeChild(s);
+        }
+      });
     };
-  }, [vantaEffect]); // Hanya bergantung pada vantaEffect
+  }, []); // Hanya dijalankan sekali saat komponen dipasang
 
   return (
     <div
