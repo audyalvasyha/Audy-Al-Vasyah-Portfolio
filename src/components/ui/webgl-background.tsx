@@ -1,51 +1,41 @@
 'use client';
-
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-// Jangan impor Vanta di sini, kita akan memuatnya secara dinamis
+import TOPOLOGY from 'vanta/dist/vanta.topology.min.js';
 
-const WebGLBackground = () => {
+const WebGLBackground: React.FC = () => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let effect: any = null;
-    
-    if (vantaRef.current) {
-      // Muat skrip Vanta secara dinamis
-      import('vanta/dist/vanta.topology.min.js')
-        .then((vanta) => {
-          // Periksa apakah window.VANTA sudah tersedia
-          if (window.VANTA && window.VANTA.TOPOLOGY) {
-            effect = window.VANTA.TOPOLOGY({
-              el: vantaRef.current,
-              THREE: THREE,
-              mouseControls: true,
-              touchControls: true,
-              gyroControls: false,
-              minHeight: 200.0,
-              minWidth: 200.0,
-              scale: 1.0,
-              scaleMobile: 1.0,
-              color: 0x7df9ff,
-              backgroundColor: 0x121212,
-            });
-            setVantaEffect(effect);
-          }
+    if (!vantaEffect && vantaRef.current) {
+      setVantaEffect(
+        TOPOLOGY({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x7df9ff,
+          backgroundColor: 0x121212,
         })
-        .catch((e) => {
-          console.error("Vanta loading error:", e);
-        });
+      );
     }
-
     return () => {
-      if (effect) {
-        effect.destroy();
-      }
+      if (vantaEffect) vantaEffect.destroy();
     };
-  }, []);
+  }, [vantaEffect]);
 
-  return <div ref={vantaRef} className="fixed top-0 left-0 w-full h-full -z-10" />;
+  return (
+    <div
+      ref={vantaRef}
+      style={{ width: '100%', height: '100%', position: 'fixed', top: 0, left: 0, zIndex: -10 }}
+    />
+  );
 };
 
 export default WebGLBackground;
