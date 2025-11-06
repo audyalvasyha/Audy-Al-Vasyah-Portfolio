@@ -9,13 +9,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -25,7 +18,6 @@ import {
 } from '@/components/ui/dialog';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CheckCircle, ArrowRight } from 'lucide-react';
-import Autoplay from 'embla-carousel-autoplay';
 import { Button } from '../ui/button';
 
 // Static project details to avoid slow AI calls on page load
@@ -98,95 +90,83 @@ const Projects = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 max-w-4xl mx-auto">
-          <Carousel
-            plugins={[
-              Autoplay({
-                delay: 4000,
-                stopOnInteraction: true,
-              }),
-            ]}
-          >
-            <CarouselContent>
-              {projectDetails.map((project, index) => {
-                const projectImage = PlaceHolderImages.find(
-                  (img) => img.id === project.id
-                );
-                return (
-                  <CarouselItem key={index}>
-                    <Dialog>
-                      <Card className="relative group overflow-hidden rounded-lg shadow-lg border-0 h-[550px]">
-                        {projectImage && (
-                          <Image
-                            src={projectImage.imageUrl}
-                            alt={project.alt || project.title}
-                            fill
-                            priority={false}
-                            className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105"
-                            data-ai-hint={project.imageHint}
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent"></div>
-                        <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                          <CardHeader className="p-0">
-                            <CardTitle className="font-headline text-2xl md:text-3xl text-white">
-                              {project.title}
-                            </CardTitle>
-                          </CardHeader>
-                          <CardContent className="p-0 mt-4">
-                            <DialogTrigger asChild>
-                              <Button variant="secondary" className="gap-2">
-                                Lihat Detail
-                                <ArrowRight />
-                              </Button>
-                            </DialogTrigger>
-                          </CardContent>
-                        </div>
-                      </Card>
+        <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projectDetails.map((project) => {
+            const projectImage = PlaceHolderImages.find(
+              (img) => img.id === project.id
+            );
+            return (
+              <Dialog key={project.id}>
+                <Card className="relative group overflow-hidden rounded-lg shadow-lg border-0 h-[500px] flex flex-col">
+                  {projectImage && (
+                    <div className="relative w-full h-64 flex-shrink-0">
+                      <Image
+                        src={projectImage.imageUrl}
+                        alt={project.alt || project.title}
+                        fill
+                        priority={false}
+                        className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105"
+                        data-ai-hint={project.imageHint}
+                      />
+                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col justify-between flex-grow bg-card">
+                    <div>
+                      <CardTitle className="font-headline text-xl text-foreground">
+                        {project.title}
+                      </CardTitle>
+                      <CardDescription className="mt-2 text-sm text-muted-foreground line-clamp-3">
+                        {project.description}
+                      </CardDescription>
+                    </div>
+                    <DialogTrigger asChild>
+                      <Button variant="secondary" className="gap-2 mt-4 self-start">
+                        Lihat Detail
+                        <ArrowRight />
+                      </Button>
+                    </DialogTrigger>
+                  </div>
+                </Card>
 
-                      <DialogContent className="max-w-3xl p-0 grid grid-rows-[auto_1fr] max-h-[90vh] overflow-hidden">
-                        {projectImage && (
-                          <div className="relative w-full h-64 md:h-80 flex-shrink-0">
-                            <Image
-                              src={projectImage.imageUrl}
-                              alt={project.alt || project.title}
-                              fill
-                              className="object-cover rounded-t-lg"
-                            />
-                          </div>
-                        )}
-                        <div className="overflow-y-auto">
-                            <DialogHeader className="p-6">
-                              <DialogTitle className="text-2xl font-headline">
-                                {project.title}
-                              </DialogTitle>
-                              <DialogDescription className="pt-2 text-base text-muted-foreground">
-                                {project.description}
-                              </DialogDescription>
-                            </DialogHeader>
-                            <div className="px-6 pb-6">
-                              <h4 className="font-semibold text-foreground mb-3">
-                                Fitur Utama:
-                              </h4>
-                              <ul className="space-y-3 text-muted-foreground">
-                                {project.features.map((feature, i) => (
-                                  <li key={i} className="flex items-start">
-                                    <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-                                    <span>{feature}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
-          </Carousel>
+                <DialogContent className="max-w-3xl p-0 grid grid-rows-[auto_1fr] max-h-[90vh] overflow-hidden">
+                  {projectImage && (
+                    <div className="relative w-full h-64 md:h-80 flex-shrink-0">
+                      <Image
+                        src={projectImage.imageUrl}
+                        alt={project.alt || project.title}
+                        fill
+                        className="object-cover rounded-t-lg"
+                      />
+                    </div>
+                  )}
+                  <div className="overflow-y-auto">
+                      <DialogHeader className="p-6">
+                        <DialogTitle className="text-2xl font-headline">
+                          {project.title}
+                        </DialogTitle>
+                        <DialogDescription className="pt-2 text-base text-muted-foreground">
+                          {project.description}
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="px-6 pb-6">
+                        <h4 className="font-semibold text-foreground mb-3">
+                          Fitur Utama:
+                        </h4>
+                        <ul className="space-y-3 text-muted-foreground">
+                          {project.features.map((feature, i) => (
+                            <li key={i} className="flex items-start">
+                              <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            );
+          })}
         </div>
       </div>
     </section>
