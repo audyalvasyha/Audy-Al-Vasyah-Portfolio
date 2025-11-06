@@ -137,108 +137,114 @@ const TireInspectionTool = () => {
   };
 
   return (
-    <div className="mt-12 grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline">Penganalisis Gambar Ban</CardTitle>
-          <CardDescription>
-            Unggah gambar ban untuk mendapatkan analisis kondisi bertenaga AI.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div
-            className={cn(
-              'border-2 border-dashed border-muted-foreground rounded-lg p-6 text-center cursor-pointer hover:border-primary transition-colors',
-              isDragging && 'border-primary bg-primary/10'
-            )}
-            onClick={() => fileInputRef.current?.click()}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-          >
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileChange}
-              className="hidden"
-              accept="image/*"
-            />
-            {previewUrl ? (
-              <div className="relative w-full h-64">
-                <Image
-                  src={previewUrl}
-                  alt="Pratinjau Ban"
-                  fill
-                  className="object-contain rounded-md"
-                />
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                <UploadCloud className="w-12 h-12" />
-                <p>Klik untuk mengunggah atau seret & jatuhkan</p>
-                <p className="text-xs">PNG, JPG, atau WEBP (Maks 4MB)</p>
-              </div>
-            )}
-          </div>
-        </CardContent>
-        <CardFooter className="flex-col items-stretch gap-4">
-          {error && (
-            <p className="text-destructive text-center text-sm">{error}</p>
-          )}
-          <Button
-            onClick={handleAnalyzeClick}
-            disabled={isLoading || !file}
-            className="w-full"
-          >
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {isLoading ? 'Menganalisis...' : 'Analisis Ban'}
-          </Button>
-        </CardFooter>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline">Hasil Analisis</CardTitle>
-          <CardDescription>
-            Laporan kondisi ban yang dihasilkan oleh AI.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {isLoading && (
-            <div className="flex justify-center items-center h-full py-10">
-              <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            </div>
-          )}
+    <div>
+        <div className="text-center mb-8">
+            <h3 className="text-2xl font-headline font-bold">Tire Inspection</h3>
+            <p className="text-muted-foreground">Analyze tire condition with AI.</p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-2">
+            <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
+                <CardHeader className="p-0 md:p-6">
+                <CardTitle className="font-headline sr-only md:not-sr-only">Penganalisis Gambar Ban</CardTitle>
+                <CardDescription className="sr-only md:not-sr-only">
+                    Unggah gambar ban untuk mendapatkan analisis kondisi bertenaga AI.
+                </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 md:p-6 md:pt-0">
+                <div
+                    className={cn(
+                    'border-2 border-dashed border-muted-foreground rounded-lg p-6 text-center cursor-pointer hover:border-primary transition-colors',
+                    isDragging && 'border-primary bg-primary/10'
+                    )}
+                    onClick={() => fileInputRef.current?.click()}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                >
+                    <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    className="hidden"
+                    accept="image/*"
+                    />
+                    {previewUrl ? (
+                    <div className="relative w-full h-48 md:h-64">
+                        <Image
+                        src={previewUrl}
+                        alt="Pratinjau Ban"
+                        fill
+                        className="object-contain rounded-md"
+                        />
+                    </div>
+                    ) : (
+                    <div className="flex flex-col items-center gap-2 text-muted-foreground py-10">
+                        <UploadCloud className="w-12 h-12" />
+                        <p>Klik untuk mengunggah atau seret & jatuhkan</p>
+                        <p className="text-xs">PNG, JPG, atau WEBP (Maks 4MB)</p>
+                    </div>
+                    )}
+                </div>
+                </CardContent>
+                <CardFooter className="p-0 md:p-6 md:pt-0 flex-col items-stretch gap-4">
+                {error && (
+                    <p className="text-destructive text-center text-sm">{error}</p>
+                )}
+                <Button
+                    onClick={handleAnalyzeClick}
+                    disabled={isLoading || !file}
+                    className="w-full"
+                >
+                    {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {isLoading ? 'Menganalisis...' : 'Analisis Ban'}
+                </Button>
+                </CardFooter>
+            </Card>
+            <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
+                <CardHeader className="p-0 md:p-6">
+                <CardTitle className="font-headline sr-only md:not-sr-only">Hasil Analisis</CardTitle>
+                <CardDescription className="sr-only md:not-sr-only">
+                    Laporan kondisi ban yang dihasilkan oleh AI.
+                </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 md:p-6 md:pt-0 space-y-4">
+                {isLoading && (
+                    <div className="flex justify-center items-center h-full py-10 min-h-48">
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                    </div>
+                )}
 
-          {analysis && (
-            <div className="space-y-4 text-sm">
-              <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
-                <span className="text-muted-foreground">Kondisi Keseluruhan</span>
-                {getConditionBadge(analysis.condition)}
-              </div>
-              <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
-                <span className="text-muted-foreground">Tingkat Keausan</span>
-                <span className="font-semibold">{analysis.wearLevel}</span>
-              </div>
-              <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
-                <span className="text-muted-foreground">Kerusakan Terdeteksi</span>
-                <span className="font-semibold">{analysis.detectedDamage}</span>
-              </div>
-              <div className="pt-4">
-                <h4 className="font-semibold mb-2">Rekomendasi:</h4>
-                <p className="text-muted-foreground p-3 bg-muted/50 rounded-md">
-                  {analysis.recommendation}
-                </p>
-              </div>
-            </div>
-          )}
-          {!isLoading && !analysis && !error && (
-             <div className="flex flex-col text-center justify-center items-center h-48 text-muted-foreground">
-                <ScanSearch className="h-10 w-10 mb-4 text-primary/50" />
-                <p>Unggah gambar ban dan klik "Analisis Ban" untuk melihat hasilnya di sini.</p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+                {analysis && (
+                    <div className="space-y-4 text-sm min-h-48">
+                    <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
+                        <span className="text-muted-foreground">Kondisi Keseluruhan</span>
+                        {getConditionBadge(analysis.condition)}
+                    </div>
+                    <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
+                        <span className="text-muted-foreground">Tingkat Keausan</span>
+                        <span className="font-semibold">{analysis.wearLevel}</span>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:items-center">
+                        <span className="text-muted-foreground">Kerusakan Terdeteksi</span>
+                        <span className="font-semibold">{analysis.detectedDamage}</span>
+                    </div>
+                    <div className="pt-4">
+                        <h4 className="font-semibold mb-2">Rekomendasi:</h4>
+                        <p className="text-muted-foreground p-3 bg-muted/50 rounded-md">
+                        {analysis.recommendation}
+                        </p>
+                    </div>
+                    </div>
+                )}
+                {!isLoading && !analysis && !error && (
+                    <div className="flex flex-col text-center justify-center items-center h-48 text-muted-foreground min-h-48">
+                        <ScanSearch className="h-10 w-10 mb-4 text-primary/50" />
+                        <p>Unggah gambar ban dan klik "Analisis Ban" untuk melihat hasilnya di sini.</p>
+                    </div>
+                )}
+                </CardContent>
+            </Card>
+        </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EfficiencyTool from './efficiency-tool';
 import DeliverySchedulingTool from './delivery-scheduling-tool';
@@ -13,19 +13,22 @@ const tools = [
     value: 'tire-inspection',
     title: 'Tire Inspection',
     description: 'Analyze tire condition with AI.',
-    icon: <ScanLine className="w-8 h-8 mb-4 text-primary" />,
+    icon: <ScanLine className="w-6 h-6" />,
+    component: <TireInspectionTool />,
   },
   {
     value: 'efficiency-predictor',
     title: 'Efficiency Predictor',
     description: 'Forecast potential time savings.',
-    icon: <GaugeCircle className="w-8 h-8 mb-4 text-primary" />,
+    icon: <GaugeCircle className="w-6 h-6" />,
+    component: <EfficiencyTool />,
   },
   {
     value: 'delivery-scheduler',
     title: 'Delivery Scheduling',
     description: 'Learn about the ML-powered system.',
-    icon: <CalendarClock className="w-8 h-8 mb-4 text-primary" />,
+    icon: <CalendarClock className="w-6 h-6" />,
+    component: <DeliverySchedulingTool />,
   },
 ];
 
@@ -62,35 +65,32 @@ const AiTools = () => {
           </div>
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
-          <Tabs defaultValue="tire-inspection" className="w-full lg:grid lg:grid-cols-3 lg:gap-8 items-start">
-              <TabsList className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 h-auto w-full p-0 bg-transparent gap-4 mb-8 lg:mb-0">
-                {tools.map((tool) => (
-                  <TabsTrigger
-                    key={tool.value}
-                    value={tool.value}
-                    className={cn(
-                      'h-auto p-6 rounded-lg border-2 border-transparent bg-card text-card-foreground shadow-md transition-all whitespace-normal',
-                      'data-[state=active]:border-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20',
-                      'hover:shadow-lg hover:border-accent',
-                      'flex flex-col items-center text-center'
-                    )}
-                  >
-                    {tool.icon}
-                    <p className="text-base font-semibold">{tool.title}</p>
-                    <p className="text-sm text-muted-foreground mt-1">{tool.description}</p>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            <div className="lg:col-span-2">
-              <TabsContent value="efficiency-predictor">
-                <EfficiencyTool />
-              </TabsContent>
-              <TabsContent value="delivery-scheduler">
-                <DeliverySchedulingTool />
-              </TabsContent>
-              <TabsContent value="tire-inspection">
-                <TireInspectionTool />
-              </TabsContent>
+          <Tabs defaultValue="tire-inspection" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mx-auto max-w-md h-auto p-1.5 bg-muted/50 rounded-lg">
+              {tools.map((tool) => (
+                <TabsTrigger
+                  key={tool.value}
+                  value={tool.value}
+                  className={cn(
+                    'flex flex-col sm:flex-row items-center justify-center gap-2 h-auto p-2 rounded-md transition-all whitespace-normal text-muted-foreground',
+                    'data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-md'
+                  )}
+                >
+                  {tool.icon}
+                  <span className="text-sm font-medium">{tool.title}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            <div className="mt-6">
+              {tools.map(tool => (
+                <TabsContent key={tool.value} value={tool.value}>
+                    <Card className="bg-card/50 backdrop-blur-sm">
+                        <CardContent className="p-6 md:p-8">
+                             {tool.component}
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+              ))}
             </div>
           </Tabs>
         </div>
