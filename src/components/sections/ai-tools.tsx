@@ -12,22 +12,19 @@ const tools = [
   {
     value: 'tire-inspection',
     title: 'Tire Inspection',
-    description: 'Analyze tire condition with AI.',
-    icon: <ScanLine className="w-6 h-6" />,
+    icon: <ScanLine className="w-5 h-5" />,
     component: <TireInspectionTool />,
   },
   {
     value: 'efficiency-predictor',
     title: 'Efficiency Predictor',
-    description: 'Forecast potential time savings.',
-    icon: <GaugeCircle className="w-6 h-6" />,
+    icon: <GaugeCircle className="w-5 h-5" />,
     component: <EfficiencyTool />,
   },
   {
     value: 'delivery-scheduler',
     title: 'Delivery Scheduling',
-    description: 'Learn about the ML-powered system.',
-    icon: <CalendarClock className="w-6 h-6" />,
+    icon: <CalendarClock className="w-5 h-5" />,
     component: <DeliverySchedulingTool />,
   },
 ];
@@ -66,13 +63,13 @@ const AiTools = () => {
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
           <Tabs defaultValue="tire-inspection" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mx-auto max-w-md h-auto p-1.5 bg-muted/50 rounded-lg">
+            <TabsList className="flex w-full mx-auto max-w-md h-auto p-1.5 bg-muted/50 rounded-lg">
               {tools.map((tool) => (
                 <TabsTrigger
                   key={tool.value}
                   value={tool.value}
                   className={cn(
-                    'flex flex-col sm:flex-row items-center justify-center gap-2 h-auto p-2 rounded-md transition-all whitespace-normal text-muted-foreground',
+                    'flex-1 flex items-center justify-center gap-2 h-auto p-2.5 rounded-md transition-all whitespace-nowrap text-muted-foreground',
                     'data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-md'
                   )}
                 >
