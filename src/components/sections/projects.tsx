@@ -129,19 +129,19 @@ const Projects = () => {
                   </div>
                 </Card>
 
-                <DialogContent className="max-w-4xl p-0 max-h-[90vh] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+                <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
                   {projectImage && (
                     <div className="relative w-full h-64 md:h-full flex-shrink-0">
                       <Image
                         src={projectImage.imageUrl}
                         alt={project.alt || project.title}
                         fill
-                        className="object-cover rounded-l-lg"
+                        className="object-cover"
                       />
                     </div>
                   )}
-                  <div className="overflow-y-auto">
-                      <DialogHeader className="p-6">
+                  <div className="flex flex-col">
+                      <DialogHeader className="p-6 pb-0 flex-shrink-0">
                         <DialogTitle className="text-2xl font-headline">
                           {project.title}
                         </DialogTitle>
@@ -149,7 +149,7 @@ const Projects = () => {
                           {project.description}
                         </DialogDescription>
                       </DialogHeader>
-                      <div className="px-6 pb-6">
+                      <div className="p-6 overflow-y-auto">
                         <h4 className="font-semibold text-foreground mb-3">
                           Fitur Utama:
                         </h4>
