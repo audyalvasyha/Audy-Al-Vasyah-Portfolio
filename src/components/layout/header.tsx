@@ -25,7 +25,7 @@ const Header = () => {
       <div className="container flex h-14 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Code2 className="h-6 w-6 text-accent" />
+            <Code2 className="h-6 w-6 text-primary" />
             <span className="hidden font-bold sm:inline-block font-headline">
               Audy Al Vasyah
             </span>
@@ -35,7 +35,7 @@ const Header = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-accent"
+                className="transition-colors hover:text-primary"
               >
                 {link.name}
               </Link>
@@ -61,7 +61,7 @@ const Header = () => {
                 className="flex items-center"
                 onClick={() => setSheetOpen(false)}
               >
-                <Code2 className="h-6 w-6 text-accent" />
+                <Code2 className="h-6 w-6 text-primary" />
                 <span className="ml-2 font-bold font-headline">Audy Al Vasyah</span>
               </Link>
               <div className="mt-8 flex flex-col space-y-4">
@@ -69,7 +69,7 @@ const Header = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-lg transition-colors hover:text-accent"
+                    className="text-lg transition-colors hover:text-primary"
                     onClick={() => setSheetOpen(false)}
                   >
                     {link.name}

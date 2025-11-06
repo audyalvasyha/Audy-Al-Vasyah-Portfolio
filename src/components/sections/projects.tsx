@@ -145,7 +145,7 @@ const Projects = () => {
                       <ul className="space-y-3 text-muted-foreground">
                         {project.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
-                            <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                            <CheckCircle className="h-5 w-5 text-primary mr-3 mt-1 flex-shrink-0" />
                             <span>{feature}</span>
                           </li>
                         ))}

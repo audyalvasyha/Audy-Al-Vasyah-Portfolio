@@ -8,7 +8,7 @@ import { BrainCircuit, Bot, Database, Code, AppWindow, GitBranch, Cloud } from '
 const skillsData = [
   {
     category: 'Automasi & Logika Sistem',
-    icon: <Bot className="h-8 w-8 text-accent" />,
+    icon: <Bot className="h-8 w-8 text-primary" />,
     skills: [
       { name: 'Machine Learning & AI Implementation' },
       { name: 'Automation Tools Development' },
@@ -16,12 +16,12 @@ const skillsData = [
   },
   {
     category: 'Pengembangan Web',
-    icon: <Code className="h-8 w-8 text-accent" />,
+    icon: <Code className="h-8 w-8 text-primary" />,
     skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS' }],
   },
   {
     category: 'Google Cloud Platform',
-    icon: <Cloud className="h-8 w-8 text-accent" />,
+    icon: <Cloud className="h-8 w-8 text-primary" />,
     skills: [
       { name: 'Gemini API' },
       { name: 'Firebase' },
@@ -29,12 +29,12 @@ const skillsData = [
   },
   {
     category: 'Sistem Enterprise',
-    icon: <BrainCircuit className="h-8 w-8 text-accent" />,
+    icon: <BrainCircuit className="h-8 w-8 text-primary" />,
     skills: [{ name: 'SAP ERP (SD & WM Modules)' }],
   },
   {
     category: 'Google Workspace',
-    icon: <AppWindow className="h-8 w-8 text-accent" />,
+    icon: <AppWindow className="h-8 w-8 text-primary" />,
     skills: [{ name: 'Sheets, Docs, Slide, Apps Script' }],
   },
 ];
