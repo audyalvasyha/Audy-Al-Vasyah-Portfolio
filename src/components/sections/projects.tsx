@@ -52,6 +52,23 @@ const projectDetails = [
     imageHeight: 1080,
     alt: 'Halaman utama platform e-commerce SaldoIn untuk top up game dan voucher.',
   },
+  {
+    id: 'n8n-spv-reply-workflow',
+    title: 'Sistem Automation Notify SKR',
+    description:
+      'Alur kerja otomasi n8n yang menerima pesan webhook (misalnya dari WhatsApp/Wablas), mengklasifikasikan niat pesan menggunakan AI (Google Gemini), dan mengarahkan balasan berdasarkan logika "Switch" secara otomatis.',
+    features: [
+      'Menerima data secara real-time melalui node Webhook dari layanan eksternal.',
+      'Integrasi dengan Google Gemini Chat Model untuk pemrosesan bahasa alami (NLP) dan klasifikasi niat balasan.',
+      'Pemanfaatan node "AI Agent" untuk mengelola prompt dan interaksi dengan model AI secara efektif.',
+      'Logika percabangan dinamis (dynamic branching) menggunakan node "Switch" untuk memisahkan alur kerja berdasarkan output AI (misal: Setuju, Tolak, Ragu).',
+      'Mengirimkan balasan atau memicu aksi yang berbeda (via "HTTP Request") untuk setiap skenario yang telah ditentukan.',
+    ],
+    imageHint: 'n8n workflow webhook ai agent gemini switch',
+    imageWidth: 1080,
+    imageHeight: 1080,
+    alt: 'Tangkapan layar alur kerja n8n yang menunjukkan node Webhook, AI Agent dengan model Google Gemini, dan node Switch dengan tiga cabang keluaran.',
+  }
 ];
 
 const Projects = () => {

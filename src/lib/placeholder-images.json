@@ -15,6 +15,14 @@
       "imageHint": "toko top up game online",
       "width": 1080,
       "height": 1080
-    }
+    },
+    {
+      "id": "n8n-spv-reply-workflow",
+      "description": "Alur kerja otomasi n8n yang menerima pesan webhook (misalnya dari WhatsApp/Wablas), mengklasifikasikan niat pesan menggunakan AI (Google Gemini), dan mengarahkan balasan berdasarkan logika \"Switch\" secara otomatis.",
+      "imageUrl": "/images/n8n.png",
+      "imageHint": "n8n workflow webhook ai agent gemini switch",
+      "width": 1080,
+      "height": 1080
+   }
   ]
 }
