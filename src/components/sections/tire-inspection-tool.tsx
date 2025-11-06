@@ -193,7 +193,7 @@ const TireInspectionTool = () => {
                 <Button
                     onClick={handleAnalyzeClick}
                     disabled={isLoading || !file}
-                    className="w-full mt-4"
+                    className="w-full"
                 >
                     {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     {isLoading ? 'Menganalisis...' : 'Analisis Ban'}
