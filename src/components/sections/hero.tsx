@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -34,7 +35,7 @@ const Hero = () => {
         ></div>
       </div>
 
-      <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-center pt-32 pb-20 md:pt-0 md:pb-0">
+      <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-start pt-32 md:pt-0 md:justify-center">
         <div className="flex flex-col items-center text-center">
           <div className="inline-block rounded-full bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-6 self-center">
             Hi 👋, Siap Meluncurkan Proyek Digital Anda?
@@ -46,7 +47,7 @@ const Hero = () => {
 
           <div className="mt-4 text-center">
             <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-primary to-accent bg-[200%_auto] animate-gradient">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary bg-[200%_auto] animate-gradient">
                 Audy Al Vasyah
               </span>
             </h2>
