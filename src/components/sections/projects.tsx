@@ -129,9 +129,9 @@ const Projects = () => {
                   </div>
                 </Card>
 
-                <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+                <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] flex flex-col md:flex-row overflow-hidden">
                   {projectImage && (
-                    <div className="relative w-full h-64 md:h-full flex-shrink-0">
+                    <div className="relative w-full h-64 md:h-full md:w-1/2 flex-shrink-0">
                       <Image
                         src={projectImage.imageUrl}
                         alt={project.alt || project.title}
@@ -140,7 +140,7 @@ const Projects = () => {
                       />
                     </div>
                   )}
-                  <div className="flex flex-col">
+                  <div className="flex flex-col flex-1 overflow-y-auto">
                       <DialogHeader className="p-6 pb-0 flex-shrink-0">
                         <DialogTitle className="text-2xl font-headline">
                           {project.title}
@@ -149,7 +149,7 @@ const Projects = () => {
                           {project.description}
                         </DialogDescription>
                       </DialogHeader>
-                      <div className="p-6 overflow-y-auto">
+                      <div className="p-6">
                         <h4 className="font-semibold text-foreground mb-3">
                           Fitur Utama:
                         </h4>
