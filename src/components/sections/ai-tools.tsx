@@ -5,28 +5,27 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EfficiencyTool from './efficiency-tool';
 import DeliverySchedulingTool from './delivery-scheduling-tool';
 import TireInspectionTool from './tire-inspection-tool';
-import { GaugeCircle, CalendarClock, ScanLine, Lightbulb, Sparkles, ScanSearch } from 'lucide-react';
+import { GaugeCircle, CalendarClock, ScanLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const tools = [
   {
     value: 'tire-inspection',
     title: 'Tire Inspection',
     description: 'Analyze tire condition with AI.',
-    icon: <ScanLine className="w-8 h-8 mb-2 text-primary" />,
+    icon: <ScanLine className="w-8 h-8 mb-4 text-primary" />,
   },
   {
     value: 'efficiency-predictor',
     title: 'Efficiency Predictor',
     description: 'Forecast potential time savings.',
-    icon: <GaugeCircle className="w-8 h-8 mb-2 text-primary" />,
+    icon: <GaugeCircle className="w-8 h-8 mb-4 text-primary" />,
   },
   {
     value: 'delivery-scheduler',
     title: 'Delivery Scheduling',
     description: 'Learn about the ML-powered system.',
-    icon: <CalendarClock className="w-8 h-8 mb-2 text-primary" />,
+    icon: <CalendarClock className="w-8 h-8 mb-4 text-primary" />,
   },
 ];
 
@@ -63,48 +62,36 @@ const AiTools = () => {
           </div>
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
-          <Tabs defaultValue="tire-inspection" className="w-full">
-            <ScrollArea className="w-full lg:overflow-visible">
-              <TabsList className="inline-flex h-auto w-full p-1 bg-transparent justify-start lg:grid lg:grid-cols-3 lg:gap-6 lg:p-0">
+          <Tabs defaultValue="tire-inspection" className="w-full lg:grid lg:grid-cols-3 lg:gap-8 items-start">
+              <TabsList className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 h-auto w-full p-0 bg-transparent gap-4 mb-8 lg:mb-0">
                 {tools.map((tool) => (
                   <TabsTrigger
                     key={tool.value}
                     value={tool.value}
                     className={cn(
-                      'flex-1 p-2 justify-center items-center text-center',
-                      'lg:relative lg:h-auto lg:p-6 lg:rounded-lg lg:border-2 lg:border-transparent lg:bg-card lg:text-card-foreground lg:shadow-md lg:transition-all lg:whitespace-normal',
-                      'lg:data-[state=active]:border-primary lg:data-[state=active]:shadow-lg lg:data-[state=active]:shadow-primary/20',
-                      'lg:hover:shadow-lg lg:hover:border-accent',
-                      'data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:shadow-none rounded-md',
-                      'lg:data-[state=active]:bg-card',
-                      'lg:data-[state=active]:border-b-4'
+                      'h-auto p-6 rounded-lg border-2 border-transparent bg-card text-card-foreground shadow-md transition-all whitespace-normal',
+                      'data-[state=active]:border-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20',
+                      'hover:shadow-lg hover:border-accent',
+                      'flex flex-col items-center text-center'
                     )}
                   >
-                    {/* Desktop View */}
-                    <div className="hidden lg:flex lg:flex-col lg:items-center">
-                      {tool.icon}
-                      <p className="text-base font-semibold">{tool.title}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{tool.description}</p>
-                    </div>
-                    {/* Mobile View */}
-                    <div className="lg:hidden flex flex-col items-center text-center text-xs p-1">
-                      {React.cloneElement(tool.icon, { className: "w-5 h-5 mb-1 text-primary" })}
-                      <p className="font-semibold">{tool.title}</p>
-                    </div>
+                    {tool.icon}
+                    <p className="text-base font-semibold">{tool.title}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{tool.description}</p>
                   </TabsTrigger>
                 ))}
               </TabsList>
-              <ScrollBar orientation="horizontal" />
-            </ScrollArea>
-            <TabsContent value="efficiency-predictor">
-              <EfficiencyTool />
-            </TabsContent>
-            <TabsContent value="delivery-scheduler">
-              <DeliverySchedulingTool />
-            </TabsContent>
-            <TabsContent value="tire-inspection">
-              <TireInspectionTool />
-            </TabsContent>
+            <div className="lg:col-span-2">
+              <TabsContent value="efficiency-predictor">
+                <EfficiencyTool />
+              </TabsContent>
+              <TabsContent value="delivery-scheduler">
+                <DeliverySchedulingTool />
+              </TabsContent>
+              <TabsContent value="tire-inspection">
+                <TireInspectionTool />
+              </TabsContent>
+            </div>
           </Tabs>
         </div>
       </div>
