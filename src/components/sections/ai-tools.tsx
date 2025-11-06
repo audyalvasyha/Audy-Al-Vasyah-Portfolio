@@ -2,10 +2,9 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import EfficiencyTool from './efficiency-tool';
 import DeliverySchedulingTool from './delivery-scheduling-tool';
 import TireInspectionTool from './tire-inspection-tool';
-import { GaugeCircle, CalendarClock, ScanLine } from 'lucide-react';
+import { CalendarClock, ScanLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '../ui/scroll-area';
 
@@ -15,12 +14,6 @@ const tools = [
     title: 'Tire Inspection',
     icon: <ScanLine className="w-5 h-5" />,
     component: <TireInspectionTool />,
-  },
-  {
-    value: 'efficiency-predictor',
-    title: 'Efficiency Predictor',
-    icon: <GaugeCircle className="w-5 h-5" />,
-    component: <EfficiencyTool />,
   },
   {
     value: 'delivery-scheduler',
