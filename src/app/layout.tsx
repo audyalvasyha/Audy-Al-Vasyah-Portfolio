@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
-import { Varela_Round } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
-const varelaRound = Varela_Round({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400'],
   display: 'swap',
-  variable: '--font-varela-round',
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -37,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${varelaRound.variable} dark`}
+      className={`${inter.variable} dark`}
     >
       <body className="font-body antialiased">
         {children}
