@@ -84,7 +84,7 @@ const Projects = () => {
             );
             return (
               <Dialog key={project.id}>
-                <Card className="relative group overflow-hidden rounded-lg shadow-lg border-0 h-[500px] flex flex-col">
+                <Card className="relative group overflow-hidden rounded-lg shadow-lg h-[500px] flex flex-col bg-card border-border">
                   {projectImage && (
                     <div className="relative w-full h-64 flex-shrink-0">
                       <Image
@@ -98,17 +98,17 @@ const Projects = () => {
                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                     </div>
                   )}
-                  <div className="p-6 flex flex-col justify-between flex-grow bg-card">
+                  <div className="p-6 flex flex-col justify-between flex-grow">
                     <div>
                       <CardTitle className="font-headline text-xl text-foreground">
                         {project.title}
                       </CardTitle>
-                      <CardDescription className="mt-2 text-sm text-muted-foreground line-clamp-3">
+                      <CardDescription className="mt-2 text-sm text-slate-400 line-clamp-3">
                         {project.description}
                       </CardDescription>
                     </div>
                     <DialogTrigger asChild>
-                      <Button variant="secondary" className="gap-2 mt-4 self-start">
+                      <Button variant="outline" className="gap-2 mt-4 self-start">
                         Lihat Detail
                         <ArrowRight />
                       </Button>
@@ -116,7 +116,7 @@ const Projects = () => {
                   </div>
                 </Card>
 
-                <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] flex flex-col md:flex-row overflow-hidden">
+                <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] flex md:flex-row overflow-hidden">
                   <div className="relative w-full md:w-1/2 flex-shrink-0 h-64 md:h-full">
                     {projectImage && (
                       <Image

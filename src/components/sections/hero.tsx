@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import Typewriter from '@/components/ui/typewriter';
+import { Briefcase, Calendar } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -14,24 +14,45 @@ const Hero = () => {
         <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_top_left,hsl(var(--background)/0.1)_0%,transparent_50%)] animate-pulse" style={{ animationDelay: '4s', animationDuration: '14s', animationIterationCount: 'infinite' }}></div>
       </div>
 
-      <div className="mx-auto max-w-3xl text-center z-20 px-6">
-        <h1 className="text-4xl font-headline font-semibold tracking-tight text-foreground sm:text-6xl">Audy Al Vasyah</h1>
-        {/* Adjust min-h to be appropriate for the content */}
-        <Typewriter 
-          text="Seorang praktisi IT dengan rekam jejak lebih dari 3 tahun dalam meningkatkan efisiensi operasional melalui implementasi sistem digital dan automasi proses."
-          className="mt-8 text-lg font-medium text-pretty text-slate-200 sm:text-xl/8 min-h-[96px] sm:min-h-[64px]"
-          speed={20}
-          triggerOnView={true}
-        />
-        <div className="mt-10 flex items-center justify-center gap-x-6">
-          <Button asChild size="lg">
-            <Link href="#projects">Lihat Proyek</Link>
-          </Button>
-          <Button asChild variant="link" className="text-foreground">
-            <Link href="#contact">
-              Hubungi Saya <span aria-hidden="true" className="ml-1">→</span>
-            </Link>
-          </Button>
+      <div className="w-full max-w-5xl z-20 px-6">
+        <div className="flex flex-col items-center text-center">
+            <div className="inline-block rounded-full bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-6 self-center">
+              Hi 👋, Siap Meluncurkan Proyek Digital Anda?
+            </div>
+
+            <h1 className="text-4xl font-headline font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl max-w-3xl">
+              Solusi Digital & Automasi
+            </h1>
+            
+            <div className="mt-4 text-center">
+              <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-primary to-accent bg-[200%_auto] animate-gradient">
+                  Audy Al Vasyah
+                </span>
+              </h2>
+              <p className="text-xl font-medium text-muted-foreground mt-2">
+                Spesialis IT & Automasi Proses
+              </p>
+            </div>
+
+            <p className="mt-6 max-w-3xl text-lg text-slate-300 sm:text-xl">
+              Dari Proses Manual ke Efisiensi Digital – 3+ Tahun Pengalaman dalam Transformasi Proses Bisnis.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold">
+                <Link href="#contact" className="flex items-center gap-2">
+                  <Calendar className="h-5 w-5" />
+                  Jadwalkan Konsultasi
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="#projects" className="flex items-center gap-2">
+                   <Briefcase className="h-5 w-5" />
+                  Lihat Proyek Saya
+                </Link>
+              </Button>
+            </div>
         </div>
       </div>
     </section>

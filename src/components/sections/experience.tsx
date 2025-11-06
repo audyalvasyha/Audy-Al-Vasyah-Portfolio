@@ -12,6 +12,8 @@ const experienceData = [
     achievements: [
       'Merancang dan mengimplementasikan sistem penjadwalan pengiriman berbasis Machine Learning & AI, menghasilkan optimasi rute dan efisiensi waktu sebesar 44.21%',
       'Memimpin proyek digitalisasi dan automasi alur kerja tim transportasi.',
+      'Mengembangkan dasbor "Mitra Armada AI" untuk real-time monitoring status inspeksi armada.',
+      'Merancang UI/UX dan logika izin terpisah untuk "Deliveryman" dan "Monitor Kordel" pada aplikasi internal.'
     ],
   },
   {
@@ -22,6 +24,16 @@ const experienceData = [
       'Mengembangkan dan memanfaatkan Automation Tools (Auto Clicker) untuk mempercepat proses Post Good Issue, mengurangi potensi human error sebesar 90%',
     ],
   },
+  {
+    role: 'Asisten Site Enginner',
+    company: 'Dinas Perumahan dan Permukiman Kota Medan',
+    period: '2019 - 2019',
+    achievements: [
+      'Berhasil mengawasi implementasi K3 di lapangan untuk menciptakan lingkungan kerja yang aman.',
+      'Berperan sebagai penghubung teknis, mengelola koordinasi harian antara Site Engineer, subkontraktor, dan logistik untuk menjaga progres tetap sesuai jadwal.',
+      'Proaktif menyelesaikan tantangan teknis di lapangan guna memastikan kesesuaian spesifikasi dan kualitas konstruksi.'
+    ],
+  },
 ];
 
 const Experience = () => {
@@ -30,7 +42,7 @@ const Experience = () => {
     return text.split(regex).map((part, index) => {
       if (regex.test(part)) {
         return (
-          <span key={index} className="text-primary font-bold">
+          <span key={index} className="text-accent font-bold">
             {part}
           </span>
         );
@@ -66,7 +78,7 @@ const Experience = () => {
                   index % 2 !== 0 && 'md:flex-row-reverse'
                 )}
               >
-                <div className="z-10 absolute left-6 md:left-1/2 top-1 w-4 h-4 bg-primary rounded-full -translate-x-1/2" />
+                <div className="z-10 absolute left-6 md:left-1/2 top-1 w-4 h-4 bg-accent rounded-full -translate-x-1/2" />
                 
                 <div
                   className={cn(

@@ -65,21 +65,21 @@ const Contact = () => {
             </div>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
                 <div>
                   <h3 className="font-semibold">Phone</h3>
-                  <a href="tel:+6289616035368" className="text-muted-foreground hover:text-primary transition-colors">+62 896-1603-5368</a>
+                  <a href="tel:+6289616035368" className="text-muted-foreground hover:text-accent transition-colors">+62 896-1603-5368</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <a href="mailto:audialfasha@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">audialfasha@gmail.com</a>
+                  <a href="mailto:audialfasha@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">audialfasha@gmail.com</a>
                 </div>
               </div>
                <div className="flex items-start gap-4">
-                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
                 <div>
                   <h3 className="font-semibold">Address</h3>
                   <p className="text-muted-foreground">Bagan Batu, Riau - Indonesia</p>
