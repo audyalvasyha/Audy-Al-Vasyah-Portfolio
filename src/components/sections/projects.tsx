@@ -65,19 +65,6 @@ const Projects = () => {
         <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]"></div>
       </div>
       
-      {/* Overlay Efek Vintage */}
-      <div className="absolute inset-0 w-full h-full bg-transparent pointer-events-none z-0">
-        <div className="absolute inset-0 w-full h-full bg-[repeating-linear-gradient(to_bottom,transparent_0,hsl(var(--background)/0.02)_1px,transparent_2px)]"></div>
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage:
-              'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'hsl(222, 47%, 11%)\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-            opacity: 0.3,
-          }}
-        />
-      </div>
-
       <div className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -130,18 +117,19 @@ const Projects = () => {
                 </Card>
 
                 <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] flex flex-col md:flex-row overflow-hidden">
-                  {projectImage && (
-                    <div className="relative w-full h-64 md:h-full md:w-1/2 flex-shrink-0">
+                  <div className="relative w-full md:w-1/2 flex-shrink-0 h-64 md:h-full">
+                    {projectImage && (
                       <Image
                         src={projectImage.imageUrl}
                         alt={project.alt || project.title}
                         fill
                         className="object-cover"
                       />
-                    </div>
-                  )}
-                  <div className="flex flex-col flex-1 overflow-y-auto">
-                      <DialogHeader className="p-6 pb-0 flex-shrink-0">
+                    )}
+                  </div>
+                  <div className="flex flex-col flex-1 overflow-hidden">
+                    <div className="p-6 pb-0 flex-shrink-0">
+                      <DialogHeader>
                         <DialogTitle className="text-2xl font-headline">
                           {project.title}
                         </DialogTitle>
@@ -149,19 +137,20 @@ const Projects = () => {
                           {project.description}
                         </DialogDescription>
                       </DialogHeader>
-                      <div className="p-6">
-                        <h4 className="font-semibold text-foreground mb-3">
-                          Fitur Utama:
-                        </h4>
-                        <ul className="space-y-3 text-muted-foreground">
-                          {project.features.map((feature, i) => (
-                            <li key={i} className="flex items-start">
-                              <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    </div>
+                    <div className="p-6 overflow-y-auto">
+                      <h4 className="font-semibold text-foreground mb-3">
+                        Fitur Utama:
+                      </h4>
+                      <ul className="space-y-3 text-muted-foreground">
+                        {project.features.map((feature, i) => (
+                          <li key={i} className="flex items-start">
+                            <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </DialogContent>
               </Dialog>
