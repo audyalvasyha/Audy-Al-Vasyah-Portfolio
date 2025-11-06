@@ -6,7 +6,7 @@ import { Briefcase, Calendar } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative isolate bg-transparent scroll-mt-20 h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative isolate bg-transparent scroll-mt-20 min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* Subtle Background Animation */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_75%)] animate-pulse" style={{ animationDuration: '8s', animationIterationCount: 'infinite' }}></div>
