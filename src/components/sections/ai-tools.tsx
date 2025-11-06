@@ -7,6 +7,7 @@ import DeliverySchedulingTool from './delivery-scheduling-tool';
 import TireInspectionTool from './tire-inspection-tool';
 import { GaugeCircle, CalendarClock, ScanLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ScrollArea } from '../ui/scroll-area';
 
 const tools = [
   {
@@ -37,19 +38,6 @@ const AiTools = () => {
         <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]"></div>
       </div>
 
-      {/* Overlay Efek Vintage */}
-      <div className="absolute inset-0 w-full h-full bg-transparent pointer-events-none z-0">
-        <div className="absolute inset-0 w-full h-full bg-[repeating-linear-gradient(to_bottom,transparent_0,hsl(var(--background)/0.02)_1px,transparent_2px)]"></div>
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage:
-              'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'hsl(222, 47%, 11%)\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-            opacity: 0.3,
-          }}
-        />
-      </div>
-
       <div className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -63,21 +51,23 @@ const AiTools = () => {
         </div>
         <div className="mt-12 max-w-6xl mx-auto">
           <Tabs defaultValue="tire-inspection" className="w-full">
-            <TabsList className="flex w-full mx-auto max-w-md h-auto p-1.5 bg-muted/50 rounded-lg">
-              {tools.map((tool) => (
-                <TabsTrigger
-                  key={tool.value}
-                  value={tool.value}
-                  className={cn(
-                    'flex-1 flex items-center justify-center gap-2 h-auto p-2.5 rounded-md transition-all whitespace-nowrap text-muted-foreground',
-                    'data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-md'
-                  )}
-                >
-                  {tool.icon}
-                  <span className="text-sm font-medium">{tool.title}</span>
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            <ScrollArea className="w-full pb-4">
+              <TabsList className="flex w-full sm:w-auto sm:mx-auto h-auto p-1.5 bg-muted/50 rounded-lg">
+                {tools.map((tool) => (
+                  <TabsTrigger
+                    key={tool.value}
+                    value={tool.value}
+                    className={cn(
+                      'flex-1 flex items-center justify-center gap-2 h-auto p-2.5 rounded-md transition-all whitespace-nowrap text-muted-foreground',
+                      'data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-md'
+                    )}
+                  >
+                    {tool.icon}
+                    <span className="text-sm font-medium">{tool.title}</span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </ScrollArea>
             <div className="mt-6">
               {tools.map(tool => (
                 <TabsContent key={tool.value} value={tool.value}>
