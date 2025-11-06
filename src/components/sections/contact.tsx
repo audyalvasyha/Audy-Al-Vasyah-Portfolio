@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { useFormStatus } from 'react-dom';
 import { useActionState, useEffect, useRef } from 'react';
 import { sendEmail, FormState } from '@/app/actions';
-import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram, Github } from 'lucide-react';
 import Link from 'next/link';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
@@ -23,6 +23,11 @@ const socialLinks = [
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/audy-al-vasyah-8b6135206/',
     icon: <Linkedin className="h-6 w-6" />,
+  },
+  {
+    name: 'GitHub',
+    href: 'https://github.com/audyalvasyah',
+    icon: <Github className="h-6 w-6" />,
   },
   {
     name: 'Facebook',
