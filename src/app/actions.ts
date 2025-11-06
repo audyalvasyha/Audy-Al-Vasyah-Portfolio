@@ -1,5 +1,6 @@
 'use server';
 
+import 'dotenv/config';
 import { rtdb } from '@/lib/firebase';
 import { ref, runTransaction } from 'firebase/database';
 import { Resend } from 'resend';
