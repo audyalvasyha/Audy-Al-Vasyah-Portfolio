@@ -129,14 +129,14 @@ const Projects = () => {
                   </div>
                 </Card>
 
-                <DialogContent className="max-w-3xl p-0 grid grid-rows-[auto_1fr] max-h-[90vh] overflow-hidden">
+                <DialogContent className="max-w-4xl p-0 max-h-[90vh] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
                   {projectImage && (
-                    <div className="relative w-full h-64 md:h-80 flex-shrink-0">
+                    <div className="relative w-full h-64 md:h-full flex-shrink-0">
                       <Image
                         src={projectImage.imageUrl}
                         alt={project.alt || project.title}
                         fill
-                        className="object-cover rounded-t-lg"
+                        className="object-cover rounded-l-lg"
                       />
                     </div>
                   )}
