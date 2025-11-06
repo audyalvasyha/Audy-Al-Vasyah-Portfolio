@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Varela_Round } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import ClientLayout from '@/components/layout/client-layout';
 
 const varelaRound = Varela_Round({
   subsets: ['latin'],
@@ -41,9 +40,7 @@ export default function RootLayout({
       className={`${varelaRound.variable} dark`}
     >
       <body className="font-body antialiased">
-        <ClientLayout>
-          {children}
-        </ClientLayout>
+        {children}
         <Toaster />
       </body>
     </html>
