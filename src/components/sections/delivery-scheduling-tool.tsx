@@ -74,7 +74,7 @@ const DeliverySchedulingTool = () => {
                     />
                     </CardContent>
                     <CardFooter className="p-0 md:p-6 md:pt-0">
-                    <Button type="submit" disabled={isLoading}>
+                    <Button type="submit" disabled={isLoading} className="mt-4">
                         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                         {isLoading ? 'Menanyakan...' : 'Tanya AI'}
                     </Button>
