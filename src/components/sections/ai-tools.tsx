@@ -87,7 +87,7 @@ const AiTools = () => {
             <div className="mt-6">
               {tools.map(tool => (
                 <TabsContent key={tool.value} value={tool.value}>
-                    <Card className="bg-card/50 backdrop-blur-sm">
+                    <Card className="bg-gray-800/50 backdrop-blur-sm border border-slate-700">
                         <CardContent className="p-6 md:p-8">
                              {tool.component}
                         </CardContent>

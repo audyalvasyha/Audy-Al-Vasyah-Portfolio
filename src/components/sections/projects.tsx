@@ -1,67 +1,14 @@
 'use client';
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { projectDetails } from '@/lib/project-data';
 import ProjectCard from './project-card';
-
-// Static project details to avoid slow AI calls on page load
-const projectDetails = [
-  {
-    id: 'ai-tire-inspection',
-    title: 'Aplikasi Inspeksi Ban Berbasis AI',
-    description:
-      'Menyederhanakan inspeksi ban menggunakan teknologi AI untuk meningkatkan keamanan dan efisiensi armada, menampilkan dasbor supervisor untuk pemantauan waktu nyata.',
-    features: [
-      'Perampingan inspeksi ban dengan AI untuk meningkatkan keamanan & efisiensi armada.',
-      'Dasbor supervisor untuk pemantauan status inspeksi waktu nyata.',
-    ],
-    imageHint: 'Gambar aplikasi inspeksi ban berbasis AI',
-    imageWidth: 1280,
-    imageHeight: 832,
-    alt: 'Tampilan antarmuka aplikasi inspeksi ban berbasis AI yang menampilkan dasbor analitik.',
-  },
-  {
-    id: 'saldoin-topup',
-    title: 'SaldoIn - Top Up Game & Voucher E-commerce',
-    description:
-      'Platform e-commerce untuk top-up game dan voucher yang mengutamakan kecepatan transaksi, keamanan data, dan pengalaman pengguna yang optimal dengan arsitektur modern.',
-    features: [
-      'Implementasi sistem pembayaran yang terintegrasi untuk berbagai metode (misalnya QRIS, Virtual Account).',
-      'Manajemen inventaris digital (voucher dan produk game) secara real-time.',
-      'Dirancang dengan keamanan data pengguna dan transaksi yang solid, memanfaatkan keahlian di Google Cloud Platform (GCP) dan Firebase.',
-      'Antarmuka pengguna yang responsif, modern, dan sederhana untuk navigasi produk yang cepat.',
-    ],
-    imageHint: 'toko top up game online',
-    imageWidth: 1080,
-    imageHeight: 1080,
-    alt: 'Halaman utama platform e-commerce SaldoIn untuk top up game dan voucher.',
-  },
-  {
-    id: 'n8n-spv-reply-workflow',
-    title: 'Sistem Automation Notify SKR',
-    description:
-      'Alur kerja otomasi n8n yang menerima pesan webhook (misalnya dari WhatsApp/Wablas), mengklasifikasikan niat pesan menggunakan AI (Google Gemini), dan mengarahkan balasan berdasarkan logika "Switch" secara otomatis.',
-    features: [
-      'Menerima data secara real-time melalui node Webhook dari layanan eksternal.',
-      'Integrasi dengan Google Gemini Chat Model untuk pemrosesan bahasa alami (NLP) dan klasifikasi niat balasan.',
-      'Pemanfaatan node "AI Agent" untuk mengelola prompt dan interaksi dengan model AI secara efektif.',
-      'Logika percabangan dinamis (dynamic branching) menggunakan node "Switch" untuk memisahkan alur kerja berdasarkan output AI (misal: Setuju, Tolak, Ragu).',
-      'Mengirimkan balasan atau memicu aksi yang berbeda (via "HTTP Request") untuk setiap skenario yang telah ditentukan.',
-    ],
-    imageHint: 'n8n workflow webhook ai agent gemini switch',
-    imageWidth: 1080,
-    imageHeight: 1080,
-    alt: 'Tangkapan layar alur kerja n8n yang menunjukkan node Webhook, AI Agent dengan model Google Gemini, dan node Switch dengan tiga cabang keluaran.',
-  }
-];
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const Projects = () => {
+  const featuredProjects = projectDetails.slice(0, 3);
+
   return (
     <section
       id="projects"
@@ -85,9 +32,16 @@ const Projects = () => {
           </div>
         </div>
         <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projectDetails.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
+        </div>
+        <div className="mt-12 text-center">
+            <Button asChild size="lg">
+                <Link href="/projects" className="flex items-center gap-2">
+                    Lihat Semua Proyek <ArrowRight className="h-5 w-5" />
+                </Link>
+            </Button>
         </div>
       </div>
     </section>

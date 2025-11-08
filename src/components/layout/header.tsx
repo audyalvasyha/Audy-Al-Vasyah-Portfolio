@@ -35,7 +35,7 @@ const Header = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-accent"
               >
                 {link.name}
               </Link>
@@ -69,7 +69,7 @@ const Header = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-lg transition-colors hover:text-primary"
+                    className="text-lg transition-colors hover:text-accent"
                     onClick={() => setSheetOpen(false)}
                   >
                     {link.name}

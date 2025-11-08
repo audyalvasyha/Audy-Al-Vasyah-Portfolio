@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -154,7 +153,7 @@ const Contact = () => {
             animate={controls}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
           >
-            <Card className="bg-card/50 backdrop-blur-sm">
+            <Card className="bg-gray-800/50 backdrop-blur-sm border border-slate-700">
               <CardHeader>
                 <CardTitle>Get In Touch</CardTitle>
               </CardHeader>
