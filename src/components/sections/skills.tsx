@@ -87,7 +87,7 @@ const SkillCard = ({ category, index }: { category: typeof skillsData[0], index:
           animate={controls}
           transition={{ type: 'spring', stiffness: 100, damping: 10, delay: index * 0.1 }}
         >
-            <Card className="flex flex-col h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
+            <Card className="flex flex-col h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 bg-card/50 backdrop-blur-sm">
               <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-4">
                 {category.icon}
                 <CardTitle className="font-headline text-lg text-foreground">

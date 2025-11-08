@@ -109,7 +109,7 @@ const Contact = () => {
               </TooltipProvider>
             </div>
           </div>
-          <Card>
+          <Card className="bg-card/50 backdrop-blur-sm">
             <CardHeader>
               <CardTitle>Get In Touch</CardTitle>
             </CardHeader>

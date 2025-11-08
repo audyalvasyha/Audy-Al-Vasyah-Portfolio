@@ -65,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
     >
       <Dialog>
-        <Card className="relative group overflow-hidden rounded-lg shadow-lg h-[500px] flex flex-col bg-card border-border">
+        <Card className="relative group overflow-hidden rounded-lg shadow-lg h-[500px] flex flex-col bg-card/50 backdrop-blur-sm border-border">
           {projectImage && (
             <div className="relative w-full h-64 flex-shrink-0">
               <Image
@@ -97,7 +97,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           </div>
         </Card>
 
-        <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] flex md:flex-row overflow-hidden">
+        <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] flex md:flex-row overflow-hidden bg-card/70 backdrop-blur-md">
           <div className="relative w-full md:w-1/2 flex-shrink-0 h-64 md:h-full">
             {projectImage && (
               <Image
