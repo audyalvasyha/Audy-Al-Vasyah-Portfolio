@@ -41,6 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} dark`}
     >
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className="font-body antialiased">
         {children}
         <Toaster />
