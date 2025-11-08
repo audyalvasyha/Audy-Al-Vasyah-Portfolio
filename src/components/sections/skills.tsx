@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Bot, Database, Code, AppWindow, GitBranch, Cloud } from 'lucide-react';
 
@@ -38,6 +39,10 @@ const skillsData = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Skills = () => {
   return (
@@ -54,8 +59,35 @@ const Skills = () => {
           </div>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          {skillsData.map((category) => (
-            <Card key={category.category} className="flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
+          {skillsData.map((category, index) => (
+            <SkillCard key={category.category} category={category} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SkillCard = ({ category, index }: { category: typeof skillsData[0], index: number }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.3 });
+    const controls = useAnimation();
+  
+    useEffect(() => {
+      if (isInView) {
+        controls.start('visible');
+      }
+    }, [isInView, controls]);
+
+    return (
+        <motion.div
+          ref={ref}
+          variants={cardVariants}
+          initial="hidden"
+          animate={controls}
+          transition={{ type: 'spring', stiffness: 100, damping: 10, delay: index * 0.1 }}
+        >
+            <Card className="flex flex-col h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
               <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-4">
                 {category.icon}
                 <CardTitle className="font-headline text-lg text-foreground">
@@ -70,11 +102,8 @@ const Skills = () => {
                 ))}
               </CardContent>
             </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+        </motion.div>
+    )
+}
 
 export default Skills;
