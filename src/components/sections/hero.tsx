@@ -12,7 +12,7 @@ const Hero = () => {
       id="home"
       className="relative isolate bg-transparent scroll-mt-20 overflow-hidden pt-16 pb-24 md:pt-20 md:pb-32"
     >
-      <div className="absolute inset-0 z-0 h-full w-full bg-transparent">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-transparent">
         <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         <div className="absolute inset-0 h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,hsl(var(--background)/0.1),hsl(var(--background)))]"></div>
         <div 
@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-0"></div>
 
-      <div className="container z-20 px-6 flex flex-col justify-center">
+      <div className="container relative z-20 px-6 flex flex-col justify-center">
         <motion.div 
           className="flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 20 }}
