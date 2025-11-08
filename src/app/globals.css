@@ -35,15 +35,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  .animate-gradient {
-    background-size: 200% auto;
-    animation: gradient 5s linear infinite;
-  }
-  @keyframes gradient {
-    to {
-      background-position: 200% center;
-    }
-  }
-}

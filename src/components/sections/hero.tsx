@@ -47,7 +47,7 @@ const Hero = () => {
 
           <div className="mt-4 text-center">
             <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary bg-[200%_auto] animate-gradient">
+              <span className="text-primary">
                 Audy Al Vasyah
               </span>
             </h2>
