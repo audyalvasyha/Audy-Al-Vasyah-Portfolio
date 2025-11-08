@@ -62,6 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         initial="hidden"
         animate={controls}
         transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+        className="flex"
     >
       <Dialog>
         <Card className="relative group rounded-lg shadow-lg flex flex-col bg-card/50 backdrop-blur-sm border-border overflow-hidden">

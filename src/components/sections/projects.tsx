@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 const Projects = () => {
-  const featuredProjects = projectDetails.slice(0, 3);
+  const featuredProjects = projectDetails.slice(0, 2);
 
   return (
     <section
