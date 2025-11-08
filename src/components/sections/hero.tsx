@@ -63,7 +63,7 @@ const Hero = () => {
 
           <div className="mt-4 text-center">
             <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
-              <span className="bg-gradient-to-r from-amber-400 to-primary text-transparent bg-clip-text animate-gradient bg-[length:200%_auto]">
+              <span className="bg-gradient-to-r from-accent to-foreground text-transparent bg-clip-text animate-gradient bg-[length:200%_auto]">
                 Audy Al Vasyah
               </span>
             </h2>
@@ -81,7 +81,6 @@ const Hero = () => {
             <Button
               asChild
               size="lg"
-              className="font-bold"
             >
               <Link
                 href="#contact"
