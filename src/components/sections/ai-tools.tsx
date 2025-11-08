@@ -1,5 +1,6 @@
 'use client';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import DeliverySchedulingTool from './delivery-scheduling-tool';
@@ -24,6 +25,21 @@ const tools = [
 ];
 
 const AiTools = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section id="tool" className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
       {/* Darkening Gradient Overlay */}
@@ -42,7 +58,14 @@ const AiTools = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 max-w-6xl mx-auto">
+        <motion.div 
+            ref={ref}
+            variants={cardVariants}
+            initial="hidden"
+            animate={controls}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="mt-12 max-w-6xl mx-auto"
+        >
           <Tabs defaultValue="tire-inspection" className="w-full">
             <ScrollArea className="w-full pb-4">
               <TabsList className="flex w-full sm:w-auto sm:mx-auto h-auto p-1.5 bg-muted/50 rounded-lg">
@@ -73,7 +96,7 @@ const AiTools = () => {
               ))}
             </div>
           </Tabs>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
