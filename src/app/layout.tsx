@@ -27,7 +27,8 @@ export const metadata: Metadata = {
     'Google Cloud',
   ],
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 };
 
@@ -41,9 +42,6 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} dark`}
     >
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
       <body className="font-body antialiased">
         {children}
         <Toaster />

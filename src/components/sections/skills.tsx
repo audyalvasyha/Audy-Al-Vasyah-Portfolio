@@ -89,7 +89,7 @@ const SkillCard = ({ category, index }: { category: typeof skillsData[0], index:
           transition={{ type: 'spring', stiffness: 100, damping: 10, delay: index * 0.1 }}
           className="group h-full"
         >
-            <Card className="flex flex-col h-full bg-gray-800/50 backdrop-blur-sm border border-slate-700 transition-all duration-300 group-hover:scale-105 group-hover:border-accent group-hover:shadow-2xl group-hover:shadow-accent/10 [clip-path:polygon(0_20px,20px_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%)]">
+            <Card className="flex flex-col h-full bg-gray-800/50 backdrop-blur-sm border border-slate-700 transition-all duration-300 group-hover:scale-105 group-hover:border-accent group-hover:shadow-2xl group-hover:shadow-accent/10">
               <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
                 <div className="transition-transform duration-300 group-hover:scale-110">
                   {category.icon}
@@ -101,7 +101,11 @@ const SkillCard = ({ category, index }: { category: typeof skillsData[0], index:
               <CardContent className="flex-grow pt-2">
                 <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill) => (
-                      <Badge key={skill.name} variant="secondary" className="border-transparent font-normal bg-slate-700/50 text-slate-300">
+                      <Badge
+                        key={skill.name}
+                        variant="outline"
+                        className="font-normal border-accent/30 bg-accent/10 text-accent"
+                      >
                         {skill.name}
                       </Badge>
                     ))}
