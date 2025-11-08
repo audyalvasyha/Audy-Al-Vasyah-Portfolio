@@ -1,50 +1,19 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Briefcase, MessageSquare } from 'lucide-react';
-import WAVES from 'vanta/dist/vanta.waves.min';
-import * as THREE from 'three';
 
 
 const Hero = () => {
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
-  const vantaRef = useRef(null);
-
-  useEffect(() => {
-    if (!vantaEffect) {
-        setVantaEffect(WAVES({
-            el: vantaRef.current,
-            THREE: THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x152238,
-            shininess: 30.00,
-            waveHeight: 15.00,
-            waveSpeed: 0.75,
-            zoom: 0.75
-        }))
-    }
-    return () => {
-        if (vantaEffect) vantaEffect.destroy()
-    }
-}, [vantaEffect]);
-
 
   return (
     <section
       id="home"
-      ref={vantaRef}
       className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[700px] md:min-h-[800px] flex items-center overflow-hidden"
     >
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-background/50 to-background" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background" />
 
       <div className="container z-20 px-6 flex flex-col justify-center pt-24 md:pt-0">
         <motion.div 

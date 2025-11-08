@@ -50,7 +50,7 @@ const DeliverySchedulingTool = () => {
         </div>
         <div className="grid gap-8 md:grid-cols-2">
             <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
-                <CardHeader className="p-0 md:p-6">
+                <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Tanya Tentang Sistem</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
                     Ajukan pertanyaan kepada AI tentang Sistem Penjadwalan Pengiriman Berbasis ML.
@@ -58,7 +58,7 @@ const DeliverySchedulingTool = () => {
                 </CardHeader>
                 <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <CardContent className="p-0 md:p-6 md:pt-0">
+                    <CardContent>
                     <FormField
                         control={form.control}
                         name="query"
@@ -73,7 +73,7 @@ const DeliverySchedulingTool = () => {
                         )}
                     />
                     </CardContent>
-                    <CardFooter className="p-0 mt-4 md:p-6 md:pt-0 md:mt-0">
+                    <CardFooter>
                     <Button type="submit" disabled={isLoading} className="w-full">
                         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                         {isLoading ? 'Menanyakan...' : 'Tanya AI'}
@@ -83,11 +83,11 @@ const DeliverySchedulingTool = () => {
                 </Form>
             </Card>
             <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
-                <CardHeader className="p-0 md:p-6">
+                <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Respons AI</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">Penjelasan sistem dari AI.</CardDescription>
                 </CardHeader>
-                <CardContent className="p-0 md:p-6 md:pt-0">
+                <CardContent>
                 {isLoading && (
                     <div className="flex justify-center items-center min-h-48">
                     <Loader2 className="h-8 w-8 animate-spin text-primary" />

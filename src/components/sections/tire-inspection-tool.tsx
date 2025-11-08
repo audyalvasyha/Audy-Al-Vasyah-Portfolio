@@ -144,13 +144,13 @@ const TireInspectionTool = () => {
         </div>
         <div className="grid gap-8 md:grid-cols-2">
             <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
-                <CardHeader className="p-0 md:p-6">
+                <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Penganalisis Gambar Ban</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
                     Unggah gambar ban untuk mendapatkan analisis kondisi bertenaga AI.
                 </CardDescription>
                 </CardHeader>
-                <CardContent className="p-0 md:p-6 md:pt-0">
+                <CardContent>
                 <div
                     className={cn(
                     'border-2 border-dashed border-muted-foreground rounded-lg p-6 text-center cursor-pointer hover:border-primary transition-colors',
@@ -186,7 +186,7 @@ const TireInspectionTool = () => {
                     )}
                 </div>
                 </CardContent>
-                <CardFooter className="p-0 mt-4 md:p-6 md:pt-0 md:mt-0 flex-col items-stretch gap-4">
+                <CardFooter className="flex-col items-stretch gap-4">
                 {error && (
                     <p className="text-destructive text-center text-sm">{error}</p>
                 )}
@@ -201,13 +201,13 @@ const TireInspectionTool = () => {
                 </CardFooter>
             </Card>
             <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
-                <CardHeader className="p-0 md:p-6">
+                <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Hasil Analisis</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
                     Laporan kondisi ban yang dihasilkan oleh AI.
                 </CardDescription>
                 </CardHeader>
-                <CardContent className="p-0 md:p-6 md:pt-0 space-y-4">
+                <CardContent className="space-y-4">
                 {isLoading && (
                     <div className="flex justify-center items-center h-full py-10 min-h-48">
                     <Loader2 className="h-8 w-8 animate-spin text-primary" />
