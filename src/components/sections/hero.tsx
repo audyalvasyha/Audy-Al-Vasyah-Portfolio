@@ -4,6 +4,22 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Briefcase, MessageSquare } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import React from 'react';
+
+const GridBackground = () => {
+  return (
+    <div className="absolute inset-0 z-0 h-full w-full bg-transparent">
+      <div className="absolute inset-0 h-full w-full bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div
+        className={cn(
+          '[mask-image:radial-gradient(ellipse_at_center,white,transparent_100%)]',
+          'absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:100px_100px] sm:bg-[size:60px_60px]'
+        )}
+      ></div>
+    </div>
+  );
+};
 
 
 const Hero = () => {
@@ -13,6 +29,7 @@ const Hero = () => {
       id="home"
       className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[700px] md:min-h-[800px] flex items-center overflow-hidden"
     >
+      <GridBackground />
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background" />
 
       <div className="container z-20 px-6 flex flex-col justify-center pt-24 md:pt-0">
