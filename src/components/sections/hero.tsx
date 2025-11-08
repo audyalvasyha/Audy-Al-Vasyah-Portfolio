@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, MessageSquare } from 'lucide-react';
 import WAVES from 'vanta/dist/vanta.waves.min';
 import * as THREE from 'three';
 
@@ -86,8 +86,8 @@ const Hero = () => {
                 href="#contact"
                 className="flex items-center gap-2"
               >
-                <Calendar className="h-5 w-5" />
-                Jadwalkan Konsultasi
+                <MessageSquare className="h-5 w-5" />
+                Hubungi Saya
               </Link>
             </Button>
             <Button
