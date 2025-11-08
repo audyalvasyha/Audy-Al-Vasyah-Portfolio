@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Briefcase, Calendar } from 'lucide-react';
 import WAVES from 'vanta/dist/vanta.waves.min';
@@ -46,7 +47,12 @@ const Hero = () => {
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-background/50 to-background" />
 
       <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-start pt-32 md:pt-0 md:justify-center">
-        <div className="flex flex-col items-center text-center">
+        <motion.div 
+          className="flex flex-col items-center text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+        >
           <div className="inline-block rounded-full bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-6 self-center">
             Hi 👋, Siap Meluncurkan Proyek Digital Anda?
           </div>
@@ -99,7 +105,7 @@ const Hero = () => {
               </Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
