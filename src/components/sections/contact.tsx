@@ -48,7 +48,7 @@ const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -77,20 +77,26 @@ const Contact = () => {
     <section id="contact" className="relative w-full py-20 md:py-32 scroll-mt-20 overflow-hidden">
       <div ref={ref} className="relative container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <motion.div 
-            className="space-y-8"
-            variants={leftVariants}
-            initial="hidden"
-            animate={controls}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-          >
-            <div className="space-y-3">
+          <div className="space-y-8">
+            <motion.div
+              className="space-y-3"
+              variants={leftVariants}
+              initial="hidden"
+              animate={controls}
+              transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
+            >
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Contact Information</h2>
               <p className="text-muted-foreground">
                 Feel free to reach out to me directly or through the form. I'll get back to you as soon as possible.
               </p>
-            </div>
-            <div className="space-y-4">
+            </motion.div>
+            <motion.div 
+              className="space-y-4"
+              variants={leftVariants}
+              initial="hidden"
+              animate={controls}
+              transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
+            >
               <div className="flex items-start gap-4">
                 <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                 <div>
@@ -112,8 +118,14 @@ const Contact = () => {
                   <p className="text-muted-foreground">Bagan Batu, Riau - Indonesia</p>
                 </div>
               </div>
-            </div>
-            <div className="space-y-4 pt-4 border-t">
+            </motion.div>
+            <motion.div 
+              className="space-y-4 pt-4 border-t"
+              variants={leftVariants}
+              initial="hidden"
+              animate={controls}
+              transition={{ duration: 0.5, ease: 'easeOut', delay: 0.4 }}
+            >
               <h3 className="font-semibold">Find me on Social Media</h3>
               <TooltipProvider>
                 <div className="flex gap-4">
@@ -134,8 +146,8 @@ const Contact = () => {
                   ))}
                 </div>
               </TooltipProvider>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
           <motion.div
             variants={rightVariants}
             initial="hidden"
