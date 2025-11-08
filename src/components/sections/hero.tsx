@@ -32,22 +32,22 @@ const Hero = () => {
             Hi 👋, Siap Meluncurkan Proyek Digital Anda?
           </div>
 
-          <h1 className="text-4xl font-headline font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl max-w-3xl">
+          <h1 className="text-xl font-headline font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl max-w-3xl">
             Solusi Digital & Automasi
           </h1>
 
           <div className="mt-4 text-center">
-            <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
+            <h2 className="text-3xl font-headline font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent to-foreground animate-gradient bg-[length:400%_400%]">
                 Audy Al Vasyah
               </span>
             </h2>
-            <p className="text-lg sm:text-xl font-medium text-muted-foreground mt-2">
+            <p className="text-sm font-medium text-muted-foreground sm:text-lg mt-2">
               Spesialis IT & Automasi Proses
             </p>
           </div>
 
-          <p className="mt-6 max-w-3xl text-lg text-slate-300 sm:text-xl">
+          <p className="mt-6 max-w-3xl text-sm text-slate-300 sm:text-base">
             Dari Proses Manual ke Efisiensi Digital – 3+ Tahun Pengalaman dalam
             Transformasi Proses Bisnis.
           </p>
