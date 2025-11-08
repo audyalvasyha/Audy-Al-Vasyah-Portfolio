@@ -53,7 +53,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
         >
-          <div className="inline-block rounded-full bg-secondary text-accent px-4 py-1 text-sm font-medium mb-6 self-center">
+          <div className="inline-block rounded-full bg-background/80 backdrop-blur-sm border border-border/40 text-accent px-4 py-1 text-sm font-medium mb-6 self-center">
             Hi 👋, Siap Meluncurkan Proyek Digital Anda?
           </div>
 
