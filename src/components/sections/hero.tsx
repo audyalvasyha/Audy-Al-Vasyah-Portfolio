@@ -42,12 +42,12 @@ const Hero = () => {
                 Audy Al Vasyah
               </span>
             </h2>
-            <p className="text-xl font-medium text-muted-foreground mt-2">
+            <p className="text-lg sm:text-xl font-medium text-muted-foreground mt-2">
               Spesialis IT & Automasi Proses
             </p>
           </div>
 
-          <p className="mt-6 max-w-3xl text-lg text-slate-300 sm:text-xl">
+          <p className="mt-6 max-w-3xl text-base text-slate-300 sm:text-xl">
             Dari Proses Manual ke Efisiensi Digital – 3+ Tahun Pengalaman dalam
             Transformasi Proses Bisnis.
           </p>
