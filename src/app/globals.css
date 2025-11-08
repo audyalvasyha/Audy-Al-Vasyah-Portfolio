@@ -54,6 +54,15 @@
 	}
 }
 
+@keyframes move-background {
+  from {
+		-webkit-transform: translate(0, 0);
+	}
+	to {
+		-webkit-transform: translate(1000px, 1000px);
+	}
+}
+
 
 .animate-gradient {
   animation: gradient 15s ease infinite;
