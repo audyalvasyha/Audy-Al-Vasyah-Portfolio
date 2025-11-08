@@ -1,39 +1,50 @@
 
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Briefcase, Calendar } from 'lucide-react';
+import WAVES from 'vanta/dist/vanta.waves.min';
+import * as THREE from 'three';
+
 
 const Hero = () => {
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const vantaRef = useRef(null);
+
+  useEffect(() => {
+    if (!vantaEffect) {
+        setVantaEffect(WAVES({
+            el: vantaRef.current,
+            THREE: THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x152238,
+            shininess: 30.00,
+            waveHeight: 15.00,
+            waveSpeed: 0.75,
+            zoom: 0.75
+        }))
+    }
+    return () => {
+        if (vantaEffect) vantaEffect.destroy()
+    }
+}, [vantaEffect]);
+
+
   return (
     <section
       id="home"
+      ref={vantaRef}
       className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[650px] flex justify-start md:justify-center overflow-hidden"
     >
-      {/* Subtle Background Animation */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_75%)] animate-pulse"
-          style={{ animationDuration: '8s', animationIterationCount: 'infinite' }}
-        ></div>
-        <div
-          className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_bottom_right,hsl(var(--background)/0.1)_0%,transparent_50%)] animate-pulse"
-          style={{
-            animationDelay: '2s',
-            animationDuration: '12s',
-            animationIterationCount: 'infinite',
-          }}
-        ></div>
-        <div
-          className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_top_left,hsl(var(--background)/0.1)_0%,transparent_50%)] animate-pulse"
-          style={{
-            animationDelay: '4s',
-            animationDuration: '14s',
-            animationIterationCount: 'infinite',
-          }}
-        ></div>
-      </div>
+      <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]" />
 
       <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-start pt-32 md:pt-0 md:justify-center">
         <div className="flex flex-col items-center text-center">
