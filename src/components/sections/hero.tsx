@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background" />
 
-      <div className="container z-20 px-6 flex flex-col justify-center pt-24 md:pt-0">
+      <div className="container z-20 px-6 flex flex-col justify-center md:pt-0">
         <motion.div 
           className="flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 20 }}
