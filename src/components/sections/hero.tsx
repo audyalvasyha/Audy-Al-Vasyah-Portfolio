@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[700px] md:min-h-[800px] flex items-center overflow-hidden"
+      className="relative isolate bg-transparent scroll-mt-20 overflow-hidden py-24 md:py-32"
     >
       <div className="absolute inset-0 z-0 h-full w-full bg-transparent">
         <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]"></div>
@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background" />
 
-      <div className="container z-20 px-6 flex flex-col justify-center md:pt-0">
+      <div className="container z-20 px-6 flex flex-col justify-center">
         <motion.div 
           className="flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 20 }}
