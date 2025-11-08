@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[650px] flex justify-center overflow-hidden"
+      className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[650px] flex justify-start md:justify-center overflow-hidden"
     >
       {/* Subtle Background Animation */}
       <div className="absolute inset-0 z-0">
