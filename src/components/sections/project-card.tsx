@@ -97,40 +97,40 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           </div>
         </Card>
 
-        <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] flex md:flex-row overflow-hidden bg-card/70 backdrop-blur-md">
-          <div className="relative w-full md:w-1/2 flex-shrink-0 h-64 md:h-full">
-            {projectImage && (
-              <Image
-                src={projectImage.imageUrl}
-                alt={project.alt || project.title}
-                fill
-                className="object-cover"
-              />
-            )}
-          </div>
-          <div className="flex flex-col flex-1 overflow-hidden">
-            <div className="p-6 pb-0 flex-shrink-0">
+        <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] overflow-y-auto md:overflow-hidden bg-card/70 backdrop-blur-md rounded-lg">
+          <div className="grid md:grid-cols-2 h-full">
+            <div className="relative w-full h-64 md:h-full flex-shrink-0">
+              {projectImage && (
+                <Image
+                  src={projectImage.imageUrl}
+                  alt={project.alt || project.title}
+                  fill
+                  className="object-cover md:rounded-l-lg"
+                />
+              )}
+            </div>
+            <div className="flex flex-col p-8 overflow-y-auto">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-headline">
+                <DialogTitle className="text-3xl font-headline font-bold">
                   {project.title}
                 </DialogTitle>
-                <DialogDescription className="pt-2 text-base text-muted-foreground">
+                <DialogDescription className="pt-4 text-base text-muted-foreground">
                   {project.description}
                 </DialogDescription>
               </DialogHeader>
-            </div>
-            <div className="p-6 overflow-y-auto">
-              <h4 className="font-semibold text-foreground mb-3">
-                Fitur Utama:
-              </h4>
-              <ul className="space-y-3 text-muted-foreground">
-                {project.features.map((feature, i) => (
-                  <li key={i} className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-primary mr-3 mt-1 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-8">
+                <h4 className="font-semibold text-lg text-foreground mb-4">
+                  Fitur Utama:
+                </h4>
+                <ul className="space-y-4 text-muted-foreground">
+                  {project.features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </DialogContent>
