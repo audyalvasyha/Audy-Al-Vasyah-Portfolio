@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative isolate bg-transparent scroll-mt-20 overflow-hidden py-24 md:py-32"
+      className="relative isolate bg-transparent scroll-mt-20 overflow-hidden pt-16 pb-24 md:pt-20 md:pb-32"
     >
       <div className="absolute inset-0 z-0 h-full w-full bg-transparent">
         <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]"></div>
