@@ -42,11 +42,11 @@ const Hero = () => {
     <section
       id="home"
       ref={vantaRef}
-      className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[700px] md:min-h-[800px] flex justify-start md:justify-center overflow-hidden"
+      className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[700px] md:min-h-[800px] flex justify-start items-center md:justify-center overflow-hidden"
     >
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-background/50 to-background" />
 
-      <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-start pt-32 md:pt-0 md:justify-center">
+      <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-start md:justify-center">
         <motion.div 
           className="flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ const Hero = () => {
 
           <div className="mt-4 text-center">
             <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
-              <span className="text-primary">
+              <span className="bg-gradient-to-r from-primary to-orange-400 text-transparent bg-clip-text">
                 Audy Al Vasyah
               </span>
             </h2>
