@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -44,7 +43,7 @@ const Hero = () => {
       ref={vantaRef}
       className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[700px] md:min-h-[800px] flex justify-start md:justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_90%)]" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-background/50 to-background" />
 
       <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-start pt-32 md:pt-0 md:justify-center">
         <div className="flex flex-col items-center text-center">
