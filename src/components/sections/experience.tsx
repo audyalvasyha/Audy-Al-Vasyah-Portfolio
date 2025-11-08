@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import ExperienceCard from './experience-card';
@@ -36,7 +37,8 @@ const experienceData = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
+    <section id="experience" className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden -mt-40">
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-t from-transparent to-background z-10"></div>
       <div className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">

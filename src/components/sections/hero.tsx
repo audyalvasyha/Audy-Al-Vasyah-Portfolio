@@ -42,9 +42,9 @@ const Hero = () => {
     <section
       id="home"
       ref={vantaRef}
-      className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[650px] flex justify-start md:justify-center overflow-hidden"
+      className="relative isolate bg-transparent scroll-mt-20 h-screen min-h-[700px] md:min-h-[800px] flex justify-start md:justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]" />
+      <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_90%)]" />
 
       <div className="w-full max-w-5xl z-20 px-6 flex flex-col justify-start pt-32 md:pt-0 md:justify-center">
         <div className="flex flex-col items-center text-center">
