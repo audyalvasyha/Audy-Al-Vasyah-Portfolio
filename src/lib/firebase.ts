@@ -15,6 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore(app);
-const rtdb = getDatabase(app, process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL);
+// Explicitly pass the databaseURL to getDatabase to ensure it's available on the server.
+const rtdb = getDatabase(app, firebaseConfig.databaseURL);
 
 export { db, rtdb };
