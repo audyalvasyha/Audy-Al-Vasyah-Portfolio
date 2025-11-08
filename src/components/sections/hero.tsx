@@ -81,7 +81,7 @@ const Hero = () => {
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
+              className="font-bold"
             >
               <Link
                 href="#contact"
