@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     'Firebase',
     'Google Cloud',
   ],
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
