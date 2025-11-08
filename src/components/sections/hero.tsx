@@ -63,7 +63,7 @@ const Hero = () => {
 
           <div className="mt-4 text-center">
             <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
-              <span className="bg-gradient-to-r from-accent to-foreground text-transparent bg-clip-text animate-gradient bg-[length:200%_auto]">
+              <span className="bg-gradient-to-br from-accent via-foreground to-amber-300 text-transparent bg-clip-text animate-gradient bg-[length:400%_400%]">
                 Audy Al Vasyah
               </span>
             </h2>
