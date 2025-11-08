@@ -14,7 +14,7 @@ const Hero = () => {
     >
       <div className="absolute inset-0 z-0 h-full w-full bg-transparent">
         <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-        <div className="absolute h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e33,transparent)]"></div>
+        <div className="absolute inset-0 h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,hsl(var(--background)/0.1),hsl(var(--background)))]"></div>
         <div 
           className="absolute h-full w-full animate-[move-background_200s_linear_infinite] bg-[radial-gradient(circle_400px_at_50%_300px,#ffffff03,transparent),radial-gradient(circle_200px_at_80%_500px,#ffffff03,transparent)]"
         ></div>
