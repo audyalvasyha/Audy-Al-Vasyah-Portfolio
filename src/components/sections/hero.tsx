@@ -63,7 +63,7 @@ const Hero = () => {
 
           <div className="mt-4 text-center">
             <h2 className="text-6xl font-headline font-extrabold tracking-tight sm:text-7xl md:text-8xl">
-              <span className="text-accent">
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-accent to-white">
                 Audy Al Vasyah
               </span>
             </h2>
