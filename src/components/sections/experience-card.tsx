@@ -74,7 +74,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ job, index }) => {
                 {job.company}
               </p>
             </div>
-            <Badge variant="secondary" className="self-start md:self-auto">
+            <Badge variant="default" className="self-start md:self-auto">
               {job.period}
             </Badge>
           </div>
