@@ -63,7 +63,7 @@ const Experience = () => {
                   index % 2 !== 0 && 'md:flex-row-reverse'
                 )}
               >
-                <div className="z-10 absolute left-6 md:left-1/2 top-1 w-4 h-4 bg-primary rounded-full -translate-x-1/2" />
+                <div className="z-10 absolute left-6 md:left-1/2 top-1 w-4 h-4 bg-accent rounded-full -translate-x-1/2" />
                 
                 <ExperienceCard
                   job={job}
