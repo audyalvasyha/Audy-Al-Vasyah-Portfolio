@@ -63,9 +63,14 @@ const Contact = () => {
     }
   }, [isInView, controls]);
 
-  const variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+  const leftVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  const rightVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
   };
 
   return (
@@ -74,7 +79,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div 
             className="space-y-8"
-            variants={variants}
+            variants={leftVariants}
             initial="hidden"
             animate={controls}
             transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -132,7 +137,7 @@ const Contact = () => {
             </div>
           </motion.div>
           <motion.div
-            variants={variants}
+            variants={rightVariants}
             initial="hidden"
             animate={controls}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
