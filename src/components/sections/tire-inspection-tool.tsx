@@ -186,7 +186,7 @@ const TireInspectionTool = () => {
                     )}
                 </div>
                 </CardContent>
-                <CardFooter className="p-0 md:p-6 md:pt-0 flex-col items-stretch gap-4">
+                <CardFooter className="p-0 mt-4 md:p-6 md:pt-0 md:mt-0 flex-col items-stretch gap-4">
                 {error && (
                     <p className="text-destructive text-center text-sm">{error}</p>
                 )}
