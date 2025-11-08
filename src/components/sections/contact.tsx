@@ -12,6 +12,7 @@ import { sendEmail, FormState } from '@/app/actions';
 import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram, Github } from 'lucide-react';
 import Link from 'next/link';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { motion, useInView, useAnimation } from 'framer-motion';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -46,17 +47,38 @@ const Contact = () => {
   const [formState, formAction, isPending] = useActionState(sendEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const controls = useAnimation();
+
   useEffect(() => {
     if (formState.success && !isPending) {
       formRef.current?.reset();
     }
   }, [formState.success, isPending]);
 
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+
+  const variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section id="contact" className="relative w-full py-20 md:py-32 scroll-mt-20 overflow-hidden">
-      <div className="relative container mx-auto px-4 md:px-6 z-10">
+      <div ref={ref} className="relative container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
+          <motion.div 
+            className="space-y-8"
+            variants={variants}
+            initial="hidden"
+            animate={controls}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+          >
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Contact Information</h2>
               <p className="text-muted-foreground">
@@ -108,38 +130,45 @@ const Contact = () => {
                 </div>
               </TooltipProvider>
             </div>
-          </div>
-          <Card className="bg-card/50 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle>Get In Touch</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form action={formAction} ref={formRef} className="grid gap-6">
-                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" name="name" placeholder="Enter your name" required />
+          </motion.div>
+          <motion.div
+            variants={variants}
+            initial="hidden"
+            animate={controls}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
+          >
+            <Card className="bg-card/50 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle>Get In Touch</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form action={formAction} ref={formRef} className="grid gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid gap-2">
+                      <Label htmlFor="name">Name</Label>
+                      <Input id="name" name="name" placeholder="Enter your name" required />
+                    </div>
+                    <div className="grid gap-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input id="email" name="email" type="email" placeholder="Enter your email" required />
+                    </div>
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" name="email" type="email" placeholder="Enter your email" required />
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea id="message" name="message" placeholder="Enter your message" className="min-h-[150px]" required />
                   </div>
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" placeholder="Enter your message" className="min-h-[150px]" required />
-                </div>
-                <div className="flex flex-col items-center gap-4">
-                  <SubmitButton />
-                  {formState.message && !isPending && (
-                    <p className={formState.success ? 'text-green-500' : 'text-red-500'}>
-                      {formState.message}
-                    </p>
-                  )}
-                </div>
-              </form>
-            </CardContent>
-          </Card>
+                  <div className="flex flex-col items-center gap-4">
+                    <SubmitButton />
+                    {formState.message && !isPending && (
+                      <p className={formState.success ? 'text-green-500' : 'text-red-500'}>
+                        {formState.message}
+                      </p>
+                    )}
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </section>
