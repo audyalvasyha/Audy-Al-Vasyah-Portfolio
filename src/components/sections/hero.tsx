@@ -13,7 +13,7 @@ const Hero = () => {
       className="relative isolate bg-transparent scroll-mt-20 overflow-hidden pt-16 pb-24 md:pt-20 md:pb-32"
     >
       <div className="absolute inset-0 z-0 h-full w-full bg-transparent">
-        <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+        <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         <div className="absolute h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e33,transparent)]"></div>
         <div 
           className="absolute h-full w-full animate-[move-background_200s_linear_infinite] bg-[radial-gradient(circle_400px_at_50%_300px,#ffffff03,transparent),radial-gradient(circle_200px_at_80%_500px,#ffffff03,transparent)]"
@@ -47,7 +47,7 @@ const Hero = () => {
             </p>
           </div>
 
-          <p className="mt-6 max-w-3xl text-base text-slate-300 sm:text-xl">
+          <p className="mt-6 max-w-3xl text-lg text-slate-300 sm:text-xl">
             Dari Proses Manual ke Efisiensi Digital – 3+ Tahun Pengalaman dalam
             Transformasi Proses Bisnis.
           </p>
