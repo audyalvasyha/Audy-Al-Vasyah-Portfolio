@@ -18,7 +18,7 @@ const experienceData = [
   {
     role: 'Warehouse Checker',
     company: 'PT. Pekanbaru Distribusindo Raya (Wings Group)',
-    period: '2021 - 2023',
+    period: '2021 - 2024',
     achievements: [
       'Mengembangkan dan memanfaatkan Automation Tools (Auto Clicker) untuk mempercepat proses Post Good Issue, mengurangi potensi human error sebesar 90%',
     ],
