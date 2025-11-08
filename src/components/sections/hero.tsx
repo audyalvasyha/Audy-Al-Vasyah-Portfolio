@@ -3,17 +3,15 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Briefcase, MessageSquare } from 'lucide-react';
+import { MessageSquare, Briefcase } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
 const GridBackground = () => {
   return (
     <div className="absolute inset-0 z-0 h-full w-full bg-transparent">
-      <div className="absolute inset-0 h-full w-full bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div
         className={cn(
-          '[mask-image:radial-gradient(ellipse_at_center,white,transparent_100%)]',
           'absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:100px_100px] sm:bg-[size:60px_60px]'
         )}
       ></div>
