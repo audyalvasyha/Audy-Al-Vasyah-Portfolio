@@ -19,7 +19,7 @@ const Hero = () => {
           className="absolute h-full w-full animate-[move-background_200s_linear_infinite] bg-[radial-gradient(circle_400px_at_50%_300px,#ffffff03,transparent),radial-gradient(circle_200px_at_80%_500px,#ffffff03,transparent)]"
         ></div>
       </div>
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-background" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-0"></div>
 
       <div className="container z-20 px-6 flex flex-col justify-center">
         <motion.div 
