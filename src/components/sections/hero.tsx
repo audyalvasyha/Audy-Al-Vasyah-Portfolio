@@ -4,11 +4,9 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Briefcase } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import React from 'react';
 
 const Hero = () => {
-
   return (
     <section
       id="home"
