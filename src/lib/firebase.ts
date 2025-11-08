@@ -16,6 +16,6 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore(app);
 // Explicitly pass the databaseURL to getDatabase to ensure it's available on the server.
-const rtdb = getDatabase(app, firebaseConfig.databaseURL);
+const rtdb = getDatabase(app, "https://studio-829917566-24e9d-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
 export { db, rtdb };
