@@ -61,3 +61,12 @@
     background-position: 100px 100px;
   }
 }
+
+@keyframes move-ball {
+  0% {
+    transform: translateX(-10vw);
+  }
+  100% {
+    transform: translateX(110vw);
+  }
+}
