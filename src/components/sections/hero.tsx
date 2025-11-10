@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Briefcase } from 'lucide-react';
 import React from 'react';
-import GridBallAnimation from '../layout/grid-ball-animation';
 
 const Hero = () => {
   return (
@@ -20,7 +19,6 @@ const Hero = () => {
         {/* Radial Gradient overlay */}
         <div className="absolute inset-0 h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,hsl(var(--background)/0.1),hsl(var(--background)))]"></div>
         
-        <GridBallAnimation />
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-0"></div>
 
