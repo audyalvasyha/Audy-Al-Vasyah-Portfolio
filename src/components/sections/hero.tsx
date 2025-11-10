@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Briefcase } from 'lucide-react';
 import React from 'react';
-import GridAnimation from '../layout/grid-animation';
 
 const Hero = () => {
   return (
@@ -16,7 +15,6 @@ const Hero = () => {
       <div className="absolute inset-0 -z-10 h-full w-full bg-transparent">
         <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px] sm:bg-[size:80px_80px] lg:bg-[size:100px_100px]"></div>
         <div className="absolute inset-0 h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,hsl(var(--background)/0.1),hsl(var(--background)))]"></div>
-        <GridAnimation />
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-0"></div>
 
