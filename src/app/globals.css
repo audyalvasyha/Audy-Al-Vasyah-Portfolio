@@ -52,21 +52,3 @@
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
-
-@keyframes move-grid {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 100px 100px;
-  }
-}
-
-@keyframes move-ball {
-  0% {
-    transform: translateX(-10vw);
-  }
-  100% {
-    transform: translateX(110vw);
-  }
-}
