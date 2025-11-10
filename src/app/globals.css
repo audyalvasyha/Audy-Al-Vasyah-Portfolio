@@ -52,3 +52,30 @@
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
+
+@keyframes move-dot-horizontal {
+  0% {
+    transform: translateX(-10vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes move-dot-vertical {
+  0% {
+    transform: translateY(-10vh);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-move-dot-horizontal {
+  animation: move-dot-horizontal 20s linear infinite;
+}
+
+.animate-move-dot-vertical {
+  animation: move-dot-vertical 20s linear infinite;
+  animation-delay: -10s; /* Start halfway through */
+}
