@@ -53,29 +53,33 @@
   animation: gradient 15s ease infinite;
 }
 
-@keyframes move-dot-horizontal {
+@keyframes move-line-horizontal {
   0% {
-    transform: translateX(-10vw);
+    background-position: -100% 0;
   }
   100% {
-    transform: translateX(100vw);
+    background-position: 100% 0;
   }
 }
 
-@keyframes move-dot-vertical {
+@keyframes move-line-vertical {
   0% {
-    transform: translateY(-10vh);
+    background-position: 0 -100%;
   }
   100% {
-    transform: translateY(100vh);
+    background-position: 0 100%;
   }
 }
 
-.animate-move-dot-horizontal {
-  animation: move-dot-horizontal 20s linear infinite;
+.animate-move-line-horizontal {
+  background: linear-gradient(to right, transparent 0%, hsl(var(--accent)/0.5) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: move-line-horizontal 15s linear infinite;
 }
 
-.animate-move-dot-vertical {
-  animation: move-dot-vertical 20s linear infinite;
-  animation-delay: -10s; /* Start halfway through */
+.animate-move-line-vertical {
+  background: linear-gradient(to bottom, transparent 0%, hsl(var(--accent)/0.5) 50%, transparent 100%);
+  background-size: 100% 200%;
+  animation: move-line-vertical 15s linear infinite;
+  animation-delay: -7.5s;
 }
