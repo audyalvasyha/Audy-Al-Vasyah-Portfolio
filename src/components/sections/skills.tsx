@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -9,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 const skillsData = [
   {
     category: 'Automasi & Logika Sistem',
-    icon: <Bot className="h-8 w-8 text-accent" />,
+    icon: <Bot className="h-8 w-8" />,
     skills: [
       { name: 'Machine Learning & AI Implementation' },
       { name: 'Automation Tools Development' },
@@ -17,12 +16,12 @@ const skillsData = [
   },
   {
     category: 'Pengembangan Web',
-    icon: <Code className="h-8 w-8 text-accent" />,
+    icon: <Code className="h-8 w-8" />,
     skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS' }],
   },
   {
     category: 'Google Cloud Platform',
-    icon: <Cloud className="h-8 w-8 text-accent" />,
+    icon: <Cloud className="h-8 w-8" />,
     skills: [
       { name: 'Gemini API' },
       { name: 'Firebase' },
@@ -30,20 +29,15 @@ const skillsData = [
   },
   {
     category: 'Sistem Enterprise',
-    icon: <BrainCircuit className="h-8 w-8 text-accent" />,
+    icon: <BrainCircuit className="h-8 w-8" />,
     skills: [{ name: 'SAP ERP (SD & WM Modules)' }],
   },
   {
     category: 'Google Workspace',
-    icon: <AppWindow className="h-8 w-8 text-accent" />,
+    icon: <AppWindow className="h-8 w-8" />,
     skills: [{ name: 'Sheets, Docs, Slide, Apps Script' }],
   },
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 100 },
-  visible: { opacity: 1, y: 0 },
-};
 
 const Skills = () => {
   return (
@@ -60,8 +54,8 @@ const Skills = () => {
           </div>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          {skillsData.map((category, index) => (
-            <SkillCard key={category.category} category={category} index={index} />
+          {skillsData.map((category) => (
+            <SkillCard key={category.category} category={category} />
           ))}
         </div>
       </div>
@@ -69,29 +63,14 @@ const Skills = () => {
   );
 };
 
-const SkillCard = ({ category, index }: { category: typeof skillsData[0], index: number }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.3 });
-    const controls = useAnimation();
-  
-    useEffect(() => {
-      if (isInView) {
-        controls.start('visible');
-      }
-    }, [isInView, controls]);
-
+const SkillCard = ({ category }: { category: typeof skillsData[0] }) => {
     return (
-        <motion.div
-          ref={ref}
-          variants={cardVariants}
-          initial="hidden"
-          animate={controls}
-          transition={{ type: 'spring', stiffness: 100, damping: 10, delay: index * 0.1 }}
-          className="group h-full"
+        <div
+          className="h-full"
         >
-            <Card className="flex flex-col h-full bg-gray-800/50 backdrop-blur-sm border border-slate-700 transition-all duration-300 group-hover:scale-105 group-hover:border-accent group-hover:shadow-2xl group-hover:shadow-accent/10">
+            <Card className="flex flex-col h-full bg-gray-800/50 backdrop-blur-sm border border-slate-700">
               <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
-                <div className="transition-transform duration-300 group-hover:scale-110">
+                <div>
                   {category.icon}
                 </div>
                 <CardTitle className="font-headline text-lg text-foreground">
@@ -104,7 +83,7 @@ const SkillCard = ({ category, index }: { category: typeof skillsData[0], index:
                       <Badge
                         key={skill.name}
                         variant="outline"
-                        className="font-normal border-accent/30 bg-accent/10 text-accent"
+                        className="font-normal border-slate-700 bg-slate-800 text-slate-400"
                       >
                         {skill.name}
                       </Badge>
@@ -112,7 +91,7 @@ const SkillCard = ({ category, index }: { category: typeof skillsData[0], index:
                 </div>
               </CardContent>
             </Card>
-        </motion.div>
+        </div>
     )
 }
 
