@@ -38,7 +38,7 @@
 
 @layer utilities {
   .animate-gradient {
-    animation: gradient 5s ease infinite;
+    animation: gradient 3s ease infinite;
   }
 
   @keyframes gradient {
