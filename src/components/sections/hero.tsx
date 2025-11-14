@@ -35,7 +35,7 @@ const Hero = () => {
           />
 
           <div className="mt-6 text-center"> 
-            <div className="h-20 sm:h-24 md:h-28 text-3xl font-headline font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <div className="h-20 sm:h-24 md:h-28 text-3xl font-headline font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl pb-4">
               <AnimatedTitle 
                 as="div" 
                 text="Audy Al Vasyah"
