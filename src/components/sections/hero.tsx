@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { MessageSquare, Briefcase } from 'lucide-react';
 import React from 'react';
 import AnimatedTitle from '@/components/ui/animated-title';
+import InteractiveGridBackground from '@/components/ui/interactive-grid-background';
 
 const Hero = () => {
   return (
@@ -13,7 +14,7 @@ const Hero = () => {
       id="home"
       className="relative isolate flex flex-col justify-center bg-transparent scroll-mt-20 overflow-hidden min-h-[85vh]"
     >
-      <div className="static-grid-background absolute inset-0 -z-10 h-full w-full"></div>
+      <InteractiveGridBackground />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-0"></div>
 
       <div className="container relative z-20 px-6">
