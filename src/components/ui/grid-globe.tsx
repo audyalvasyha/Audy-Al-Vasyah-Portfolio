@@ -16,6 +16,11 @@ interface AnimatedPathProps extends PathData {
 }
 
 const AnimatedPath: React.FC<AnimatedPathProps> = ({ xPath, yPath, speed, gridSize }) => {
+  // THE FIX: Prevent NaN error by returning null if gridSize is not valid
+  if (!gridSize || gridSize <= 0) {
+    return null;
+  }
+    
   const duration = xPath.length * speed;
   const ballOffset = -ballSize / 2;
   const p = (gridUnits: number): number => gridUnits * gridSize;
@@ -31,19 +36,17 @@ const AnimatedPath: React.FC<AnimatedPathProps> = ({ xPath, yPath, speed, gridSi
     const x = Math.min(xPath[i], xPath[i + 1]);
     const y = Math.min(yPath[i], yPath[i + 1]);
 
-    // THE FINAL FIX: Smoother, overlapping transitions.
-    // Start fading in before the ball reaches the segment to create a seamless handover.
     const fadeInStartTime = (i - 0.5) * speed;
-    const peakTime = (i + 1) * speed; // Peak brightness when ball leaves the segment
-    const trailDuration = 4 * speed;   // Existing trail length
+    const peakTime = (i + 1) * speed; 
+    const trailDuration = 4 * speed;  
     const fadeOutEndTime = peakTime + trailDuration;
 
     const opacityKeyframes = [0, 0, 1, 0, 0];
     const timePoints = [
         0,
-        Math.max(0, fadeInStartTime / duration), // Start fade-in earlier for overlap
-        peakTime / duration,                     // Reach peak brightness
-        Math.min(fadeOutEndTime / duration, 1),  // End fade-out
+        Math.max(0, fadeInStartTime / duration), 
+        peakTime / duration,                    
+        Math.min(fadeOutEndTime / duration, 1), 
         1,
     ];
 
@@ -91,7 +94,8 @@ export const GridGlobe = ({ gridSize }: { gridSize: number }) => {
     { xPath: [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15], yPath: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5], speed: 0.7 },
   ];
 
-  if (!gridSize || gridSize === 0) {
+  // THE FIX: Prevent NaN error by returning null if gridSize is not valid
+  if (!gridSize || gridSize <= 0) {
     return null;
   }
 
