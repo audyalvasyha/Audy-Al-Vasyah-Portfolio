@@ -97,9 +97,9 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
 
   return (
     <motion.div variants={cardVariants} className="h-full">
-      <Card className="flex flex-col h-full bg-gray-800/50 backdrop-blur-sm border border-slate-700">
+      <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-border">
         <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
-          <div>{category.icon}</div>
+          <div className="text-accent">{category.icon}</div>
           <CardTitle className="font-headline text-lg text-foreground">
             {category.category}
           </CardTitle>
@@ -109,8 +109,8 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
             {category.skills.map((skill) => (
               <Badge
                 key={skill.name}
-                variant="outline"
-                className="font-normal border-slate-700 bg-slate-800 text-slate-400"
+                variant="secondary"
+                className="font-normal"
               >
                 {skill.name}
               </Badge>
