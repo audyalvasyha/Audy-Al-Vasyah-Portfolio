@@ -110,7 +110,7 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
               <Badge
                 key={skill.name}
                 variant="secondary"
-                className="font-normal"
+                className="font-normal bg-black/20 border-white/10 backdrop-blur-sm"
               >
                 {skill.name}
               </Badge>
