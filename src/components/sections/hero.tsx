@@ -39,7 +39,7 @@ const Hero = () => {
               <AnimatedTitle 
                 as="div" 
                 text="Audy Al Vasyah"
-                className="text-transparent bg-clip-text bg-gradient-to-br from-accent via-primary to-foreground/80 animate-gradient bg-[length:400%_400%]"
+                className="text-foreground"
               />
             </div>
             <p className="text-sm font-medium text-muted-foreground sm:t-lg mt-4">
