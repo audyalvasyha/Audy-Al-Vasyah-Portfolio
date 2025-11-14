@@ -4,59 +4,18 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Briefcase } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
-import { GridGlobe } from '@/components/ui/grid-globe';
+import React from 'react';
 import AnimatedTitle from '@/components/ui/animated-title';
 
-// A custom hook to get window size, safely for SSR
-const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({ width: 0 });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth });
-    }
-    
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Set initial size
-    
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowSize;
-};
-
-
 const Hero = () => {
-  const { width } = useWindowSize();
-
-  // THE FIX: Single source of truth for grid size.
-  // Calculate gridSize dynamically based on screen width.
-  // This value is now used for BOTH the static grid background AND the animated globe.
-  const gridSize = width > 0 ? width / 20 : 0;
-
   return (
     <section
       id="home"
       className="relative isolate flex flex-col justify-center bg-transparent scroll-mt-20 overflow-hidden min-h-[85vh]"
     >
       <div className="absolute inset-0 -z-10 h-full w-full bg-transparent">
-        {/* Static Grid now uses dynamic size */}
-        {gridSize > 0 && (
-          <div 
-            className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)]"
-            style={{
-              backgroundSize: `${gridSize}px ${gridSize}px`
-            }}
-          ></div>
-        )}
-        
-        {/* GridGlobe receives the same dynamic size, ensuring perfect sync */}
-        <GridGlobe gridSize={gridSize} />
-
-        {/* Radial Gradient overlay */}
+        <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         <div className="absolute inset-0 h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,transparent,hsl(var(--background)))]"></div>
-        
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-0"></div>
 
