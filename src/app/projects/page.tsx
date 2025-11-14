@@ -22,7 +22,7 @@ const AllProjectsPage = () => {
                 </p>
             </div>
              <Button asChild variant="ghost" className="self-center">
-                <Link href="/#home" className="flex items-center gap-2">
+                <Link href="/" className="flex items-center gap-2">
                     <ArrowLeft className="h-4 w-4" />
                     Kembali ke Halaman Utama
                 </Link>
