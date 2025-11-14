@@ -29,7 +29,6 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
 
         if (isSpace) {
             span.innerHTML = '&nbsp;'; 
-            // THE FIX: Reduced the width for a tighter space
             span.style.width = '0.25em';  
         } else {
             span.textContent = char;
