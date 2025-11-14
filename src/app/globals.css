@@ -54,6 +54,13 @@
     }
   }
 
+  .static-grid-background {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
   .interactive-grid {
     --grid-line-color: theme(colors.border / 0.2);
     --grid-glow-color: theme(colors.accent.DEFAULT / 0.15);
