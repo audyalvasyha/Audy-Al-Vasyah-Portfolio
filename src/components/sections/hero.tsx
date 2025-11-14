@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { MessageSquare, Briefcase } from 'lucide-react';
 import React from 'react';
 import AnimatedTitle from '@/components/ui/animated-title';
+import InteractiveGridBackground from '@/components/ui/interactive-grid-background';
 
 const Hero = () => {
   return (
@@ -13,9 +14,7 @@ const Hero = () => {
       id="home"
       className="relative isolate flex flex-col justify-center bg-transparent scroll-mt-20 overflow-hidden min-h-[85vh]"
     >
-      <div className="absolute inset-0 -z-10 h-full w-full bg-transparent">
-        <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-      </div>
+      <InteractiveGridBackground />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-0"></div>
 
       <div className="container relative z-20 px-6">
@@ -29,23 +28,20 @@ const Hero = () => {
             Hi 👋, Siap Meluncurkan Proyek Digital Anda?
           </motion.div>
 
-          <AnimatedTitle 
+          <AnimatedTitle
             text="Solusi Digital & Automasi"
             className="text-xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl max-w-3xl"
           />
 
           <div className="mt-6 text-center">
-            <AnimatedTitle 
-              as="div" 
+            <AnimatedTitle
+              as="div"
               text="Audy Al Vasyah"
               className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-accent via-foreground to-accent bg-clip-text text-transparent animate-gradient"
             />
-            <p className="text-sm font-medium text-muted-foreground sm:t-lg mt-4">
-              Spesialis IT & Automasi Proses
-            </p>
           </div>
 
-          <motion.p 
+          <motion.p
             className="mt-8 max-w-3xl text-sm text-slate-300 sm:text-base"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,20 +51,14 @@ const Hero = () => {
             Transformasi Proses Bisnis.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 1.0 }}
           >
-            <Button
-              asChild
-              size="lg"
-            >
-              <Link
-                href="#contact"
-                className="flex items-center gap-2"
-              >
+            <Button asChild size="lg">
+              <Link href="#contact" className="flex items-center gap-2">
                 <MessageSquare className="h-5 w-5" />
                 Hubungi Saya
               </Link>
@@ -79,10 +69,7 @@ const Hero = () => {
               size="lg"
               className="bg-gray-800/50 backdrop-blur-sm border-slate-700"
             >
-              <Link
-                href="#projects"
-                className="flex items-center gap-2"
-              >
+              <Link href="#projects" className="flex items-center gap-2">
                 <Briefcase className="h-5 w-5" />
                 Lihat Proyek Saya
               </Link>

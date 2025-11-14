@@ -4,15 +4,12 @@ import { projectDetails } from '@/lib/project-data';
 import ProjectCard from '@/components/sections/project-card';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import InteractiveGridBackground from '@/components/ui/interactive-grid-background';
 
 const AllProjectsPage = () => {
   return (
     <main className="relative isolate py-24 sm:py-32 scroll-mt-20 overflow-hidden">
-      {/* Consistent Background */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-transparent">
-        <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-        <div className="absolute inset-0 h-full w-full bg-[radial-gradient(circle_500px_at_50%_200px,hsl(var(--background)/0.1),hsl(var(--background)))]"></div>
-      </div>
+      <InteractiveGridBackground />
 
       <div className="container relative z-10 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">

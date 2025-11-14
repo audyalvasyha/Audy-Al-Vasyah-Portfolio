@@ -53,4 +53,31 @@
       background-position: 0% 50%;
     }
   }
+
+  .interactive-grid {
+    --grid-line-color: theme(colors.border / 0.1);
+    --grid-glow-color: theme(colors.accent.DEFAULT / 0.1);
+    background-image: 
+      linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    position: relative;
+  }
+  
+  .interactive-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle 400px at var(--mouse-x) var(--mouse-y),
+      var(--grid-glow-color),
+      transparent 80%
+    );
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .interactive-grid:hover::before {
+    opacity: 1;
+  }
 }
