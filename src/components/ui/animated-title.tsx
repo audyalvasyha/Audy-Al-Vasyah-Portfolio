@@ -25,6 +25,9 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
     text.split('').forEach(char => {
         const span = document.createElement('span');
         span.style.display = 'inline-block';
+        // Fix for descenders (like 'y', 'g', 'j') getting clipped
+        span.style.paddingBottom = '0.2em'; 
+        
         const isSpace = char === ' ';
 
         if (isSpace) {
