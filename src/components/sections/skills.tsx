@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -22,10 +23,7 @@ const skillsData = [
   {
     category: 'Google Cloud Platform',
     icon: <Cloud className="h-8 w-8" />,
-    skills: [
-      { name: 'Gemini API' },
-      { name: 'Firebase' },
-    ],
+    skills: [{ name: 'Gemini API' }, { name: 'Firebase' }],
   },
   {
     category: 'Sistem Enterprise',
@@ -40,9 +38,32 @@ const skillsData = [
 ];
 
 const Skills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
-    <section id="skills" className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
-      <div className="relative container px-4 md:px-6 z-10">
+    <section
+      id="skills"
+      className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+    >
+      <div ref={ref} className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">
@@ -53,46 +74,52 @@ const Skills = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        <motion.div
+          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+        >
           {skillsData.map((category) => (
             <SkillCard key={category.category} category={category} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-const SkillCard = ({ category }: { category: typeof skillsData[0] }) => {
-    return (
-        <div
-          className="h-full"
-        >
-            <Card className="flex flex-col h-full bg-gray-800/50 backdrop-blur-sm border border-slate-700">
-              <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
-                <div>
-                  {category.icon}
-                </div>
-                <CardTitle className="font-headline text-lg text-foreground">
-                  {category.category}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex-grow pt-2">
-                <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <Badge
-                        key={skill.name}
-                        variant="outline"
-                        className="font-normal border-slate-700 bg-slate-800 text-slate-400"
-                      >
-                        {skill.name}
-                      </Badge>
-                    ))}
-                </div>
-              </CardContent>
-            </Card>
-        </div>
-    )
-}
+const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  };
+
+  return (
+    <motion.div variants={cardVariants} className="h-full">
+      <Card className="flex flex-col h-full bg-gray-800/50 backdrop-blur-sm border border-slate-700">
+        <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
+          <div>{category.icon}</div>
+          <CardTitle className="font-headline text-lg text-foreground">
+            {category.category}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="flex-grow pt-2">
+          <div className="flex flex-wrap gap-2">
+            {category.skills.map((skill) => (
+              <Badge
+                key={skill.name}
+                variant="outline"
+                className="font-normal border-slate-700 bg-slate-800 text-slate-400"
+              >
+                {skill.name}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
 
 export default Skills;
