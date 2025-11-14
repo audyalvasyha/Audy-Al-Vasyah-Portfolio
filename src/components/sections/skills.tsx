@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 const skillsData = [
   {
     category: 'Automasi & Logika Sistem',
-    icon: <Bot className="h-8 w-8" />,
+    icon: <Bot className="h-8 w-8 text-accent" />,
     skills: [
       { name: 'Machine Learning & AI Implementation' },
       { name: 'Automation Tools Development' },
@@ -17,23 +17,33 @@ const skillsData = [
   },
   {
     category: 'Pengembangan Web',
-    icon: <Code className="h-8 w-8" />,
-    skills: [{ name: 'Javascript, React, Next.js, Tailwind CSS' }],
+    icon: <Code className="h-8 w-8 text-accent" />,
+    skills: [
+      { name: 'Javascript' },
+      { name: 'React' },
+      { name: 'Next.js' },
+      { name: 'Tailwind CSS' },
+    ],
   },
   {
     category: 'Google Cloud Platform',
-    icon: <Cloud className="h-8 w-8" />,
+    icon: <Cloud className="h-8 w-8 text-accent" />,
     skills: [{ name: 'Gemini API' }, { name: 'Firebase' }],
   },
   {
     category: 'Sistem Enterprise',
-    icon: <BrainCircuit className="h-8 w-8" />,
+    icon: <BrainCircuit className="h-8 w-8 text-accent" />,
     skills: [{ name: 'SAP ERP (SD & WM Modules)' }],
   },
   {
     category: 'Google Workspace',
-    icon: <AppWindow className="h-8 w-8" />,
-    skills: [{ name: 'Sheets, Docs, Slide, Apps Script' }],
+    icon: <AppWindow className="h-8 w-8 text-accent" />,
+    skills: [
+      { name: 'Sheets' },
+      { name: 'Docs' },
+      { name: 'Slide' },
+      { name: 'Apps Script' },
+    ],
   },
 ];
 
