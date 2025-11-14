@@ -39,7 +39,7 @@ const Hero = () => {
               <AnimatedTitle 
                 as="div" 
                 text="Audy Al Vasyah"
-                className="text-foreground"
+                className="font-headline text-foreground"
               />
             </div>
             <p className="text-sm font-medium text-muted-foreground sm:t-lg mt-4">
