@@ -65,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         className="flex"
     >
       <Dialog>
-        <Card className="relative group rounded-lg shadow-lg flex flex-col bg-card/50 backdrop-blur-sm border-border overflow-hidden">
+        <Card className="relative group rounded-lg shadow-lg flex flex-col bg-card/50 backdrop-blur-sm border-border overflow-hidden flex-grow">
           {projectImage && (
             <div className="relative w-full h-64 flex-shrink-0 bg-black overflow-hidden">
               {/* Blurred Background Image */}

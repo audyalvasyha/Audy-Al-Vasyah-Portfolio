@@ -3,18 +3,6 @@
 import { z } from 'zod';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import {
-  efficiencyPredictionTool,
-  type EfficiencyPredictionInput,
-} from '@/ai/flows/efficiency-prediction-tool';
-import {
-  mlPoweredDeliverySchedulingSystem,
-  type MlPoweredDeliverySchedulingSystemInput,
-} from '@/ai/flows/ml-powered-delivery-scheduling-system';
-import {
-  aiBasedTireInspectionAppDisplay,
-  type AiBasedTireInspectionAppDisplayInput,
-} from '@/ai/flows/ai-based-tire-inspection-app-display';
 import { revalidatePath } from 'next/cache';
 
 // Contact Form
