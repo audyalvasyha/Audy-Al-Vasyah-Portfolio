@@ -34,11 +34,11 @@ const Hero = () => {
             className="text-xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl max-w-3xl"
           />
 
-          <div className="mt-6 text-center"> 
+          <div className="mt-6 text-center">
             <AnimatedTitle 
               as="div" 
               text="Audy Al Vasyah"
-              className="text-3xl font-headline font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-accent via-foreground to-accent bg-clip-text text-transparent animate-gradient"
+              className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-accent via-foreground to-accent bg-clip-text text-transparent animate-gradient"
             />
             <p className="text-sm font-medium text-muted-foreground sm:t-lg mt-4">
               Spesialis IT & Automasi Proses
