@@ -25,10 +25,10 @@ const InteractiveGridBackground: React.FC<InteractiveGridBackgroundProps> = ({
       container.style.setProperty('--mouse-y', `${y}px`);
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
