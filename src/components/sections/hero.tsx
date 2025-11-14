@@ -31,7 +31,7 @@ const Hero = () => {
 
           <AnimatedTitle 
             text="Solusi Digital & Automasi"
-            className="text-xl font-headline font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl max-w-3xl"
+            className="text-xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl max-w-3xl"
           />
 
           <div className="mt-6 text-center"> 
