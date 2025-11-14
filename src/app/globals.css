@@ -39,7 +39,7 @@
 @layer utilities {
   .animate-gradient {
     background-size: 200%;
-    animation: gradient 3s ease infinite;
+    animation: gradient 6s ease infinite;
   }
 
   @keyframes gradient {
