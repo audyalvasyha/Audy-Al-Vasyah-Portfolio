@@ -1,13 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 export const metadata: Metadata = {
   title: 'Audy Al Vasyah - AI & Automation Portfolio',
@@ -40,9 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} dark`}
+      className={`${GeistSans.variable} ${GeistMono.variable} dark`}
     >
-      <body className="font-body antialiased">
+      <body className="font-code antialiased">
         {children}
         <Toaster />
       </body>
