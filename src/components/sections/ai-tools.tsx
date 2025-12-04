@@ -8,6 +8,7 @@ import TireInspectionTool from './tire-inspection-tool';
 import { CalendarClock, ScanLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '../ui/scroll-area';
+import Meteor from '../ui/meteor';
 
 const tools = [
   {
@@ -40,8 +41,22 @@ const AiTools = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const meteorCount = 5;
+
   return (
     <section id="tool" className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
+      {Array.from({ length: meteorCount }).map((_, i) => (
+        <Meteor
+          key={i}
+          style={{
+            top: `${Math.random() * 20 - 10}%`,
+            left: `auto`,
+            right: `${Math.random() * 80}%`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${Math.random() * 4 + 3}s`,
+          }}
+        />
+      ))}
       {/* Darkening Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]"></div>

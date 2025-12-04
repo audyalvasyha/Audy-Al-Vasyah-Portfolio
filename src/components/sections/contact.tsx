@@ -12,6 +12,7 @@ import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram, Github } from 'luci
 import Link from 'next/link';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import { motion, useInView, useAnimation } from 'framer-motion';
+import Meteor from '../ui/meteor';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -72,8 +73,22 @@ const Contact = () => {
     visible: { opacity: 1, x: 0 },
   };
 
+  const meteorCount = 5;
+
   return (
     <section id="contact" className="relative w-full py-20 md:py-32 scroll-mt-20 overflow-hidden">
+      {Array.from({ length: meteorCount }).map((_, i) => (
+        <Meteor
+          key={i}
+          style={{
+            top: `${Math.random() * 20 - 10}%`,
+            left: `auto`,
+            right: `${Math.random() * 80}%`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${Math.random() * 4 + 3}s`,
+          }}
+        />
+      ))}
       <div ref={ref} className="relative container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">

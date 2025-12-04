@@ -5,12 +5,12 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import Meteor from '../ui/meteor';
 
 const skillsData = [
   {
     category: 'Automasi & Logika Sistem',
     icon: <Bot className="h-8 w-8 text-accent" />,
-    description: null,
     skills: [
       { name: 'Machine Learning & AI Implementation' },
       { name: 'Automation Tools Development' },
@@ -19,7 +19,6 @@ const skillsData = [
   {
     category: 'Pengembangan UI & Dasbor Automasi/AI',
     icon: <Code className="h-8 w-8 text-accent" />,
-    description: 'Membangun antarmuka yang intuitif untuk memvisualisasikan data dan mengontrol sistem automasi.',
     skills: [
       { name: 'Javascript' },
       { name: 'React' },
@@ -30,19 +29,16 @@ const skillsData = [
   {
     category: 'Google Cloud Platform',
     icon: <Cloud className="h-8 w-8 text-accent" />,
-    description: null,
     skills: [{ name: 'Gemini API' }, { name: 'Firebase' }],
   },
   {
     category: 'Sistem Enterprise',
     icon: <BrainCircuit className="h-8 w-8 text-accent" />,
-    description: null,
     skills: [{ name: 'SAP ERP (SD & WM Modules)' }],
   },
   {
     category: 'Automasi Proses Bisnis Google Workspace',
     icon: <AppWindow className="h-8 w-8 text-accent" />,
-    description: 'Berfokus pada pengembangan skrip khusus menggunakan Apps Script untuk mengotomatiskan tugas dan alur kerja.',
     skills: [
       { name: 'Sheets' },
       { name: 'Docs' },
@@ -72,12 +68,25 @@ const Skills = () => {
       },
     },
   };
+  const meteorCount = 5;
 
   return (
     <section
       id="skills"
       className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
+      {Array.from({ length: meteorCount }).map((_, i) => (
+        <Meteor
+          key={i}
+          style={{
+            top: `${Math.random() * 20 - 10}%`,
+            left: `auto`,
+            right: `${Math.random() * 80}%`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${Math.random() * 4 + 3}s`,
+          }}
+        />
+      ))}
       <div ref={ref} className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -114,7 +123,7 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
     <motion.div variants={cardVariants} className="h-full">
       <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-border">
         <CardContent className="flex flex-col flex-grow p-6">
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-4 mb-4">
             <div className="text-accent mt-1 flex-shrink-0">{category.icon}</div>
             <div className="flex-1">
               <CardTitle className="font-headline text-lg text-foreground">
@@ -122,7 +131,7 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
               </CardTitle>
             </div>
           </div>
-          <div className="flex-grow mt-4 flex flex-wrap gap-2 content-end">
+          <div className="flex-grow flex flex-wrap gap-2 content-start">
             {category.skills.map((skill) => (
               <Badge
                 key={skill.name}
