@@ -16,7 +16,7 @@ const Meteor: React.FC<MeteorProps> = ({ className, style }) => {
       )}
       style={style}
     >
-      <div className="absolute top-1/2 -translate-y-1/2 h-px w-[50px] sm:w-[150px] bg-gradient-to-r from-accent to-transparent" />
+      <div className="absolute top-1/2 -translate-y-1/2 h-px w-[150px] sm:w-[300px] bg-gradient-to-r from-accent to-transparent" />
     </div>
   );
 };

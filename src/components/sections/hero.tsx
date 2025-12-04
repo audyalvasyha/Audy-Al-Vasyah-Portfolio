@@ -53,10 +53,10 @@ const Hero = () => {
           key={i}
           style={{
             top: `${Math.random() * 20 - 10}%`,
-            left: 'auto',
-            right: `${Math.random() * 20 - 10}%`,
+            left: `auto`,
+            right: `${Math.random() * 40 - 20}%`,
             animationDelay: `${Math.random() * 10}s`,
-            animationDuration: `${Math.random() * 4 + 2}s`,
+            animationDuration: `${Math.random() * 4 + 3}s`,
           }}
         />
       ))}
