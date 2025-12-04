@@ -8,6 +8,7 @@ import React from 'react';
 import AnimatedTitle from '@/components/ui/animated-title';
 import ParticlesBackground from '../ui/particles-background';
 import Typewriter from '../ui/typewriter';
+import Meteor from '../ui/meteor';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,12 +41,25 @@ const buttonsVariants = {
 
 
 const Hero = () => {
+  const meteorCount = 10;
   return (
     <section
       id="home"
       className="relative isolate flex flex-col justify-center scroll-mt-20 overflow-hidden min-h-[85vh]"
     >
       <ParticlesBackground />
+      {Array.from({ length: meteorCount }).map((_, i) => (
+        <Meteor
+          key={i}
+          style={{
+            top: `${Math.random() * 20 - 10}%`,
+            left: 'auto',
+            right: `${Math.random() * 20 - 10}%`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${Math.random() * 4 + 2}s`,
+          }}
+        />
+      ))}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10"></div>
 
       <motion.div 
