@@ -24,11 +24,11 @@ const experienceData = [
     ],
   },
   {
-    role: 'Asisten Site Enginner',
+    role: 'Site Enginner',
     company: 'Dinas Perumahan dan Permukiman Kota Medan',
     period: '2019 - 2019',
     achievements: [
-      'Berhasil mengawasi implementasi K3 di lapangan untuk menciptakan lingkungan kerja yang aman.',
+      'Mengawasi implementasi K3 di lapangan untuk menciptakan lingkungan kerja yang aman.',
       'Berperan sebagai penghubung teknis, mengelola koordinasi harian antara Site Engineer, subkontraktor, dan logistik untuk menjaga progres tetap sesuai jadwal.',
       'Proaktif menyelesaikan tantangan teknis di lapangan guna memastikan kesesuaian spesifikasi dan kualitas konstruksi.'
     ],

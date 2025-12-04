@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -113,17 +113,16 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
   return (
     <motion.div variants={cardVariants} className="h-full">
       <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-border">
-        <CardHeader className="flex flex-row items-start gap-4 space-y-0 pb-2">
-          <div className="text-accent mt-1">{category.icon}</div>
-          <div className='flex-1'>
-            <CardTitle className="font-headline text-lg text-foreground">
-              {category.category}
-            </CardTitle>
-            {category.description && <CardDescription className='text-xs mt-1'>{category.description}</CardDescription>}
+        <CardContent className="flex flex-col flex-grow p-6">
+          <div className="flex items-start gap-4">
+            <div className="text-accent mt-1 flex-shrink-0">{category.icon}</div>
+            <div className="flex-1">
+              <CardTitle className="font-headline text-lg text-foreground">
+                {category.category}
+              </CardTitle>
+            </div>
           </div>
-        </CardHeader>
-        <CardContent className="flex-grow pt-2 flex flex-col justify-end">
-          <div className="flex flex-wrap gap-2 mt-auto">
+          <div className="flex-grow mt-4 flex flex-wrap gap-2 content-end">
             {category.skills.map((skill) => (
               <Badge
                 key={skill.name}
