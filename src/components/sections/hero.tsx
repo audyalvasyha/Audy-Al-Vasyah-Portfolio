@@ -7,6 +7,37 @@ import { MessageSquare, Briefcase } from 'lucide-react';
 import React from 'react';
 import AnimatedTitle from '@/components/ui/animated-title';
 import ParticlesBackground from '../ui/particles-background';
+import Typewriter from '../ui/typewriter';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const badgeVariants = {
+  hidden: { y: -50, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: { type: 'spring', stiffness: 120 } 
+  },
+};
+
+const buttonsVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1, 
+    transition: { type: 'spring', stiffness: 100 }
+  },
+}
+
 
 const Hero = () => {
   return (
@@ -17,13 +48,16 @@ const Hero = () => {
       <ParticlesBackground />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10"></div>
 
-      <div className="container relative z-20 px-6">
+      <motion.div 
+        className="container relative z-20 px-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="flex flex-col items-center text-center">
           <motion.div
             className="inline-block rounded-full bg-card/80 backdrop-blur-sm border border-border text-accent px-4 py-1 text-sm font-medium mb-6 self-center"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            variants={badgeVariants}
           >
             Hi 👋, Siap Meluncurkan Proyek Digital Anda?
           </motion.div>
@@ -41,22 +75,18 @@ const Hero = () => {
             />
           </div>
 
-          <motion.p
-            className="mt-8 max-w-3xl text-sm text-slate-300 sm:text-base font-body"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.8 }}
-          >
-            Spesialis AI & Automasi: Saya membantu bisnis meningkatkan efisiensi
-            operasional dan mengurangi human error secara terukur (hingga 44%
-            dan 90%) melalui solusi end-to-end sistem cerdas.
-          </motion.p>
+          <div className="mt-8 max-w-3xl text-sm text-slate-300 sm:text-base font-body">
+            <Typewriter 
+              text="Spesialis AI & Automasi: Saya membantu bisnis meningkatkan efisiensi operasional dan mengurangi human error secara terukur (hingga 44% dan 90%) melalui solusi end-to-end sistem cerdas." 
+              speed={20}
+              triggerOnView={true}
+            />
+          </div>
+          
 
           <motion.div
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 1.0 }}
+            variants={buttonsVariants}
           >
             <Button asChild size="lg">
               <Link href="#contact" className="flex items-center gap-2">
@@ -77,7 +107,7 @@ const Hero = () => {
             </Button>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
