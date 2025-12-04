@@ -47,8 +47,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.8 }}
           >
-            Dari Proses Manual ke Efisiensi Digital – 3+ Tahun Pengalaman dalam
-            Transformasi Proses Bisnis.
+            Spesialis AI & Automasi: Saya membantu bisnis meningkatkan efisiensi
+            operasional dan mengurangi human error secara terukur (hingga 44%
+            dan 90%) melalui solusi end-to-end sistem cerdas.
           </motion.p>
 
           <motion.div

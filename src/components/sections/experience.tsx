@@ -9,7 +9,7 @@ const experienceData = [
     company: 'PT. Pekanbaru Distribusindo Raya (Wings Group)',
     period: '2024 - Sekarang',
     achievements: [
-      'Merancang dan mengimplementasikan sistem penjadwalan pengiriman berbasis Machine Learning & AI, menghasilkan optimasi rute dan efisiensi waktu sebesar 44.21%',
+      'Mengelola dan mengoptimalkan 100+ rute pengiriman harian. Merancang dan mengimplementasikan sistem penjadwalan pengiriman berbasis Machine Learning & AI, menghasilkan optimasi rute dan peningkatan efisiensi sebesar **44.21%**.',
       'Memimpin proyek digitalisasi dan automasi alur kerja tim transportasi.',
       'Mengembangkan dasbor "Mitra Armada AI" untuk real-time monitoring status inspeksi armada.',
       'Merancang UI/UX dan logika izin terpisah untuk "Deliveryman" dan "Monitor Kordel" pada aplikasi internal.'
@@ -20,7 +20,7 @@ const experienceData = [
     company: 'PT. Pekanbaru Distribusindo Raya (Wings Group)',
     period: '2021 - 2024',
     achievements: [
-      'Mengembangkan dan memanfaatkan Automation Tools (Auto Clicker) untuk mempercepat proses Post Good Issue, mengurangi potensi human error sebesar 90%',
+      'Mengembangkan dan memanfaatkan Automation Tools (Auto Clicker) untuk mempercepat proses Post Good Issue, mengurangi potensi human error sebesar **90%**, berdampak pada penghematan waktu verifikasi hingga 2 jam per hari.',
     ],
   },
   {

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -10,14 +10,16 @@ const skillsData = [
   {
     category: 'Automasi & Logika Sistem',
     icon: <Bot className="h-8 w-8 text-accent" />,
+    description: null,
     skills: [
       { name: 'Machine Learning & AI Implementation' },
       { name: 'Automation Tools Development' },
     ],
   },
   {
-    category: 'Pengembangan Web',
+    category: 'Pengembangan UI & Dasbor Automasi/AI',
     icon: <Code className="h-8 w-8 text-accent" />,
+    description: 'Membangun antarmuka yang intuitif untuk memvisualisasikan data dan mengontrol sistem automasi.',
     skills: [
       { name: 'Javascript' },
       { name: 'React' },
@@ -28,16 +30,19 @@ const skillsData = [
   {
     category: 'Google Cloud Platform',
     icon: <Cloud className="h-8 w-8 text-accent" />,
+    description: null,
     skills: [{ name: 'Gemini API' }, { name: 'Firebase' }],
   },
   {
     category: 'Sistem Enterprise',
     icon: <BrainCircuit className="h-8 w-8 text-accent" />,
+    description: null,
     skills: [{ name: 'SAP ERP (SD & WM Modules)' }],
   },
   {
-    category: 'Google Workspace',
+    category: 'Automasi Proses Bisnis Google Workspace',
     icon: <AppWindow className="h-8 w-8 text-accent" />,
+    description: 'Berfokus pada pengembangan skrip khusus menggunakan Apps Script untuk mengotomatiskan tugas dan alur kerja.',
     skills: [
       { name: 'Sheets' },
       { name: 'Docs' },
@@ -108,14 +113,17 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
   return (
     <motion.div variants={cardVariants} className="h-full">
       <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-border">
-        <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
-          <div className="text-accent">{category.icon}</div>
-          <CardTitle className="font-headline text-lg text-foreground">
-            {category.category}
-          </CardTitle>
+        <CardHeader className="flex flex-row items-start gap-4 space-y-0 pb-2">
+          <div className="text-accent mt-1">{category.icon}</div>
+          <div className='flex-1'>
+            <CardTitle className="font-headline text-lg text-foreground">
+              {category.category}
+            </CardTitle>
+            {category.description && <CardDescription className='text-xs mt-1'>{category.description}</CardDescription>}
+          </div>
         </CardHeader>
-        <CardContent className="flex-grow pt-2">
-          <div className="flex flex-wrap gap-2">
+        <CardContent className="flex-grow pt-2 flex flex-col justify-end">
+          <div className="flex flex-wrap gap-2 mt-auto">
             {category.skills.map((skill) => (
               <Badge
                 key={skill.name}

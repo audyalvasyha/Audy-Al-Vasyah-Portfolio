@@ -16,9 +16,9 @@ export const projectDetails = [
   },
   {
     id: 'saldoin-topup',
-    title: 'SaldoIn - Top Up Game & Voucher E-commerce',
+    title: 'SaldoIn - Arsitektur E-commerce Skalabel',
     description:
-      'Platform e-commerce untuk top-up game dan voucher yang mengutamakan kecepatan transaksi, keamanan data, dan pengalaman pengguna yang optimal dengan arsitektur modern.',
+      'Merancang arsitektur backend yang skalabel untuk platform e-commerce, berfokus pada automasi sistem pembayaran dan manajemen inventaris digital untuk memastikan kecepatan dan keandalan transaksi.',
     features: [
       'Implementasi sistem pembayaran yang terintegrasi untuk berbagai metode (misalnya QRIS, Virtual Account).',
       'Manajemen inventaris digital (voucher dan produk game) secara real-time.',

@@ -37,13 +37,13 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ job, index }) => {
   }, [isInView, controls]);
 
   const highlightMetric = (text: string) => {
-    const regex = /(\d+(?:\.\d+)?%)/g;
-    return text.split(regex).map((part, index) => {
-      if (regex.test(part)) {
+    const boldRegex = /\*\*(.*?)\*\*/g;
+    return text.split(boldRegex).map((part, index) => {
+      if (index % 2 === 1) {
         return (
-          <span key={index} className="text-accent font-bold">
+          <strong key={index} className="text-accent font-bold">
             {part}
-          </span>
+          </strong>
         );
       }
       return part;
