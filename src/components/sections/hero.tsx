@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Briefcase } from 'lucide-react';
 import React from 'react';
@@ -9,7 +9,7 @@ import AnimatedTitle from '@/components/ui/animated-title';
 import ParticlesBackground from '../ui/particles-background';
 import Typewriter from '../ui/typewriter';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -20,21 +20,21 @@ const containerVariants = {
   },
 };
 
-const badgeVariants = {
+const badgeVariants: Variants = {
   hidden: { y: -50, opacity: 0 },
   visible: { 
     y: 0, 
     opacity: 1,
-    transition: { type: 'spring', stiffness: 120 } 
+    transition: { type: 'spring', stiffness: 120 } as any
   },
 };
 
-const buttonsVariants = {
+const buttonsVariants: Variants = {
   hidden: { y: 50, opacity: 0 },
   visible: { 
     y: 0, 
     opacity: 1, 
-    transition: { type: 'spring', stiffness: 100 }
+    transition: { type: 'spring', stiffness: 100 } as any
   },
 }
 
