@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation, type Variants } from 'framer-motion';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -100,9 +100,9 @@ const Skills = () => {
 };
 
 const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } as any },
   };
 
   return (
