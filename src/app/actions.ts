@@ -1,8 +1,27 @@
 'use server';
 
-import { rtdb } from '@/lib/firebase';
-import { ref, runTransaction } from 'firebase/database';
+import { getApp, getApps, initializeApp } from 'firebase/app';
+import { getDatabase, ref, runTransaction } from 'firebase/database';
 import { Resend } from 'resend';
+
+// Server-side Firebase configuration
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
+
+// Initialize Firebase app for server-side actions
+function getFirebaseApp() {
+    if (getApps().length === 0) {
+        return initializeApp(firebaseConfig);
+    }
+    return getApp();
+}
 
 // Type for the form state
 export type FormState = {
@@ -55,13 +74,17 @@ export async function sendEmail(previousState: FormState, formData: FormData): P
  */
 export async function updatePageViews(): Promise<number> {
   try {
+    const app = getFirebaseApp();
+    const rtdb = getDatabase(app);
     const viewsRef = ref(rtdb, 'pageViews');
+    
     const { snapshot } = await runTransaction(viewsRef, (currentData: number | null) => {
       return (currentData || 0) + 1;
     });
+
     return snapshot.val() || 0;
   } catch (error) {
     console.error('Error updating page views:', error);
-    return 0;
+    return 0; // Return 0 if there's an error
   }
 }
