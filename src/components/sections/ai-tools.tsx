@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -29,6 +29,7 @@ const AiTools = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const controls = useAnimation();
+  const [meteors, setMeteors] = useState<React.CSSProperties[]>([]);
 
   useEffect(() => {
     if (isInView) {
@@ -36,26 +37,27 @@ const AiTools = () => {
     }
   }, [isInView, controls]);
 
+  useEffect(() => {
+    const meteorCount = 5;
+    const newMeteors = Array.from({ length: meteorCount }).map(() => ({
+        top: `${Math.random() * 20 - 10}%`,
+        left: `auto`,
+        right: `${Math.random() * 80}%`,
+        animationDelay: `${Math.random() * 10}s`,
+        animationDuration: `${Math.random() * 4 + 3}s`,
+    }));
+    setMeteors(newMeteors);
+  }, []);
+
   const cardVariants = {
     hidden: { opacity: 0, y: 100 },
     visible: { opacity: 1, y: 0 },
   };
 
-  const meteorCount = 5;
-
   return (
     <section id="tool" className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
-      {Array.from({ length: meteorCount }).map((_, i) => (
-        <Meteor
-          key={i}
-          style={{
-            top: `${Math.random() * 20 - 10}%`,
-            left: `auto`,
-            right: `${Math.random() * 80}%`,
-            animationDelay: `${Math.random() * 10}s`,
-            animationDuration: `${Math.random() * 4 + 3}s`,
-          }}
-        />
+      {meteors.map((style, i) => (
+        <Meteor key={i} style={style} />
       ))}
       {/* Darkening Gradient Overlay */}
       <div className="absolute inset-0 z-0">

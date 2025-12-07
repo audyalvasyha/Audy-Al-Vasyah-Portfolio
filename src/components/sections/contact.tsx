@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useFormStatus } from 'react-dom';
-import { useActionState, useEffect, useRef } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { sendEmail, FormState } from '@/app/actions';
 import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram, Github } from 'lucide-react';
 import Link from 'next/link';
@@ -46,6 +46,7 @@ const Contact = () => {
   const initialState: FormState = { message: '', success: false };
   const [formState, formAction, isPending] = useActionState(sendEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const [meteors, setMeteors] = useState<React.CSSProperties[]>([]);
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -63,6 +64,18 @@ const Contact = () => {
     }
   }, [isInView, controls]);
 
+  useEffect(() => {
+    const meteorCount = 5;
+    const newMeteors = Array.from({ length: meteorCount }).map(() => ({
+      top: `${Math.random() * 20 - 10}%`,
+      left: `auto`,
+      right: `${Math.random() * 80}%`,
+      animationDelay: `${Math.random() * 10}s`,
+      animationDuration: `${Math.random() * 4 + 3}s`,
+    }));
+    setMeteors(newMeteors);
+  }, []);
+
   const leftVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
@@ -73,21 +86,10 @@ const Contact = () => {
     visible: { opacity: 1, x: 0 },
   };
 
-  const meteorCount = 5;
-
   return (
     <section id="contact" className="relative w-full py-20 md:py-32 scroll-mt-20 overflow-hidden">
-      {Array.from({ length: meteorCount }).map((_, i) => (
-        <Meteor
-          key={i}
-          style={{
-            top: `${Math.random() * 20 - 10}%`,
-            left: `auto`,
-            right: `${Math.random() * 80}%`,
-            animationDelay: `${Math.random() * 10}s`,
-            animationDuration: `${Math.random() * 4 + 3}s`,
-          }}
-        />
+      {meteors.map((style, i) => (
+        <Meteor key={i} style={style} />
       ))}
       <div ref={ref} className="relative container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
