@@ -1,9 +1,8 @@
 'use server';
 
-import { ref, runTransaction } from 'firebase/database';
+import { runTransaction, ref } from 'firebase/database';
 import { Resend } from 'resend';
-import { adminDb } from '@/lib/firebase-admin';
-
+import { getAdminDb } from '@/lib/firebase-admin';
 
 // Type for the form state
 export type FormState = {
@@ -56,6 +55,7 @@ export async function sendEmail(previousState: FormState, formData: FormData): P
  */
 export async function updatePageViews(): Promise<number> {
   try {
+    const adminDb = getAdminDb();
     const viewsRef = ref(adminDb, 'pageViews');
     
     const { snapshot } = await runTransaction(viewsRef, (currentData: number | null) => {

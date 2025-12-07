@@ -1,5 +1,3 @@
-'use server';
-
 import admin from 'firebase-admin';
 import { getDatabase } from 'firebase-admin/database';
 
@@ -9,15 +7,22 @@ const serviceAccount = {
   privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
 };
 
-try {
+let adminDb: admin.database.Database;
+
+function getAdminDb() {
   if (!admin.apps.length) {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
-    });
+    try {
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+      });
+    } catch (error: any) {
+      console.error('Firebase admin initialization error', error.stack);
+    }
   }
-} catch (error: any) {
-  console.error('Firebase admin initialization error', error.stack);
+  // @ts-ignore
+  adminDb = getDatabase();
+  return adminDb;
 }
 
-export const adminDb = getDatabase();
+export { getAdminDb };
