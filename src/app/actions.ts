@@ -1,8 +1,8 @@
 'use server';
 
-import { runTransaction, ref } from 'firebase/database';
+import { initializeApp, getApp, getApps } from 'firebase/app';
+import { getDatabase, runTransaction, ref } from 'firebase/database';
 import { Resend } from 'resend';
-import { getAdminDb } from '@/lib/firebase-admin';
 
 // Type for the form state
 export type FormState = {
@@ -55,12 +55,23 @@ export async function sendEmail(previousState: FormState, formData: FormData): P
  */
 export async function updatePageViews(): Promise<number> {
   try {
-    const adminDb = getAdminDb();
-    const viewsRef = ref(adminDb, 'pageViews');
-    
-    const { snapshot } = await runTransaction(viewsRef, (currentData: number | null) => {
-      return (currentData || 0) + 1;
-    });
+      const firebaseConfig = {
+        apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+        authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+        storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+        databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+      };
+
+      const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+      const rtdb = getDatabase(app);
+      const viewsRef = ref(rtdb, 'pageViews');
+
+      const { snapshot } = await runTransaction(viewsRef, (currentData: number | null) => {
+        return (currentData || 0) + 1;
+      });
 
     return snapshot.val() || 0;
   } catch (error) {
