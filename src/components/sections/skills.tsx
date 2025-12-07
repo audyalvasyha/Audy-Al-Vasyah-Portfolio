@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import Meteor from '../ui/meteor';
 
 const skillsData = [
   {
@@ -53,25 +52,11 @@ const Skills = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const controls = useAnimation();
 
-  const [meteors, setMeteors] = useState<React.CSSProperties[]>([]);
-
   useEffect(() => {
     if (isInView) {
       controls.start('visible');
     }
   }, [isInView, controls]);
-
-  useEffect(() => {
-    const meteorCount = 5;
-    const newMeteors = Array.from({ length: meteorCount }).map(() => ({
-        top: `${Math.random() * 20 - 10}%`,
-        left: `auto`,
-        right: `${Math.random() * 80}%`,
-        animationDelay: `${Math.random() * 10}s`,
-        animationDuration: `${Math.random() * 4 + 3}s`,
-    }));
-    setMeteors(newMeteors);
-  }, []);
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -88,9 +73,6 @@ const Skills = () => {
       id="skills"
       className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
-      {meteors.map((style, i) => (
-        <Meteor key={i} style={style} />
-      ))}
       <div ref={ref} className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">

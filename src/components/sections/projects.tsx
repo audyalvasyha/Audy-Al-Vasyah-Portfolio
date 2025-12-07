@@ -5,33 +5,15 @@ import ProjectCard from './project-card';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import Meteor from '../ui/meteor';
-import { useEffect, useState } from 'react';
 
 const Projects = () => {
   const featuredProjects = projectDetails.slice(0, 2);
-  const [meteors, setMeteors] = useState<React.CSSProperties[]>([]);
-
-  useEffect(() => {
-    const meteorCount = 5;
-    const newMeteors = Array.from({ length: meteorCount }).map(() => ({
-        top: `${Math.random() * 20 - 10}%`,
-        left: `auto`,
-        right: `${Math.random() * 80}%`,
-        animationDelay: `${Math.random() * 10}s`,
-        animationDuration: `${Math.random() * 4 + 3}s`,
-    }));
-    setMeteors(newMeteors);
-  }, []);
 
   return (
     <section
       id="projects"
       className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
-      {meteors.map((style, i) => (
-        <Meteor key={i} style={style} />
-      ))}
       {/* Darkening Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]"></div>
