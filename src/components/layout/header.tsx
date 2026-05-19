@@ -21,21 +21,23 @@ const Header = () => {
   const [isSheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Code2 className="h-6 w-6 text-accent" />
-            <span className="hidden font-bold sm:inline-block font-headline">
+    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl border border-white/10 bg-black/40 backdrop-blur-xl rounded-full shadow-2xl transition-all duration-300">
+      <div className="container flex h-14 items-center justify-between px-6">
+        <div className="flex items-center">
+          <Link href="/" className="mr-8 flex items-center space-x-2 group">
+            <div className="p-1.5 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+              <Code2 className="h-5 w-5 text-accent" />
+            </div>
+            <span className="hidden font-bold sm:inline-block font-headline tracking-tight">
               Audy Al Vasyah
             </span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-accent"
+                className="text-foreground/70 transition-colors hover:text-accent"
               >
                 {link.name}
               </Link>
@@ -44,7 +46,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Nav */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
           <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">

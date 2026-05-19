@@ -51,10 +51,10 @@ const Experience = () => {
             </p>
           </div>
         </div>
-        <div className="relative mt-12 max-w-5xl mx-auto">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+        <div className="relative mt-20 max-w-5xl mx-auto">
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/50 to-transparent -translate-x-1/2"></div>
           
-          <div className="space-y-8">
+          <div className="space-y-12">
             {experienceData.map((job, index) => (
               <div
                 key={index}
@@ -64,7 +64,7 @@ const Experience = () => {
                   index % 2 !== 0 && 'md:flex-row-reverse'
                 )}
               >
-                <div className="z-10 absolute left-6 md:left-1/2 top-1 w-4 h-4 bg-accent rounded-full -translate-x-1/2" />
+                <div className="z-10 absolute left-6 md:left-1/2 top-1.5 w-3 h-3 bg-accent rounded-full -translate-x-1/2 ring-4 ring-accent/20 ring-offset-2 ring-offset-background" />
                 
                 <ExperienceCard
                   job={job}

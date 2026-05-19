@@ -107,7 +107,7 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
 
   return (
     <motion.div variants={cardVariants} className="h-full">
-      <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-border">
+      <Card className="flex flex-col h-full bg-card/30 backdrop-blur-md border border-white/10 hover:border-accent/30 transition-all duration-300 group/skill">
         <CardContent className="flex flex-col flex-grow p-6">
           <div className="flex items-start gap-4 mb-4">
             <div className="text-accent mt-1 flex-shrink-0">{category.icon}</div>
