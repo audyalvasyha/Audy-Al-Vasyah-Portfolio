@@ -59,7 +59,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ job, index }) => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={cn('w-full', 'md:w-1/2 md:px-8', isOdd ? 'pl-12 md:pl-8' : 'pl-12')}
     >
-      <Card className="bg-gray-800/50 backdrop-blur-sm border border-slate-700">
+      <Card className="bg-card/30 backdrop-blur-md border border-white/10 hover:border-accent/30 transition-all duration-300 shadow-xl group/card">
         <CardHeader>
           <div
             className={cn(
