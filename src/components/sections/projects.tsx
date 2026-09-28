@@ -12,7 +12,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+      className="bp-grid-fine relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
       {/* Darkening Gradient Overlay */}
       <div className="absolute inset-0 z-0">
@@ -21,11 +21,13 @@ const Projects = () => {
       
       <div className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <span className="bp-stamp-ghost">SEC. 03 — Detail Sheets</span>
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">
+            <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
               Proyek Unggulan
             </h2>
-            <p className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Contoh bagaimana saya memanfaatkan teknologi untuk memecahkan
               masalah dunia nyata.
             </p>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Code2 } from 'lucide-react';
+import { Menu, Crosshair, Download } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -21,23 +21,26 @@ const Header = () => {
   const [isSheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl border border-white/10 bg-black/40 backdrop-blur-xl rounded-full shadow-2xl transition-all duration-300">
-      <div className="container flex h-14 items-center justify-between px-6">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-primary/25 bg-background/85 backdrop-blur-md">
+      <div className="container flex h-16 items-center justify-between px-6">
         <div className="flex items-center">
-          <Link href="/" className="mr-8 flex items-center space-x-2 group">
-            <div className="p-1.5 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-              <Code2 className="h-5 w-5 text-accent" />
+          <Link href="/" className="mr-8 flex items-center gap-3 group">
+            <div className="flex h-9 w-9 items-center justify-center border border-accent/60 bg-accent/10 text-accent transition-colors group-hover:bg-accent/20">
+              <Crosshair className="h-5 w-5" />
             </div>
-            <span className="hidden font-bold sm:inline-block font-headline tracking-tight">
-              Audy Al Vasyah
+            <span className="hidden sm:inline-block font-headline font-semibold uppercase tracking-[0.2em] text-sm text-foreground">
+              A. Vasyah
+              <span className="ml-2 hidden md:inline font-code text-[0.6rem] tracking-[0.25em] text-muted-foreground">
+                / OPS·TECH
+              </span>
             </span>
           </Link>
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-7 text-xs font-code font-medium uppercase tracking-[0.2em]">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-foreground/70 transition-colors hover:text-accent"
+                className="text-muted-foreground transition-colors hover:text-accent"
               >
                 {link.name}
               </Link>
@@ -54,26 +57,29 @@ const Header = () => {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" className="bp-grid border-primary/30 bg-background/95">
               <SheetHeader>
                 <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
               </SheetHeader>
               <Link
                 href="/"
-                className="flex items-center"
+                className="flex items-center gap-3"
                 onClick={() => setSheetOpen(false)}
               >
-                <Code2 className="h-6 w-6 text-accent" />
-                <span className="ml-2 font-bold font-headline">Audy Al Vasyah</span>
+                <div className="flex h-9 w-9 items-center justify-center border border-accent/60 bg-accent/10 text-accent">
+                  <Crosshair className="h-5 w-5" />
+                </div>
+                <span className="font-headline font-semibold uppercase tracking-[0.2em]">A. Vasyah</span>
               </Link>
-              <div className="mt-8 flex flex-col space-y-4">
+              <div className="mt-8 flex flex-col items-start gap-5">
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-lg transition-colors hover:text-accent"
+                    className="text-sm font-code uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-accent"
                     onClick={() => setSheetOpen(false)}
                   >
+                    <span className="mr-2 text-redline">›</span>
                     {link.name}
                   </Link>
                 ))}
@@ -82,9 +88,12 @@ const Header = () => {
           </Sheet>
         </div>
 
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button asChild>
-            <a href="/Audy Al Vasyah 10-25.pdf" download="Audy-Al-Vasyah-CV.pdf">Download CV</a>
+        <div className="flex flex-1 items-center justify-end">
+          <Button size="sm" className="gap-2">
+            <Download className="h-4 w-4" />
+            <a href="/Audy Al Vasyah 10-25.pdf" download="Audy-Al-Vasyah-CV.pdf">
+              CV
+            </a>
           </Button>
         </div>
       </div>

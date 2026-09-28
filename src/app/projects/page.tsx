@@ -8,25 +8,27 @@ import InteractiveGridBackground from '@/components/ui/interactive-grid-backgrou
 
 const AllProjectsPage = () => {
   return (
-    <main className="relative isolate py-24 sm:py-32 scroll-mt-20 overflow-hidden">
+    <main className="bp-grid relative isolate py-24 sm:py-32 scroll-mt-20 overflow-hidden">
       <InteractiveGridBackground />
 
       <div className="container relative z-10 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-            <div className="space-y-2">
-                <h1 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">
-                    Arsip Proyek
-                </h1>
-                <p className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Berikut adalah koleksi lengkap proyek-proyek yang pernah saya kerjakan.
-                </p>
-            </div>
-             <Button asChild variant="ghost" className="self-center">
-                <Link href="/" className="flex items-center gap-2">
-                    <ArrowLeft className="h-4 w-4" />
-                    Kembali ke Halaman Utama
-                </Link>
-            </Button>
+          <span className="bp-stamp-ghost">Appendix A — Full Register</span>
+          <div className="space-y-2">
+            <h1 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
+              Arsip Proyek
+            </h1>
+            <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Berikut adalah koleksi lengkap proyek-proyek yang pernah saya kerjakan.
+            </p>
+          </div>
+          <Button asChild variant="ghost" className="self-center">
+            <Link href="/" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Kembali ke Halaman Utama
+            </Link>
+          </Button>
         </div>
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">

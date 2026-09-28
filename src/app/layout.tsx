@@ -1,12 +1,21 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Space_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-headline',
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-code',
+});
 
 export const metadata: Metadata = {
-  title: 'Audy Al Vasyah - AI & Automation Portfolio',
+  title: 'Audy Al Vasyah — Full-Stack Engineer · Operations Tech',
   description:
     'Portofolio profesional Audy Al Vasyah. Menampilkan keahlian dalam implementasi AI, Machine Learning, dan automasi untuk efisiensi operasional.',
   keywords: [
@@ -36,12 +45,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} dark`}
+      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} dark`}
     >
-      <body className="font-code antialiased">
-        {children}
-        <Toaster />
-      </body>
+      <body className="font-code antialiased">{children}</body>
     </html>
   );
 }

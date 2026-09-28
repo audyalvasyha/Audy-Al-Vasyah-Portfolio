@@ -41,7 +41,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ job, index }) => {
     return text.split(boldRegex).map((part, index) => {
       if (index % 2 === 1) {
         return (
-          <strong key={index} className="text-accent font-bold">
+          <strong key={index} className="text-accent font-semibold">
             {part}
           </strong>
         );
@@ -59,7 +59,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ job, index }) => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={cn('w-full', 'md:w-1/2 md:px-8', isOdd ? 'pl-12 md:pl-8' : 'pl-12')}
     >
-      <Card className="bg-card/30 backdrop-blur-md border border-white/10 hover:border-accent/30 transition-all duration-300 shadow-xl group/card">
+      <Card className="bp-corner-brackets bp-hatch bg-card/30 border border-primary/25 hover:border-accent/40 transition-all duration-300 shadow-xl group/card">
         <CardHeader>
           <div
             className={cn(
@@ -70,11 +70,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ job, index }) => {
               <CardTitle className="font-headline text-xl">
                 {job.role}
               </CardTitle>
-              <p className="text-sm text-muted-foreground">
+              <p className="mt-1 text-xs font-code uppercase tracking-[0.15em] text-muted-foreground">
                 {job.company}
               </p>
             </div>
-            <Badge variant="default" className="self-start md:self-auto">
+            <Badge variant="outline" className="self-start md:self-auto">
               {job.period}
             </Badge>
           </div>

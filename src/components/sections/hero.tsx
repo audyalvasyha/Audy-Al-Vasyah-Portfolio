@@ -43,72 +43,75 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative isolate flex flex-col justify-center scroll-mt-20 overflow-hidden min-h-screen pt-20"
+      className="bp-ruler relative isolate flex flex-col justify-center scroll-mt-20 overflow-hidden min-h-screen pt-24 pb-16"
     >
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[128px] animate-pulse delay-1000"></div>
-      </div>
+      <div className="absolute inset-0 z-0 bp-grid" aria-hidden="true"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[128px] animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-redline/5 rounded-full blur-[128px] animate-pulse delay-1000"></div>
       <ParticlesBackground />
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/50 to-transparent z-10"></div>
 
       <motion.div 
-        className="container relative z-20 px-6 mt-12"
+        className="container relative z-20 px-6 mt-8"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <div className="flex flex-col items-center text-center">
           <motion.div
-            className="inline-block rounded-full bg-card/80 backdrop-blur-sm border border-border text-accent px-4 py-1 text-sm font-medium mb-6 self-center"
+            className="bp-corner-brackets relative max-w-3xl w-full border border-primary/20 bg-card/30 backdrop-blur-sm px-6 py-10 sm:px-10"
             variants={badgeVariants}
           >
-            Hi 👋, Siap Meluncurkan Proyek Digital Anda?
-          </motion.div>
+            <span className="absolute -top-3 left-6 bg-background px-2 font-code text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+              Fig. 01
+            </span>
 
-          <AnimatedTitle
-            text="Solusi Digital & Automasi"
-            className="text-xl font-body tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl max-w-3xl"
-          />
+            <div className="bp-stamp mb-8">
+              Hi 👋, Siap Meluncurkan Proyek Digital Anda?
+            </div>
 
-          <div className="mt-6 text-center">
             <AnimatedTitle
-              as="div"
-              text="Audy Al Vasyah"
-              className="text-3xl font-headline tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-accent via-foreground to-accent bg-clip-text text-transparent animate-gradient"
+              text="Solusi Digital & Automasi"
+              className="text-sm font-code uppercase tracking-[0.35em] text-muted-foreground sm:text-base max-w-3xl"
             />
-          </div>
 
-          <div className="mt-8 max-w-3xl text-sm text-slate-300 sm:text-base font-body">
-            <Typewriter 
-              text="Spesialis AI & Automasi: Saya membantu bisnis meningkatkan efisiensi operasional dan mengurangi human error secara terukur (hingga 44% dan 90%) melalui solusi end-to-end sistem cerdas." 
-              speed={20}
-              triggerOnView={true}
-            />
-          </div>
-          
+            <div className="mt-6 text-center">
+              <AnimatedTitle
+                as="div"
+                text="Audy Al Vasyah"
+                className="text-3xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient"
+              />
+            </div>
 
-          <motion.div
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
-            variants={buttonsVariants}
-          >
-            <Button asChild size="lg">
-              <Link href="#contact" className="flex items-center gap-2">
-                <MessageSquare className="h-5 w-5" />
-                Hubungi Saya
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="bg-card/80 backdrop-blur-sm"
+            <div className="mx-auto mt-8 max-w-2xl text-sm text-foreground/80 sm:text-base font-code">
+              <Typewriter 
+                text="Spesialis AI & Automasi: Saya membantu bisnis meningkatkan efisiensi operasional dan mengurangi human error secara terukur (hingga 44% dan 90%) melalui solusi end-to-end sistem cerdas." 
+                speed={20}
+                triggerOnView={true}
+              />
+            </div>
+
+            <motion.div
+              className="mt-10 flex flex-wrap items-center justify-center gap-4"
+              variants={buttonsVariants}
             >
-              <Link href="#projects" className="flex items-center gap-2">
-                <Briefcase className="h-5 w-5" />
-                Lihat Proyek Saya
-              </Link>
-            </Button>
+              <Button asChild size="lg">
+                <Link href="#contact" className="flex items-center gap-2">
+                  <MessageSquare className="h-5 w-5" />
+                  Hubungi Saya
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+              >
+                <Link href="#projects" className="flex items-center gap-2">
+                  <Briefcase className="h-5 w-5" />
+                  Lihat Proyek Saya
+                </Link>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>

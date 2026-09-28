@@ -65,9 +65,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         className="flex"
     >
       <Dialog>
-        <Card className="relative group rounded-lg shadow-lg flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-accent/20 hover:-translate-y-1 bg-card/50 backdrop-blur-sm border-border overflow-hidden flex-grow">
+        <Card className="bp-corner-brackets relative group rounded-none shadow-lg flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-accent/20 hover:-translate-y-1 bg-card/40 backdrop-blur-sm border border-primary/25 overflow-hidden flex-grow">
           {projectImage && (
-            <div className="relative w-full h-64 flex-shrink-0 bg-black overflow-hidden">
+            <div className="relative w-full h-64 flex-shrink-0 bg-background/80 overflow-hidden">
               {/* Blurred Background Image */}
               <Image
                 src={projectImage.imageUrl}
@@ -91,7 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               <CardTitle className="font-headline text-xl text-foreground">
                 {project.title}
               </CardTitle>
-              <CardDescription className="mt-2 text-sm text-slate-400 line-clamp-3">
+              <CardDescription className="mt-2 text-sm text-muted-foreground line-clamp-3">
                 {project.description}
               </CardDescription>
 
@@ -100,7 +100,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="inline-block px-3 py-1 text-xs font-semibold text-accent bg-accent/10 border border-accent/20 rounded-full"
+                    className="inline-block px-3 py-1 text-[0.65rem] font-code font-medium uppercase tracking-[0.15em] text-accent bg-accent/10 border border-accent/30 rounded-none"
                   >
                     {tech}
                   </span>
@@ -108,7 +108,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               </div>
             </div>
             <DialogTrigger asChild>
-              <Button variant="outline" className="gap-2 mt-4 self-start bg-gray-800/50 backdrop-blur-sm border-slate-700">
+              <Button variant="outline" className="gap-2 mt-4 self-start bg-card/60 border-primary/30">
                 Lihat Detail
                 <ArrowRight />
               </Button>
@@ -116,9 +116,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           </div>
         </Card>
 
-        <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] overflow-y-auto md:overflow-hidden bg-card/70 backdrop-blur-md rounded-lg">
+        <DialogContent className="max-w-4xl w-[90vw] p-0 max-h-[90vh] overflow-y-auto md:overflow-hidden bg-popover/95 backdrop-blur-md">
           <div className="grid md:grid-cols-2 h-full">
-            <div className="relative w-full h-64 md:h-full flex-shrink-0 bg-black/50 overflow-hidden md:rounded-l-lg">
+            <div className="relative w-full h-64 md:h-full flex-shrink-0 bg-background/60 overflow-hidden md:rounded-l-none">
                  {projectImage && (
                     <>
                         {/* Blurred Background for Dialog */}
@@ -140,7 +140,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             </div>
             <div className="flex flex-col p-8 overflow-y-auto">
               <DialogHeader className="text-left">
-                <DialogTitle className="text-3xl font-headline font-bold">
+                <DialogTitle className="text-3xl font-headline font-bold uppercase tracking-tight">
                   {project.title}
                 </DialogTitle>
                 <DialogDescription className="pt-4 text-base text-muted-foreground">
@@ -153,7 +153,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="inline-block px-3 py-1 text-sm font-semibold text-accent bg-accent/10 border border-accent/20 rounded-full"
+                    className="inline-block px-3 py-1 text-xs font-code font-medium uppercase tracking-[0.15em] text-accent bg-accent/10 border border-accent/30 rounded-none"
                   >
                     {tech}
                   </span>

@@ -71,14 +71,17 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+      className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background via-transparent to-background" aria-hidden="true"></div>
       <div ref={ref} className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <span className="bp-stamp-ghost">SEC. 04 — Capabilities Matrix</span>
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">
+            <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
               Hard Skills
             </h2>
+            <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               A showcase of my technical capabilities and expertise.
             </p>
@@ -107,12 +110,14 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
 
   return (
     <motion.div variants={cardVariants} className="h-full">
-      <Card className="flex flex-col h-full bg-card/30 backdrop-blur-md border border-white/10 hover:border-accent/30 transition-all duration-300 group/skill">
+      <Card className="bp-corner-brackets flex flex-col h-full bg-card/30 border border-primary/25 hover:border-accent/40 transition-all duration-300 group/skill">
         <CardContent className="flex flex-col flex-grow p-6">
           <div className="flex items-start gap-4 mb-4">
-            <div className="text-accent mt-1 flex-shrink-0">{category.icon}</div>
+            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
+              {category.icon}
+            </div>
             <div className="flex-1">
-              <CardTitle className="font-headline text-lg text-foreground">
+              <CardTitle className="font-headline text-base text-foreground">
                 {category.category}
               </CardTitle>
             </div>
@@ -122,7 +127,7 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
               <Badge
                 key={skill.name}
                 variant="secondary"
-                className="font-normal bg-accent/10 text-accent border border-accent/20 backdrop-blur-sm"
+                className="font-code bg-primary/5 text-foreground/80 border-primary/25"
               >
                 {skill.name}
               </Badge>

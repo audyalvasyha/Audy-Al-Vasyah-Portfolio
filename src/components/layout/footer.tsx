@@ -34,13 +34,19 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="py-6 md:px-8 md:py-0 border-t border-border/40">
-      <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-        <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left">
-          &copy; {new Date().getFullYear()} Audy Al Vasyah. All Rights Reserved.
+    <footer className="border-t border-primary/25 bg-card/40">
+      <div className="bp-dimension mx-6 mt-4" aria-hidden="true" />
+      <div className="container flex flex-col items-center justify-between gap-4 py-6 md:h-24 md:flex-row">
+        <p className="text-balance text-center text-[0.7rem] font-code uppercase tracking-[0.25em] leading-loose text-muted-foreground md:text-left">
+          &copy; {new Date().getFullYear()} Audy Al Vasyah — All Rights Reserved
         </p>
-        <div className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-right min-h-[20px]">
-          {pageViews !== null ? `Views: ${pageViews.toLocaleString()}` : ''}
+        <div className="flex items-center gap-4">
+          <span className="hidden md:inline text-[0.6rem] font-code uppercase tracking-[0.3em] text-muted-foreground/60">
+            Sheet 1/1 · Scale 1:1
+          </span>
+          <div className="text-balance text-center text-[0.7rem] font-code uppercase tracking-[0.25em] leading-loose text-muted-foreground md:text-right min-h-[20px]">
+            {pageViews !== null ? `Views: ${pageViews.toLocaleString()}` : ''}
+          </div>
         </div>
       </div>
     </footer>
