@@ -55,24 +55,28 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
-          <div className="max-w-3xl">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
+          <div className="max-w-2xl">
             <motion.div variants={revealVariants} className="inline-block">
               <span className="inline-block border-2 border-foreground bg-foreground px-4 py-2 font-code text-sm uppercase tracking-[0.35em] text-secondary lg:text-base">
                 Audy Al Vasyah // Ops·Tech
               </span>
             </motion.div>
 
-            <motion.h1 variants={revealVariants} className="mt-8 space-y-1">
+            <motion.h1
+              variants={revealVariants}
+              className="mt-8 space-y-1"
+              style={{ containerType: 'inline-size' }}
+            >
               <AnimatedTitle
                 as="span"
                 text="AUTOMATE"
-                className="block font-display uppercase leading-[0.95] tracking-tight text-[clamp(2.25rem,10vw,7rem)]"
+                className="block font-display uppercase leading-[0.95] tracking-tight text-[clamp(2.25rem,min(10vw,14cqw),7rem)]"
               />
               <AnimatedTitle
                 as="span"
                 text="EVERYTHING"
-                className="block font-display uppercase leading-[0.95] tracking-tight text-[clamp(2.25rem,10vw,7rem)] text-redline"
+                className="block font-display uppercase leading-[0.95] tracking-tight text-[clamp(2.25rem,min(10vw,12.5cqw),6.2rem)] text-redline"
               />
             </motion.h1>
 

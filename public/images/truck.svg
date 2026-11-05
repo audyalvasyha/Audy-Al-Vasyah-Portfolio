@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" font-family="'IBM Plex Mono', ui-monospace, monospace">
+  <!-- Bayangan offset keras (khas neobrutalisme) -->
+  <rect x="70" y="78" width="360" height="190" fill="#22d3ee"/>
+
+  <!-- Kabin truck -->
+  <rect x="90"  y="140" width="90"  height="120" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="6"/>
+  <rect x="100" y="150" width="70"  height="80"  fill="#ff6a00"/>
+  <rect x="120" y="160" width="40"  height="40"  fill="#fefefe" stroke="#1a1a1a" stroke-width="5"/>
+
+  <!-- Kontainer kargo kuning -->
+  <rect x="180" y="120" width="230" height="140" fill="#ffd21e" stroke="#1a1a1a" stroke-width="6"/>
+  <line x1="240" y1="120" x2="240" y2="260" stroke="#1a1a1a" stroke-width="5"/>
+  <line x1="300" y1="120" x2="300" y2="260" stroke="#1a1a1a" stroke-width="5"/>
+  <rect x="300" y="150" width="90" height="80" fill="#fefefe" stroke="#1a1a1a" stroke-width="5"/>
+  <text x="345" y="196" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">80 PC</text>
+
+  <!-- Roda -->
+  <g stroke="#1a1a1a" stroke-width="6">
+    <circle cx="130" cy="265" r="24" fill="#1a1a1a"/>
+    <circle cx="130" cy="265" r="9"  fill="#fefefe"/>
+    <circle cx="330" cy="265" r="24" fill="#1a1a1a"/>
+    <circle cx="330" cy="265" r="9"  fill="#fefefe"/>
+    <circle cx="378" cy="265" r="24" fill="#1a1a1a"/>
+    <circle cx="378" cy="265" r="9"  fill="#fefefe"/>
+  </g>
+
+  <!-- Jalan garis putus-putus -->
+  <line x1="30" y1="300" x2="450" y2="300" stroke="#1a1a1a" stroke-width="4" stroke-dasharray="14 10"/>
+
+  <!-- Label strip -->
+  <rect x="365" y="30" width="90" height="34" fill="#1a1a1a"/>
+  <text x="410" y="53" text-anchor="middle" font-size="15" fill="#ffd21e">DELIVER</text>
+</svg>

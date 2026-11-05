@@ -1,6 +1,8 @@
 import Header from '@/components/layout/header';
 import Hero from '@/components/sections/hero';
+import LogisticsMarquee from '@/components/sections/logistics-marquee';
 import Experience from '@/components/sections/experience';
+import Projects from '@/components/sections/projects';
 import Skills from '@/components/sections/skills';
 import AiTools from '@/components/sections/ai-tools';
 import Contact from '@/components/sections/contact';
@@ -12,7 +14,9 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <LogisticsMarquee />
         <Experience />
+        <Projects />
         <Skills />
         <AiTools />
         <Contact />

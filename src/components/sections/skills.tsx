@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation, type Variants } from 'framer-motion';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { Bot, Code, Cloud, Workflow, Boxes } from 'lucide-react';
+import { Bot, Code, Cloud, Workflow, Warehouse } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const skillsData = [
@@ -45,7 +45,7 @@ const skillsData = [
   },
   {
     category: 'ERP & Operasional',
-    icon: <Boxes className="h-7 w-7 text-accent" />,
+    icon: <Warehouse className="h-7 w-7 text-accent" />,
     skills: [
       { name: 'SAP ERP (SD & WM)' },
       { name: 'Perencanaan transportasi' },
@@ -80,9 +80,9 @@ const Skills = () => {
     >
       <div ref={ref} className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <span className="bp-stamp-ghost">02 — SKILL UTAMA</span>
+          <span className="bp-stamp-ghost">03 — SKILL UTAMA</span>
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
+            <h2 className="font-display font-bold uppercase tracking-tighter text-[clamp(1.75rem,6.5vw,3.5rem)]">
               Kapabilitas
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>

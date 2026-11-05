@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Route, Bot, Gauge, MonitorCog } from 'lucide-react';
+import { Truck, Bot, MonitorCog, Route } from 'lucide-react';
+import Image from 'next/image';
 
 const PILLARS = [
   {
-    icon: <Route className="h-7 w-7" />,
+    icon: <Truck className="h-7 w-7" />,
     title: 'Operasional & Transport',
     desc: 'Rencana rute, jadwal armada, dan koordinasi lapangan yang tidak cuma dipikirkan — tetap dipentaskan yang jalan.',
   },
@@ -21,7 +22,7 @@ const PILLARS = [
     desc: 'Antarmuka kerja yang dibikin sesuai ekip operasional — jelas, cepat, dan digunakan setiap hari.',
   },
   {
-    icon: <Gauge className="h-7 w-7" />,
+    icon: <Route className="h-7 w-7" />,
     title: 'Integrasi Data & AI',
     desc: 'Menghubungkan data operasional dengan sistem dan AI supaya keputusan tidak diguncang asumsi.',
   },
@@ -37,7 +38,7 @@ const OperationTech = () => {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <span className="bp-stamp-ghost">01 — Spesialisasi</span>
           <div className="space-y-2">
-            <h2 className="text-3xl font-display font-bold uppercase tracking-tighter sm:text-5xl lg:text-6xl">
+            <h2 className="font-display font-bold uppercase tracking-tighter text-[clamp(1.75rem,6.5vw,3.5rem)]">
               Operation Tech
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
@@ -48,6 +49,17 @@ const OperationTech = () => {
               nyata yang mengurangi beban harian tim.
             </p>
           </div>
+        </div>
+
+        {/* Banner peta rute bergaya low-poly */}
+        <div className="mt-12 max-w-5xl mx-auto border-2 border-foreground bg-card shadow-hardlg overflow-hidden">
+          <Image
+            src="/images/route-map.svg"
+            alt="Rute distribusi dari gudang ke pelanggan dengan waypoint ML scheduling"
+            width={1200}
+            height={400}
+            className="w-full h-auto"
+          />
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">

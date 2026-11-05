@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <main className="bp-grid relative flex min-h-dvh flex-col items-center justify-center px-6 text-center">
       <span className="bp-stamp-ghost">OOPS — 404</span>
-      <h1 className="mt-4 font-headline text-5xl font-bold uppercase tracking-tighter sm:text-7xl">
+      <h1 className="mt-4 font-display font-bold uppercase tracking-tighter text-[clamp(3rem,12vw,4.5rem)]">
         404
       </h1>
       <div className="bp-dimension mx-auto mt-6 w-40" aria-hidden="true" />
