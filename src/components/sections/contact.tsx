@@ -84,7 +84,7 @@ const Contact = () => {
               animate={controls}
               transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
             >
-              <span className="bp-stamp-ghost">06 — KONTAK</span>
+              <span className="bp-stamp-ghost">04 — KONTAK</span>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline uppercase">
                 Contact Information
               </h2>

@@ -19,6 +19,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-sans)', 'sans-serif'],
         headline: ['var(--font-headline)', 'sans-serif'],
+        display: ['var(--font-display)', 'sans-serif'],
         code: ['var(--font-code)', 'monospace'],
       },
       boxShadow: {

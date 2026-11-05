@@ -1,16 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 import AnimatedTitle from '@/components/ui/animated-title';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
   },
 };
 
@@ -19,25 +20,34 @@ const revealVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: 'easeOut' },
   },
 };
 
 const META_ROWS = [
   { label: 'Referensi', value: 'AV-2026-01' },
-  { label: 'Peran', value: 'Transport Planner' },
+  { label: 'Peran', value: 'Operation Tech' },
   { label: 'Fokus', value: 'AI & automasi operasional' },
   { label: 'Lokasi', value: 'Bagan Batu, Riau · remote OK' },
   { label: 'Status', value: 'Open untuk proyek & kolaborasi' },
 ];
 
 const Hero = () => {
+  const [portraitOk, setPortraitOk] = useState(true);
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-screen items-center overflow-hidden pt-24 pb-20 scroll-mt-20"
+      className="relative isolate min-h-dvh overflow-hidden bg-secondary pt-24 pb-16 scroll-mt-20"
     >
-      <div className="absolute inset-0 z-0 bp-grid" aria-hidden="true"></div>
+      {/* Grid hitam tipis di atas kuning */}
+      <div
+        className="absolute inset-0 z-0 bp-grid opacity-60"
+        aria-hidden="true"
+      ></div>
+      {/* Strip hitam nomor dokumen ala tape */}
+      <div className="absolute right-0 top-20 z-10 border-2 border-foreground bg-foreground px-3 py-1 font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary">
+        AV-2026-01 · REV 2
+      </div>
 
       <motion.div
         className="container relative z-20 px-6"
@@ -45,58 +55,65 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* Layout judul gambar teknik: deskripsi di kiri, informasi di kanan */}
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
-          <div className="max-w-2xl">
-            <motion.p
-              variants={revealVariants}
-              className="mb-6 font-code text-[0.65rem] uppercase tracking-[0.35em] text-muted-foreground"
-            >
-              01 — HALO
-            </motion.p>
-
-            <motion.div variants={revealVariants}>
-              <AnimatedTitle
-                as="h1"
-                text="Audy Al Vasyah"
-                className="font-headline text-4xl font-bold uppercase tracking-tight sm:text-6xl lg:text-7xl"
-              />
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+          <div className="max-w-3xl">
+            <motion.div variants={revealVariants} className="inline-block">
+              <span className="inline-block border-2 border-foreground bg-foreground px-4 py-2 font-code text-sm uppercase tracking-[0.35em] text-secondary lg:text-base">
+                Audy Al Vasyah // Ops·Tech
+              </span>
             </motion.div>
 
-            <motion.p
-              variants={revealVariants}
-              className="mt-4 font-code text-sm uppercase tracking-[0.25em] text-accent"
-            >
-              Transport Planner · Automation Builder
-            </motion.p>
+            <motion.h1 variants={revealVariants} className="mt-8 space-y-1">
+              <AnimatedTitle
+                as="span"
+                text="AUTOMATE"
+                className="block font-display uppercase leading-[0.95] tracking-tight text-[clamp(2.25rem,10vw,7rem)]"
+              />
+              <AnimatedTitle
+                as="span"
+                text="EVERYTHING"
+                className="block font-display uppercase leading-[0.95] tracking-tight text-[clamp(2.25rem,10vw,7rem)] text-redline"
+              />
+            </motion.h1>
 
             <motion.p
               variants={revealVariants}
-              className="mt-6 text-base leading-relaxed text-foreground/85 sm:text-lg"
+              className="mt-8 max-w-xl text-base leading-relaxed text-foreground sm:text-lg"
             >
-              Saya mengatur 100+ rute pengiriman harian di Wings Group. Karena
-              proses manual nggak ter-scale, saya build sendiri sistemnya —
-              penjadwalan berbasis ML, automasi gudang, dan{' '}
-              <span className="text-accent">dashboard AI</span> yang benar-benar
-              dipakai tim setiap hari.
+              Operation tech yang juga build sistem sendiri: menyatukan
+              proses operasional harian dengan{' '}
+              <span className="font-bold">automasi,</span>{' '}
+              <span className="font-bold">dashboard internal,</span> dan{' '}
+              <span className="font-bold">AI</span> yang benar-benar dipakai
+              tim setiap hari.
             </motion.p>
 
             <motion.div
               variants={revealVariants}
-              className="mt-10 flex flex-wrap items-center gap-4"
+              className="mt-10 flex flex-wrap items-center gap-6"
             >
-              <Button asChild size="lg" className="gap-2">
-                <Link href="#contact">
-                  Diskusi proyek <ArrowRight className="h-4 w-4" />
-                </Link>
+              <Button asChild size="lg" className="strip-cyan w-full font-display text-base tracking-normal sm:w-auto">
+                <Link href="#experience">View My Killer Work</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full border-primary bg-transparent font-display text-base tracking-normal hover:bg-primary hover:text-primary-foreground sm:w-auto"
+              >
+                <Link href="#contact">Hubungi Saya</Link>
               </Button>
             </motion.div>
           </div>
 
-          {/* Blok judul — tertata seperti kolom informasi lembar kerja */}
+          <div className="flex w-full flex-col gap-6 lg:self-center">
+          {/* Portrait low-poly — tampil jika public/images/portrait.jpg tersedia */}
+          <HeroPortrait variants={revealVariants} onFail={() => setPortraitOk(false)} />
+
+          {/* Blok judul — kolom informasi profil */}
           <motion.aside
             variants={revealVariants}
-            className="border-2 border-foreground bg-card shadow-hardlg lg:self-center"
+            className={`border-2 border-foreground bg-card shadow-hardlg ${portraitOk ? 'lg:mt-6' : ''} lg:self-center`}
             aria-label="Informasi singkat"
           >
             <div className="border-b-2 border-foreground px-5 py-3">
@@ -104,7 +121,7 @@ const Hero = () => {
                 PROFIL · 2026
               </span>
             </div>
-            <dl className="divide-y divide-primary/15">
+            <dl className="divide-y divide-foreground/20">
               {META_ROWS.map((row) => (
                 <div
                   key={row.label}
@@ -113,17 +130,44 @@ const Hero = () => {
                   <dt className="font-code text-[0.6rem] uppercase tracking-[0.25em] text-muted-foreground">
                     {row.label}
                   </dt>
-                  <dd className={`text-right text-sm ${row.label === 'Status' ? 'text-accent' : 'text-foreground/90'}`}>
+                  <dd className={`text-right text-sm ${row.label === 'Status' ? 'font-bold text-redline' : 'text-foreground/90'}`}>
                     {row.value}
                   </dd>
                 </div>
               ))}
             </dl>
           </motion.aside>
+          </div>
         </div>
       </motion.div>
     </section>
   );
 };
+
+// Slot gambar hero: otomatis sembunyi bila file belum ada (404).
+function HeroPortrait({
+  variants,
+  onFail,
+}: {
+  variants: Variants;
+  onFail: () => void;
+}) {
+  return (
+    <motion.figure
+      variants={variants}
+      className="relative mx-auto w-full max-w-sm overflow-hidden border-2 border-foreground bg-card shadow-hardlg lg:mx-0 lg:max-w-none"
+    >
+      <Image
+        src="/images/portrait.jpg"
+        alt="Portrait Audy Al Vasyah — low poly"
+        width={603}
+        height={804}
+        priority
+        className="h-auto w-full object-cover"
+        onError={onFail}
+      />
+    </motion.figure>
+  );
+}
 
 export default Hero;

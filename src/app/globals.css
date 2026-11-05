@@ -23,13 +23,13 @@
     --muted: 44 40% 90%;
     --muted-foreground: 30 8% 40%;
 
-    /* Pink untuk highlight & fokus */
-    --accent: 338 85% 55%;
-    --accent-foreground: 0 0% 100%;
+    /* Cyan untuk strip & link penuh energi */
+    --accent: 187 100% 45%;
+    --accent-foreground: 0 0% 8%;
 
-    /* Oranye-redline untuk anotasi sekunder */
-    --redline: 20 95% 52%;
-    --redline-foreground: 0 0% 11%;
+    /* Oranye menyala untuk blok logo & aksen */
+    --redline: 14 100% 50%;
+    --redline-foreground: 0 0% 100%;
 
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
@@ -61,11 +61,11 @@
     --muted: 44 40% 90%;
     --muted-foreground: 30 8% 40%;
 
-    --accent: 338 85% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 187 100% 45%;
+    --accent-foreground: 0 0% 8%;
 
-    --redline: 20 95% 52%;
-    --redline-foreground: 0 0% 11%;
+    --redline: 14 100% 50%;
+    --redline-foreground: 0 0% 100%;
 
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
@@ -120,6 +120,16 @@
   .bp-dimension {
     height: 4px;
     background: hsl(var(--foreground));
+  }
+
+  /* ===== Strip cyan di bawah elemen (ala tombol template) ===== */
+  .strip-cyan {
+    box-shadow: 0 6px 0 0 hsl(var(--accent));
+  }
+
+  .strip-cyan:active {
+    box-shadow: 0 2px 0 0 hsl(var(--accent));
+    transform: translateY(4px);
   }
 
   /* ===== Sticky nav / dsb. ===== */

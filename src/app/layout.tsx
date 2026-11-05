@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Space_Grotesk, IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google';
+import { Space_Grotesk, IBM_Plex_Mono, IBM_Plex_Sans, Archivo_Black } from 'next/font/google';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-headline',
+});
+
+const archivoBlack = Archivo_Black({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-display',
 });
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -25,14 +31,14 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Audy Al Vasyah — Transport Planner & Automation Builder',
+    default: 'Audy Al Vasyah — Operation Tech',
     template: '%s · Audy Al Vasyah',
   },
   description:
     'Portofolio Audy Al Vasyah: transport planner yang juga membangun sendiri sistemnya — penjadwalan berbasis ML, automasi gudang, dan dashboard AI untuk operasional harian.',
   keywords: [
     'Audy Al Vasyah',
-    'Transport Planner',
+    'Operation Tech',
     'Automation',
     'Machine Learning',
     'Next.js',
@@ -46,9 +52,9 @@ export const metadata: Metadata = {
     type: 'website',
     url: siteUrl,
     siteName: 'Audy Al Vasyah',
-    title: 'Audy Al Vasyah — Transport Planner & Automation Builder',
+    title: 'Audy Al Vasyah — Operation Tech',
     description:
-      'Mengatur 100+ rute pengiriman harian, dan karena proses manualnya tidak terukur, membangun sendiri sistemnya: ML scheduling, automasi, dan AI tools.',
+      'Operation tech: menyatukan operasional harian dengan automasi, dashboard internal, dan AI yang dipakai tim setiap hari.',
   },
   icons: {
     icon: '/favicon.ico',
@@ -64,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable}`}
+      className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} ${archivoBlack.variable}`}
     >
       <body className="font-sans antialiased">{children}</body>
     </html>

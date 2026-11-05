@@ -80,7 +80,7 @@ const Skills = () => {
     >
       <div ref={ref} className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <span className="bp-stamp-ghost">04 — SKILL UTAMA</span>
+          <span className="bp-stamp-ghost">02 — SKILL UTAMA</span>
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
               Kapabilitas

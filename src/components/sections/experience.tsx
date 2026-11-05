@@ -1,49 +1,80 @@
 'use client';
-import React from 'react';
-import { cn } from '@/lib/utils';
-import ExperienceCard from './experience-card';
-import { experienceData } from '@/lib/experience-data';
 
-const Experience = () => {
+import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Route, Bot, Gauge, MonitorCog } from 'lucide-react';
+
+const PILLARS = [
+  {
+    icon: <Route className="h-7 w-7" />,
+    title: 'Operasional & Transport',
+    desc: 'Rencana rute, jadwal armada, dan koordinasi lapangan yang tidak cuma dipikirkan — tetap dipentaskan yang jalan.',
+  },
+  {
+    icon: <Bot className="h-7 w-7" />,
+    title: 'Automasi Proses',
+    desc: 'Pekerjaan repetitif dipertemukan dengan skrip dan workflow: menekan human error secara terukur dan menghemat waktu harian.',
+  },
+  {
+    icon: <MonitorCog className="h-7 w-7" />,
+    title: 'Dashboard & Tools Internal',
+    desc: 'Antarmuka kerja yang dibikin sesuai ekip operasional — jelas, cepat, dan digunakan setiap hari.',
+  },
+  {
+    icon: <Gauge className="h-7 w-7" />,
+    title: 'Integrasi Data & AI',
+    desc: 'Menghubungkan data operasional dengan sistem dan AI supaya keputusan tidak diguncang asumsi.',
+  },
+];
+
+const OperationTech = () => {
   return (
-    <section id="experience" className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
+    <section
+      id="experience"
+      className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+    >
       <div className="container px-4 md:px-6 z-10 relative">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <span className="bp-stamp-ghost">02 — JEJAK KERJA</span>
+          <span className="bp-stamp-ghost">01 — Spesialisasi</span>
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
-              Pengalaman
+            <h2 className="text-3xl font-display font-bold uppercase tracking-tighter sm:text-5xl lg:text-6xl">
+              Operation Tech
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Bagaimana saya bekerja: lihat prosesnya, ukur waktunya, lalu
-              bangun sistem supaya tidak diulang manual lagi.
+              Saya duduk di antara dua dunia: operasional yang ngos-ngosan dan
+              tim teknis yang bisa menyelesaikannya. Bukan sekadar
+              birokrasi — yang saya kerjakan adalah membangun sistem
+              nyata yang mengurangi beban harian tim.
             </p>
           </div>
         </div>
-        <div className="relative mt-20 max-w-5xl mx-auto">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/40 to-transparent -translate-x-1/2"></div>
 
-          <div className="space-y-12">
-            {experienceData.map((job, index) => (
-              <div
-                key={job.role}
-                className={cn(
-                  'relative flex items-start gap-4',
-                  'md:gap-8',
-                  index % 2 !== 0 && 'md:flex-row-reverse'
-                )}
-              >
-                <div className="z-10 absolute left-6 md:left-1/2 top-1.5 w-3 h-3 rotate-45 bg-accent -translate-x-1/2 ring-4 ring-accent/20 ring-offset-2 ring-offset-background" />
-
-                <ExperienceCard job={job} index={index} />
-              </div>
-            ))}
-          </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
+          {PILLARS.map((pillar) => (
+            <Card
+              key={pillar.title}
+              className="flex flex-col h-full transition-all duration-200 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hardlg"
+            >
+              <CardContent className="flex flex-col gap-4 p-6">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
+                  {pillar.icon}
+                </div>
+                <div>
+                  <h3 className="font-display text-lg uppercase tracking-tight">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {pillar.desc}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default Experience;
+export default OperationTech;

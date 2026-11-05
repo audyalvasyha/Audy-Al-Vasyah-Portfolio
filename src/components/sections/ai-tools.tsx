@@ -44,7 +44,7 @@ const AiTools = () => {
     <section id="tool" className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
       <div className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <span className="bp-stamp-ghost">05 — LAB TOOLS</span>
+          <span className="bp-stamp-ghost">03 — LAB TOOLS</span>
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
               Tools yang Saya Bangun
