@@ -3,46 +3,53 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation, type Variants } from 'framer-motion';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { BrainCircuit, Bot, Code, Cloud, AppWindow } from 'lucide-react';
+import { Bot, Code, Cloud, Workflow, Boxes } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const skillsData = [
   {
-    category: 'Automasi & Logika Sistem',
-    icon: <Bot className="h-8 w-8 text-accent" />,
+    category: 'Implementasi AI & ML',
+    icon: <Bot className="h-7 w-7 text-accent" />,
     skills: [
-      { name: 'Machine Learning & AI Implementation' },
-      { name: 'Automation Tools Development' },
+      { name: 'Google Gemini API' },
+      { name: 'Genkit (flow & prompt)' },
+      { name: 'Computer vision — inspeksi ban' },
     ],
   },
   {
-    category: 'Pengembangan UI & Dasbor Automasi/AI',
-    icon: <Code className="h-8 w-8 text-accent" />,
+    category: 'Web & Dashboard',
+    icon: <Code className="h-7 w-7 text-accent" />,
     skills: [
-      { name: 'Javascript' },
-      { name: 'React' },
       { name: 'Next.js' },
+      { name: 'React' },
+      { name: 'TypeScript' },
       { name: 'Tailwind CSS' },
     ],
   },
   {
-    category: 'Google Cloud Platform',
-    icon: <Cloud className="h-8 w-8 text-accent" />,
-    skills: [{ name: 'Gemini API' }, { name: 'Firebase' }],
-  },
-  {
-    category: 'Sistem Enterprise',
-    icon: <BrainCircuit className="h-8 w-8 text-accent" />,
-    skills: [{ name: 'SAP ERP (SD & WM Modules)' }],
-  },
-  {
-    category: 'Automasi Proses Bisnis Google Workspace',
-    icon: <AppWindow className="h-8 w-8 text-accent" />,
+    category: 'Cloud & Database',
+    icon: <Cloud className="h-7 w-7 text-accent" />,
     skills: [
-      { name: 'Sheets' },
-      { name: 'Docs' },
-      { name: 'Slide' },
-      { name: 'Apps Script' },
+      { name: 'Firebase (Firestore, RTDB)' },
+      { name: 'Google Cloud Platform' },
+    ],
+  },
+  {
+    category: 'Automasi',
+    icon: <Workflow className="h-7 w-7 text-accent" />,
+    skills: [
+      { name: 'n8n' },
+      { name: 'Python — UI automation' },
+      { name: 'Google Apps Script' },
+    ],
+  },
+  {
+    category: 'ERP & Operasional',
+    icon: <Boxes className="h-7 w-7 text-accent" />,
+    skills: [
+      { name: 'SAP ERP (SD & WM)' },
+      { name: 'Perencanaan transportasi' },
+      { name: 'Optimasi rute distribusi' },
     ],
   },
 ];
@@ -57,14 +64,12 @@ const Skills = () => {
       controls.start('visible');
     }
   }, [isInView, controls]);
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
@@ -73,17 +78,17 @@ const Skills = () => {
       id="skills"
       className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background via-transparent to-background" aria-hidden="true"></div>
       <div ref={ref} className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <span className="bp-stamp-ghost">SEC. 04 — Capabilities Matrix</span>
+          <span className="bp-stamp-ghost">04 — SKILL UTAMA</span>
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
-              Hard Skills
+              Kapabilitas
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              A showcase of my technical capabilities and expertise.
+              Daftar ini bukan tagihan &mdash; semua dipakai nyata di pekerjaan
+              atau proyek di atas.
             </p>
           </div>
         </div>
@@ -102,18 +107,26 @@ const Skills = () => {
   );
 };
 
-const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
+const SkillCard = ({
+  category,
+}: {
+  category: (typeof skillsData)[0];
+}) => {
   const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } as any },
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
     <motion.div variants={cardVariants} className="h-full">
-      <Card className="bp-corner-brackets flex flex-col h-full bg-card/30 border border-primary/25 hover:border-accent/40 transition-all duration-300 group/skill">
+      <Card className="flex flex-col h-full group/skill transition-all duration-200 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hardlg">
         <CardContent className="flex flex-col flex-grow p-6">
           <div className="flex items-start gap-4 mb-4">
-            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
+            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
               {category.icon}
             </div>
             <div className="flex-1">
@@ -127,7 +140,7 @@ const SkillCard = ({ category }: { category: (typeof skillsData)[0] }) => {
               <Badge
                 key={skill.name}
                 variant="secondary"
-                className="font-code bg-primary/5 text-foreground/80 border-primary/25"
+                className="font-code"
               >
                 {skill.name}
               </Badge>

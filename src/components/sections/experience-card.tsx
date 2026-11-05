@@ -59,7 +59,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ job, index }) => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={cn('w-full', 'md:w-1/2 md:px-8', isOdd ? 'pl-12 md:pl-8' : 'pl-12')}
     >
-      <Card className="bp-corner-brackets bp-hatch bg-card/30 border border-primary/25 hover:border-accent/40 transition-all duration-300 shadow-xl group/card">
+      <Card className="group/card transition-all duration-200 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hardlg">
         <CardHeader>
           <div
             className={cn(

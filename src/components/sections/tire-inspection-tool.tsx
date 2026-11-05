@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, ChangeEvent, DragEvent } from 'react';
+import { useState, useEffect, useRef, ChangeEvent, DragEvent } from 'react';
 import { analyzeTireCondition } from '@/ai/flows/analyze-tire-condition';
 import type { AnalyzeTireConditionOutput } from '@/ai/flows/analyze-tire-condition';
 import {
@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2, UploadCloud, AlertTriangle, Check, X, ScanSearch } from 'lucide-react';
-import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
@@ -27,16 +26,29 @@ const TireInspectionTool = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  // URL.createObjectURL wajib di-revoke agar tidak bocor memori.
+  useEffect(() => {
+    return () => {
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+    };
+  }, [previewUrl]);
+
   const processFile = (selectedFile: File | null) => {
     if (selectedFile) {
       if (selectedFile.size > 4 * 1024 * 1024) {
         setError('File terlalu besar. Pilih file yang lebih kecil dari 4MB.');
         setFile(null);
-        setPreviewUrl(null);
+        setPreviewUrl((prev) => {
+          if (prev) URL.revokeObjectURL(prev);
+          return null;
+        });
         return;
       }
       setFile(selectedFile);
-      setPreviewUrl(URL.createObjectURL(selectedFile));
+      setPreviewUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return URL.createObjectURL(selectedFile);
+      });
       setAnalysis(null);
       setError(null);
     }
@@ -143,7 +155,7 @@ const TireInspectionTool = () => {
             <p className="text-muted-foreground">Analyze tire condition with AI.</p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
-            <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
+            <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
                 <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Penganalisis Gambar Ban</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
@@ -170,11 +182,11 @@ const TireInspectionTool = () => {
                     />
                     {previewUrl ? (
                     <div className="relative w-full h-48 md:h-64">
-                        <Image
+                        {/* eslint-disable-next-line @next/next/no-img-element -- blob URL tidak bisa diteruskan ke optimizer next/image */}
+                        <img
                         src={previewUrl}
-                        alt="Pratinjau Ban"
-                        fill
-                        className="object-contain rounded-md"
+                        alt="Pratinjau ban"
+                        className="h-full w-full rounded-md object-contain"
                         />
                     </div>
                     ) : (
@@ -200,7 +212,7 @@ const TireInspectionTool = () => {
                 </Button>
                 </CardFooter>
             </Card>
-            <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
+            <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
                 <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Hasil Analisis</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">

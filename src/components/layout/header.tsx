@@ -3,29 +3,26 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, Crosshair, Download } from 'lucide-react';
-
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 const NAV_LINKS = [
   { name: 'Home', href: '#home' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Pengalaman', href: '#experience' },
   { name: 'Skills', href: '#skills' },
-  { name: 'AI Tool', href: '#tool' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Tools', href: '#tool' },
+  { name: 'Kontak', href: '#contact' },
 ];
-
 
 const Header = () => {
   const [isSheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-primary/25 bg-background/85 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-foreground bg-background">
       <div className="container flex h-16 items-center justify-between px-6">
         <div className="flex items-center">
           <Link href="/" className="mr-8 flex items-center gap-3 group">
-            <div className="flex h-9 w-9 items-center justify-center border border-accent/60 bg-accent/10 text-accent transition-colors group-hover:bg-accent/20">
+            <div className="flex h-9 w-9 items-center justify-center border-2 border-foreground bg-secondary text-foreground transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
               <Crosshair className="h-5 w-5" />
             </div>
             <span className="hidden sm:inline-block font-headline font-semibold uppercase tracking-[0.2em] text-sm text-foreground">
@@ -48,25 +45,21 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Nav mobile */}
         <div className="md:hidden flex items-center">
           <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle Menu</span>
+                <span className="sr-only">Buka menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bp-grid border-primary/30 bg-background/95">
+            <SheetContent side="left" className="bp-grid">
               <SheetHeader>
-                <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                <SheetTitle className="sr-only">Menu</SheetTitle>
               </SheetHeader>
-              <Link
-                href="/"
-                className="flex items-center gap-3"
-                onClick={() => setSheetOpen(false)}
-              >
-                <div className="flex h-9 w-9 items-center justify-center border border-accent/60 bg-accent/10 text-accent">
+              <Link href="/" className="flex items-center gap-3" onClick={() => setSheetOpen(false)}>
+                <div className="flex h-9 w-9 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
                   <Crosshair className="h-5 w-5" />
                 </div>
                 <span className="font-headline font-semibold uppercase tracking-[0.2em]">A. Vasyah</span>
@@ -89,9 +82,9 @@ const Header = () => {
         </div>
 
         <div className="flex flex-1 items-center justify-end">
-          <Button size="sm" className="gap-2">
-            <Download className="h-4 w-4" />
-            <a href="/Audy Al Vasyah 10-25.pdf" download="Audy-Al-Vasyah-CV.pdf">
+          <Button asChild size="sm" className="gap-2">
+            <a href="/cv-audy-al-vasyah.pdf" download="Audy-Al-Vasyah-CV.pdf">
+              <Download className="h-4 w-4" />
               CV
             </a>
           </Button>

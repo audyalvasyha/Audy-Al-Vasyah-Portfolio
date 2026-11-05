@@ -45,15 +45,15 @@ const DeliverySchedulingTool = () => {
   return (
     <div>
         <div className="text-center mb-8">
-            <h3 className="text-2xl font-headline font-bold">Delivery Scheduling</h3>
-            <p className="text-muted-foreground">Learn about the ML-powered system.</p>
+            <h3 className="text-2xl font-headline font-bold">Penjadwalan Pengiriman</h3>
+            <p className="text-muted-foreground">Tanya apa saja soal sistem ML yang saya bangun.</p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
-            <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
+            <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
                 <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Tanya Tentang Sistem</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
-                    Ajukan pertanyaan kepada AI tentang Sistem Penjadwalan Pengiriman Berbasis ML.
+                    Ajukan pertanyaan tentang sistem penjadwalan pengiriman berbasis ML yang saya rancang.
                 </CardDescription>
                 </CardHeader>
                 <Form {...form}>
@@ -82,7 +82,7 @@ const DeliverySchedulingTool = () => {
                 </form>
                 </Form>
             </Card>
-            <Card className="bg-transparent border-0 shadow-none md:border md:bg-card md:shadow-sm">
+            <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
                 <CardHeader>
                 <CardTitle className="font-headline sr-only md:not-sr-only">Respons AI</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">Penjelasan sistem dari AI.</CardDescription>

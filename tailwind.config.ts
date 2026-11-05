@@ -17,9 +17,15 @@ export default {
     },
     extend: {
       fontFamily: {
+        sans: ['var(--font-sans)', 'sans-serif'],
         headline: ['var(--font-headline)', 'sans-serif'],
-        body: ['var(--font-code)', 'monospace'],
         code: ['var(--font-code)', 'monospace'],
+      },
+      boxShadow: {
+        hard: '4px 4px 0 0 hsl(var(--foreground))',
+        hardlg: '7px 7px 0 0 hsl(var(--foreground))',
+        hardsm: '2px 2px 0 0 hsl(var(--foreground))',
+        hardaccent: '4px 4px 0 0 hsl(var(--accent))',
       },
       colors: {
         border: 'hsl(var(--border))',

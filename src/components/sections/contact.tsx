@@ -84,13 +84,15 @@ const Contact = () => {
               animate={controls}
               transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
             >
-              <span className="bp-stamp-ghost">SEC. 06 — Comms Channel</span>
+              <span className="bp-stamp-ghost">06 — KONTAK</span>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline uppercase">
                 Contact Information
               </h2>
               <div className="bp-dimension w-40" aria-hidden="true"></div>
               <p className="text-muted-foreground">
-                Feel free to reach out to me directly or through the form. I&apos;ll get back to you as soon as possible.
+                Kalau butuh automasi, dashboard, atau sekadar diskusi cara
+                proses di kantor kamu yang bisa lebih cepat — tembak form ini.
+                Saya bales secepatnya.
               </p>
             </motion.div>
             <motion.div 
@@ -101,7 +103,7 @@ const Contact = () => {
               transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div>
@@ -110,7 +112,7 @@ const Contact = () => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
@@ -119,7 +121,7 @@ const Contact = () => {
                 </div>
               </div>
                <div className="flex items-start gap-4">
-                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
@@ -129,7 +131,7 @@ const Contact = () => {
               </div>
             </motion.div>
             <motion.div 
-              className="space-y-4 pt-4 border-t border-primary/25"
+              className="space-y-4 pt-4 border-t-2 border-foreground"
               variants={leftVariants}
               initial="hidden"
               animate={controls}
@@ -141,7 +143,7 @@ const Contact = () => {
                   {socialLinks.map((social) => (
                     <Tooltip key={social.name}>
                       <TooltipTrigger asChild>
-                        <Button asChild variant="outline" size="icon" className="rounded-none border-primary/40 hover:border-accent/70 hover:text-accent">
+                        <Button asChild variant="outline" size="icon">
                           <Link href={social.href} target="_blank" rel="noopener noreferrer">
                             {social.icon}
                             <span className="sr-only">{social.name}</span>
@@ -163,11 +165,11 @@ const Contact = () => {
             animate={controls}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
           >
-            <Card className="bp-corner-brackets bp-hatch border border-primary/30 bg-card/40 backdrop-blur-sm">
+            <Card className="shadow-hardlg">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
-                  Get In Touch
-                  <span className="bp-stamp ml-auto">Form A-1</span>
+                  Hubungi Saya
+                  <span className="bp-stamp ml-auto">Form Kontak</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>

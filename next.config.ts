@@ -1,6 +1,8 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
+  // Genkit/Resend tidak boleh dibundle oleh Turbopack — panggil sebagai modul Node asli.
+  serverExternalPackages: ['genkit', '@genkit-ai/google-genai', 'resend'],
   /* config options here */
   async headers() {
     return [

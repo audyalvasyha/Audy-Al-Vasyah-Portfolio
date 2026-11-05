@@ -42,21 +42,17 @@ const AiTools = () => {
 
   return (
     <section id="tool" className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
-      {/* Darkening Gradient Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_80%)]"></div>
-      </div>
-
       <div className="relative container px-4 md:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <span className="bp-stamp-ghost">SEC. 05 — Tooling</span>
+          <span className="bp-stamp-ghost">05 — LAB TOOLS</span>
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold uppercase tracking-tighter sm:text-5xl">
-              AI Powered Tools
+              Tools yang Saya Bangun
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Explore a collection of AI-driven tools I've developed to solve real-world problems.
+              Dua tools yang saya bangun dan pakai di pekerjaan. Silakan dicoba
+              langsung &mdash; keduanya berjalan di server ini dengan Gemini.
             </p>
           </div>
         </div>
@@ -70,14 +66,13 @@ const AiTools = () => {
         >
           <Tabs defaultValue="tire-inspection" className="w-full">
             <ScrollArea className="w-full pb-4">
-              <TabsList className="flex w-full sm:w-auto sm:mx-auto h-auto p-1.5 bg-card/60 border border-primary/25 rounded-none">
+              <TabsList className="flex w-full sm:w-auto sm:mx-auto h-auto p-1.5 rounded-none">
                 {tools.map((tool) => (
                   <TabsTrigger
                     key={tool.value}
                     value={tool.value}
                     className={cn(
-                      'flex-1 flex items-center justify-center gap-2 h-auto p-2.5 rounded-none font-code uppercase tracking-[0.1em] transition-all whitespace-nowrap text-muted-foreground',
-                      'data-[state=active]:border data-[state=active]:border-accent/60 data-[state=active]:bg-accent/15 data-[state=active]:text-accent'
+                      'flex-1 flex items-center justify-center gap-2 h-auto p-2.5 rounded-none font-code uppercase tracking-[0.1em] transition-all whitespace-nowrap text-muted-foreground'
                     )}
                   >
                     {tool.icon}
@@ -89,7 +84,7 @@ const AiTools = () => {
             <div className="mt-6">
               {tools.map(tool => (
                 <TabsContent key={tool.value} value={tool.value}>
-                    <Card className="bp-corner-brackets bg-card/30 backdrop-blur-md border border-primary/25 shadow-2xl">
+                    <Card className="shadow-hardlg">
                         <CardContent className="p-6 md:p-8">
                              {tool.component}
                         </CardContent>

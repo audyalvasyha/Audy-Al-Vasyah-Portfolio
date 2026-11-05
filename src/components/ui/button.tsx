@@ -5,22 +5,22 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-sm font-code font-medium uppercase tracking-[0.15em] ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-sm font-code font-medium uppercase tracking-[0.15em] ring-offset-background transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:-translate-x-[2px] hover:-translate-y-[2px] active:translate-x-0 active:translate-y-0 active:shadow-none",
   {
     variants: {
       variant: {
         default:
-          "relative border border-primary/70 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[4px_4px_0_0_hsl(var(--redline))]",
+          "border-2 border-foreground bg-primary text-primary-foreground shadow-hardsm hover:shadow-hard",
         destructive:
-          "relative border border-destructive/70 bg-destructive/10 text-destructive hover:bg-destructive hover:text-destructive-foreground",
+          "border-2 border-foreground bg-destructive text-destructive-foreground shadow-hardsm hover:shadow-hard",
         outline:
-          "relative border border-primary/40 bg-transparent text-foreground hover:border-accent/70 hover:bg-accent/10 hover:text-accent hover:shadow-[4px_4px_0_0_hsl(var(--accent)/0.35)]",
+          "border-2 border-foreground bg-card text-foreground shadow-none hover:bg-secondary hover:shadow-hardsm",
         secondary:
-          "relative border border-secondary bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "border-2 border-foreground bg-secondary text-secondary-foreground shadow-hardsm hover:shadow-hard hover:bg-secondary/90",
         ghost:
-          "text-muted-foreground hover:bg-primary/10 hover:text-foreground",
+          "text-foreground shadow-none hover:bg-muted hover:shadow-none active:shadow-none",
         link:
-          "text-accent underline-offset-4 hover:underline tracking-normal",
+          "text-accent underline-offset-4 hover:underline tracking-normal shadow-none active:shadow-none",
       },
       size: {
         default: "h-10 px-5 py-2",
