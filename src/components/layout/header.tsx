@@ -23,7 +23,7 @@ const Header = () => {
         <div className="flex items-center">
           <Link href="/" className="mr-8 group">
             <span className="inline-flex border-2 border-foreground bg-redline text-redline-foreground px-3 py-1.5 font-display text-xl uppercase tracking-tight shadow-hardsm transition-all group-hover:-translate-x-[2px] group-hover:-translate-y-[2px] group-hover:shadow-hard">
-              Audy.VC
+              Audysignin
             </span>
           </Link>
           <nav className="hidden md:flex items-center space-x-7 text-xs font-code font-medium uppercase tracking-[0.2em]">
@@ -54,7 +54,7 @@ const Header = () => {
               </SheetHeader>
               <Link href="/" onClick={() => setSheetOpen(false)}>
                 <span className="inline-flex border-2 border-foreground bg-redline text-redline-foreground px-3 py-1.5 font-display text-lg uppercase shadow-hardsm">
-                  Audy.VC
+                  Audysignin
                 </span>
               </Link>
               <div className="mt-8 flex flex-col items-start gap-5">

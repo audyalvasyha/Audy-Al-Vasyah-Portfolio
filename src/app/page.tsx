@@ -1,6 +1,6 @@
 import Header from '@/components/layout/header';
 import Hero from '@/components/sections/hero';
-import LogisticsMarquee from '@/components/sections/logistics-marquee';
+import OpsStrip from '@/components/sections/ops-strip';
 import Experience from '@/components/sections/experience';
 import Projects from '@/components/sections/projects';
 import Skills from '@/components/sections/skills';
@@ -14,7 +14,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <LogisticsMarquee />
+        <OpsStrip />
         <Experience />
         <Projects />
         <Skills />

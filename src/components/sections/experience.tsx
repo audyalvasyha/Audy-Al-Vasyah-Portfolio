@@ -55,7 +55,7 @@ const OperationTech = () => {
         <div className="mt-12 max-w-5xl mx-auto border-2 border-foreground bg-card shadow-hardlg overflow-hidden">
           <Image
             src="/images/route-map.svg"
-            alt="Rute distribusi dari gudang ke pelanggan dengan waypoint ML scheduling"
+            alt="Peta rencana rute distribusi: gudang asal, dua titik drop, dan tujuan pelanggan beserta ETA"
             width={1200}
             height={400}
             className="w-full h-auto"

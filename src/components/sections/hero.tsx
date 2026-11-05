@@ -25,11 +25,10 @@ const revealVariants: Variants = {
 };
 
 const META_ROWS = [
-  { label: 'Referensi', value: 'AV-2026-01' },
   { label: 'Peran', value: 'Operation Tech' },
-  { label: 'Fokus', value: 'AI & automasi operasional' },
-  { label: 'Lokasi', value: 'Bagan Batu, Riau · remote OK' },
-  { label: 'Status', value: 'Open untuk proyek & kolaborasi' },
+  { label: 'Fokus', value: 'Automasi PGI & ML scheduling' },
+  { label: 'Sistem', value: 'SAP SD · WM · TMS' },
+  { label: 'Lokasi', value: 'Bagan Batu, Riau · remote' },
 ];
 
 const Hero = () => {
@@ -46,7 +45,7 @@ const Hero = () => {
       ></div>
       {/* Strip hitam nomor dokumen ala tape */}
       <div className="absolute right-0 top-20 z-10 border-2 border-foreground bg-foreground px-3 py-1 font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary">
-        AV-2026-01 · REV 2
+        Open to work · 2026
       </div>
 
       <motion.div
@@ -114,32 +113,41 @@ const Hero = () => {
           {/* Portrait low-poly — tampil jika public/images/portrait.jpg tersedia */}
           <HeroPortrait variants={revealVariants} onFail={() => setPortraitOk(false)} />
 
-          {/* Blok judul — kolom informasi profil */}
+          {/* Kartu profil — datasheet operasional, bukan form dekoratif */}
           <motion.aside
             variants={revealVariants}
             className={`border-2 border-foreground bg-card shadow-hardlg ${portraitOk ? 'lg:mt-6' : ''} lg:self-center`}
-            aria-label="Informasi singkat"
+            aria-label="Ringkasan profil"
           >
-            <div className="border-b-2 border-foreground px-5 py-3">
-              <span className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
-                PROFIL · 2026
+            <div className="flex items-center justify-between border-b-2 border-foreground bg-foreground px-5 py-2.5">
+              <h2 className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary">
+                Profil
+              </h2>
+              <span className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary/60">
+                2026
               </span>
             </div>
-            <dl className="divide-y divide-foreground/20">
+            <dl>
               {META_ROWS.map((row) => (
                 <div
                   key={row.label}
-                  className="flex items-baseline justify-between gap-4 px-5 py-3"
+                  className="grid grid-cols-[4.5rem_1fr] items-baseline gap-3 border-b border-foreground/10 px-5 py-2.5 sm:grid-cols-[5.5rem_1fr]"
                 >
-                  <dt className="font-code text-[0.6rem] uppercase tracking-[0.25em] text-muted-foreground">
+                  <dt className="font-code text-[0.58rem] uppercase tracking-[0.22em] text-muted-foreground">
                     {row.label}
                   </dt>
-                  <dd className={`text-right text-sm ${row.label === 'Status' ? 'font-bold text-redline' : 'text-foreground/90'}`}>
+                  <dd className="text-sm font-medium leading-snug text-foreground">
                     {row.value}
                   </dd>
                 </div>
               ))}
             </dl>
+            <div className="flex items-center gap-2.5 border-t-2 border-foreground bg-secondary px-5 py-3">
+              <span className="h-2 w-2 flex-shrink-0 bg-foreground" aria-hidden="true" />
+              <span className="font-code text-[0.58rem] font-bold uppercase leading-snug tracking-[0.18em] text-foreground">
+                Open untuk proyek & kolaborasi
+              </span>
+            </div>
           </motion.aside>
           </div>
         </div>
