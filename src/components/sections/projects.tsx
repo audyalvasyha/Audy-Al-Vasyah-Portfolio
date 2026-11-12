@@ -1,21 +1,38 @@
 'use client';
 
+import { useState } from 'react';
 import { Package } from 'lucide-react';
+import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { projectDetails } from '@/lib/projects-data';
 
 const PLACEHOLDER_TEXT = 'Konten menyusul — slot ini disiapkan untuk proyek berikutnya.';
 
 function ProjectCard({ project }: { project: (typeof projectDetails)[number] }) {
-  const empty = !project.title;
+  const [imageFailed, setImageFailed] = useState(false);
+  const imageSrc = project.image;
+  const showImage = Boolean(imageSrc) && !imageFailed;
 
   return (
     <Card className="group flex flex-col h-full overflow-hidden transition-all duration-200 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hardlg">
-      {/* Area visual: kosong (dashed) sampai datanya diisi */}
-      <div className="relative flex h-52 items-center justify-center overflow-hidden border-b-2 border-foreground bg-background">
-        {empty ? (
+      {/* Area visual: thumbnail proyek, atau placeholder bila belum ada gambar */}
+      <div
+        className={`relative flex h-52 items-center justify-center overflow-hidden border-b-2 border-foreground ${
+          showImage ? 'bg-foreground' : 'bg-background'
+        }`}
+      >
+        {showImage && imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={`Pratinjau ${project.title}`}
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover object-center"
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
           <div
-            className="flex h-full w-full flex-col items-center justify-center gap-3 border-2 border-dashed border-foreground/30 m-3"
+            className="m-3 flex h-full w-full flex-col items-center justify-center gap-3 border-2 border-dashed border-foreground/30"
             aria-hidden="true"
           >
             <Package className="h-10 w-10 text-foreground/30" />
@@ -23,8 +40,6 @@ function ProjectCard({ project }: { project: (typeof projectDetails)[number] }) 
               Gambar · menyusul
             </span>
           </div>
-        ) : (
-          <ProjectVisual projectId={project.id} />
         )}
       </div>
 
@@ -72,12 +87,6 @@ function ProjectCard({ project }: { project: (typeof projectDetails)[number] }) 
   );
 }
 
-/* Placeholder visual — nanti diganti Image saat data & gambar siap */
-function ProjectVisual({ projectId }: { projectId: string }) {
-  void projectId;
-  return null;
-}
-
 const Projects = () => {
   return (
     <section
@@ -93,8 +102,9 @@ const Projects = () => {
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Dua slot terbuka — dipakai untuk pekerjaan &amp; proyek yang
-              datanya nanti diisi satu per satu.
+              Proyek yang saya kembangkan dari nol, dirancang untuk kebutuhan
+              nyata — mulai dari integrasi data hingga pengalaman pengguna yang
+              siap dipakai.
             </p>
           </div>
         </div>

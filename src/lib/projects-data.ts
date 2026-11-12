@@ -10,6 +10,7 @@ export type Project = {
   description: string | null;
   results: string[];
   link?: string;
+  image?: string;
 };
 
 export const projectDetails: Project[] = [
@@ -27,6 +28,7 @@ export const projectDetails: Project[] = [
       'Panel admin + API order di atas Next.js App Router, MongoDB, dan Vercel.',
     ],
     link: 'https://github.com/audyalvasyha/store',
+    image: '/images/gastros-thumb.png',
   },
   {
     id: 'midaa-tms',

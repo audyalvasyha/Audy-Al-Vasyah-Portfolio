@@ -54,10 +54,10 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
+        <div className="grid items-start gap-12 md:grid-cols-2 md:gap-8 lg:gap-10">
           <div className="max-w-2xl">
             <motion.div variants={revealVariants} className="inline-block">
-              <span className="inline-block border-2 border-foreground bg-foreground px-4 py-2 font-code text-sm uppercase tracking-[0.35em] text-secondary lg:text-base">
+              <span className="inline-block border-2 border-foreground bg-foreground px-4 py-2 font-code text-xs uppercase tracking-[0.3em] text-secondary sm:text-sm sm:tracking-[0.35em] lg:text-base">
                 Audy Al Vasyah // Ops·Tech
               </span>
             </motion.div>
@@ -107,48 +107,50 @@ const Hero = () => {
                 <Link href="#contact">Hubungi Saya</Link>
               </Button>
             </motion.div>
+
+            {/* Kartu profil — datasheet operasional, di bawah CTA */}
+            <motion.aside
+              variants={revealVariants}
+              className="mt-10 max-w-xl border-2 border-foreground bg-card shadow-hardlg"
+              aria-label="Ringkasan profil"
+            >
+              <div className="flex items-center justify-between border-b-2 border-foreground bg-foreground px-5 py-2.5">
+                <h2 className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary">
+                  Profil
+                </h2>
+                <span className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary/60">
+                  2026
+                </span>
+              </div>
+              <dl>
+                {META_ROWS.map((row) => (
+                  <div
+                    key={row.label}
+                    className="grid grid-cols-[4.5rem_1fr] items-baseline gap-3 border-b border-foreground/10 px-5 py-2.5 sm:grid-cols-[5.5rem_1fr]"
+                  >
+                    <dt className="font-code text-[0.58rem] uppercase tracking-[0.22em] text-muted-foreground">
+                      {row.label}
+                    </dt>
+                    <dd className="text-sm font-medium leading-snug text-foreground">
+                      {row.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="flex items-center gap-2.5 border-t-2 border-foreground bg-secondary px-5 py-3">
+                <span className="h-2 w-2 flex-shrink-0 bg-foreground" aria-hidden="true" />
+                <span className="font-code text-[0.58rem] font-bold uppercase leading-snug tracking-[0.18em] text-foreground">
+                  Open untuk proyek & kolaborasi
+                </span>
+              </div>
+            </motion.aside>
           </div>
 
-          <div className="flex w-full flex-col gap-6 lg:self-center">
-          {/* Portrait low-poly — tampil jika public/images/portrait.jpg tersedia */}
-          <HeroPortrait variants={revealVariants} onFail={() => setPortraitOk(false)} />
-
-          {/* Kartu profil — datasheet operasional, bukan form dekoratif */}
-          <motion.aside
-            variants={revealVariants}
-            className={`border-2 border-foreground bg-card shadow-hardlg ${portraitOk ? 'lg:mt-6' : ''} lg:self-center`}
-            aria-label="Ringkasan profil"
-          >
-            <div className="flex items-center justify-between border-b-2 border-foreground bg-foreground px-5 py-2.5">
-              <h2 className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary">
-                Profil
-              </h2>
-              <span className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary/60">
-                2026
-              </span>
-            </div>
-            <dl>
-              {META_ROWS.map((row) => (
-                <div
-                  key={row.label}
-                  className="grid grid-cols-[4.5rem_1fr] items-baseline gap-3 border-b border-foreground/10 px-5 py-2.5 sm:grid-cols-[5.5rem_1fr]"
-                >
-                  <dt className="font-code text-[0.58rem] uppercase tracking-[0.22em] text-muted-foreground">
-                    {row.label}
-                  </dt>
-                  <dd className="text-sm font-medium leading-snug text-foreground">
-                    {row.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <div className="flex items-center gap-2.5 border-t-2 border-foreground bg-secondary px-5 py-3">
-              <span className="h-2 w-2 flex-shrink-0 bg-foreground" aria-hidden="true" />
-              <span className="font-code text-[0.58rem] font-bold uppercase leading-snug tracking-[0.18em] text-foreground">
-                Open untuk proyek & kolaborasi
-              </span>
-            </div>
-          </motion.aside>
+          <div className="flex w-full flex-col gap-6 md:self-center">
+            {/* Portrait low-poly — hilang otomatis bila file belum ada (404) */}
+            {portraitOk && (
+              <HeroPortrait variants={revealVariants} onFail={() => setPortraitOk(false)} />
+            )}
           </div>
         </div>
       </motion.div>
@@ -167,7 +169,7 @@ function HeroPortrait({
   return (
     <motion.figure
       variants={variants}
-      className="relative mx-auto w-full max-w-sm overflow-hidden border-2 border-foreground bg-card shadow-hardlg lg:mx-0 lg:max-w-none"
+      className="relative mx-auto w-full max-w-sm overflow-hidden border-2 border-foreground bg-card shadow-hardlg md:mx-0 md:max-w-none"
     >
       <Image
         src="/images/portrait.jpg"

@@ -14,33 +14,41 @@ const skillsData = [
       { name: 'Google Gemini API' },
       { name: 'Genkit (flow & prompt)' },
       { name: 'Computer vision — inspeksi ban' },
+      { name: 'AI data chat — text-to-SQL' },
     ],
   },
   {
     category: 'Web & Dashboard',
     icon: <Code className="h-7 w-7 text-accent" />,
     skills: [
-      { name: 'Next.js' },
+      { name: 'Next.js (App Router)' },
       { name: 'React' },
       { name: 'TypeScript' },
       { name: 'Tailwind CSS' },
+      { name: 'shadcn/ui + Radix' },
+      { name: 'Visualisasi data (Recharts)' },
     ],
   },
   {
     category: 'Cloud & Database',
     icon: <Cloud className="h-7 w-7 text-accent" />,
     skills: [
+      { name: 'Supabase (Postgres, Auth, RLS)' },
+      { name: 'MongoDB' },
       { name: 'Firebase (Firestore, RTDB)' },
       { name: 'Google Cloud Platform' },
+      { name: 'Vercel' },
     ],
   },
   {
-    category: 'Automasi',
+    category: 'Automasi & Integrasi',
     icon: <Workflow className="h-7 w-7 text-accent" />,
     skills: [
       { name: 'n8n' },
       { name: 'Python — UI automation' },
       { name: 'Google Apps Script' },
+      { name: 'WhatsApp API (Fonnte)' },
+      { name: 'QRIS & transfer bank' },
     ],
   },
   {
@@ -50,6 +58,8 @@ const skillsData = [
       { name: 'SAP ERP (SD & WM)' },
       { name: 'Perencanaan transportasi' },
       { name: 'Optimasi rute distribusi' },
+      { name: 'Manajemen armada & servis' },
+      { name: 'Analitik biaya & KPI' },
     ],
   },
 ];
@@ -87,8 +97,9 @@ const Skills = () => {
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Daftar ini bukan tagihan &mdash; semua dipakai nyata di pekerjaan
-              atau proyek di atas.
+              Kombinasi kemampuan teknis dan pemahaman operasional &mdash;
+              dipakai langsung untuk membangun produk, mengelola data, dan
+              memperbaiki proses kerja.
             </p>
           </div>
         </div>

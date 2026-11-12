@@ -1,4 +1,4 @@
-import { Truck, Route, Package, Warehouse } from 'lucide-react';
+import { Truck, Route, Package, CalendarClock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
@@ -7,9 +7,9 @@ import { cn } from '@/lib/utils';
  */
 const ITEMS = [
   { icon: Truck, value: '100+', label: 'rute harian dikelola' },
-  { icon: Route, value: '44,2%', label: 'efisiensi rute via ML' },
+  { icon: Route, value: '44,21%', label: 'efisiensi rute via ML' },
   { icon: Package, value: '−90%', label: 'human error proses PGI' },
-  { icon: Warehouse, value: 'SD · WM', label: 'modul SAP yang dipakai' },
+  { icon: CalendarClock, value: '3+ thn', label: 'pengalaman operasional & IT' },
 ];
 
 export default function OpsStrip() {

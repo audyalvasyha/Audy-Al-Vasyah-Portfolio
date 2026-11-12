@@ -2,29 +2,28 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Truck, Bot, MonitorCog, Route } from 'lucide-react';
-import Image from 'next/image';
+import { Truck, ShoppingCart, MonitorCog, Bot } from 'lucide-react';
 
 const PILLARS = [
   {
     icon: <Truck className="h-7 w-7" />,
     title: 'Operasional & Transport',
-    desc: 'Rencana rute, jadwal armada, dan koordinasi lapangan yang tidak cuma dipikirkan — tetap dipentaskan yang jalan.',
+    desc: 'Midaa TMS: armada, siklus servis, SKR, dan outbound dalam satu dashboard — import CSV SKR berjalan atomik lewat RPC.',
   },
   {
-    icon: <Bot className="h-7 w-7" />,
-    title: 'Automasi Proses',
-    desc: 'Pekerjaan repetitif dipertemukan dengan skrip dan workflow: menekan human error secara terukur dan menghemat waktu harian.',
+    icon: <ShoppingCart className="h-7 w-7" />,
+    title: 'Commerce & Pembayaran',
+    desc: 'GASTROS: katalog lintas publisher, checkout QRIS & transfer bank, cek status order, dan notifikasi WhatsApp.',
   },
   {
     icon: <MonitorCog className="h-7 w-7" />,
-    title: 'Dashboard & Tools Internal',
-    desc: 'Antarmuka kerja yang dibikin sesuai ekip operasional — jelas, cepat, dan digunakan setiap hari.',
+    title: 'Automasi & Dashboard',
+    desc: 'Automasi PGI (−90% human error), alert error checkout, monitoring servis berbasis KPI, dan analisa ban per unit.',
   },
   {
-    icon: <Route className="h-7 w-7" />,
+    icon: <Bot className="h-7 w-7" />,
     title: 'Integrasi Data & AI',
-    desc: 'Menghubungkan data operasional dengan sistem dan AI supaya keputusan tidak diguncang asumsi.',
+    desc: 'Tanya Data: chatbot Gemini yang menjawab dari view SQL read-only dengan RLS tetap aktif; plus ML scheduling dan inspeksi ban.',
   },
 ];
 
@@ -43,23 +42,30 @@ const OperationTech = () => {
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Saya duduk di antara dua dunia: operasional yang ngos-ngosan dan
-              tim teknis yang bisa menyelesaikannya. Bukan sekadar
-              birokrasi — yang saya kerjakan adalah membangun sistem
-              nyata yang mengurangi beban harian tim.
+              Dua sistem yang saya bangun sendiri jadi buktinya: Midaa untuk
+              operasional armada dan GASTROS untuk commerce. Keduanya
+              menyatukan data yang tadinya tersebar, memangkas kerja manual,
+              dan dipakai untuk mengambil keputusan harian.
             </p>
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <a
+                href="https://github.com/audyalvasyha/v2app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-foreground bg-card px-3 py-1.5 font-code text-[0.6rem] uppercase tracking-[0.2em] shadow-hardsm transition-all hover:bg-secondary"
+              >
+                Midaa TMS <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href="https://github.com/audyalvasyha/store"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-foreground bg-card px-3 py-1.5 font-code text-[0.6rem] uppercase tracking-[0.2em] shadow-hardsm transition-all hover:bg-secondary"
+              >
+                GASTROS <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
-        </div>
-
-        {/* Banner peta rute bergaya low-poly */}
-        <div className="mt-12 max-w-5xl mx-auto border-2 border-foreground bg-card shadow-hardlg overflow-hidden">
-          <Image
-            src="/images/route-map.svg"
-            alt="Peta rencana rute distribusi: gudang asal, dua titik drop, dan tujuan pelanggan beserta ETA"
-            width={1200}
-            height={400}
-            className="w-full h-auto"
-          />
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
