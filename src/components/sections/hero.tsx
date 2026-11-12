@@ -26,8 +26,8 @@ const revealVariants: Variants = {
 
 const META_ROWS = [
   { label: 'Peran', value: 'Operation Tech' },
-  { label: 'Fokus', value: 'Automasi PGI & ML scheduling' },
-  { label: 'Sistem', value: 'SAP SD · WM · TMS' },
+  { label: 'Fokus', value: 'Automasi, Machine Learning' },
+  { label: 'Sistem', value: 'S4 Fiori · SD · WM · TMS' },
   { label: 'Lokasi', value: 'Bagan Batu, Riau · remote' },
 ];
 
