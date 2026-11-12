@@ -19,9 +19,9 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-foreground bg-background">
-      <div className="container flex h-16 items-center justify-between px-6">
-        <div className="flex items-center">
-          <Link href="/" className="mr-8 group">
+      <div className="container flex h-16 items-center justify-between gap-3 px-4 sm:px-6">
+        <div className="flex min-w-0 items-center">
+          <Link href="/" className="group md:mr-8">
             <span className="inline-flex border-2 border-foreground bg-redline text-redline-foreground px-3 py-1.5 font-display text-xl uppercase tracking-tight shadow-hardsm transition-all group-hover:-translate-x-[2px] group-hover:-translate-y-[2px] group-hover:shadow-hard">
               Audysignin
             </span>
@@ -39,8 +39,9 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* Nav mobile */}
-        <div className="md:hidden flex items-center">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          {/* Nav mobile */}
+          <div className="flex items-center md:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -72,9 +73,8 @@ const Header = () => {
               </div>
             </SheetContent>
           </Sheet>
-        </div>
+          </div>
 
-        <div className="flex flex-1 items-center justify-end">
           <Button asChild size="sm" className="gap-2">
             <a href="/cv-audy-al-vasyah.pdf" download="Audy-Al-Vasyah-CV.pdf">
               <Download className="h-4 w-4" />

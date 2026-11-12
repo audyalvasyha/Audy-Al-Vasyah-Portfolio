@@ -17,7 +17,7 @@ function ProjectCard({ project }: { project: (typeof projectDetails)[number] }) 
     <Card className="group flex flex-col h-full overflow-hidden transition-all duration-200 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hardlg">
       {/* Area visual: thumbnail proyek, atau placeholder bila belum ada gambar */}
       <div
-        className={`relative flex h-52 items-center justify-center overflow-hidden border-b-2 border-foreground ${
+        className={`relative flex h-44 items-center justify-center overflow-hidden border-b-2 border-foreground sm:h-52 ${
           showImage ? 'bg-foreground' : 'bg-background'
         }`}
       >
@@ -43,17 +43,17 @@ function ProjectCard({ project }: { project: (typeof projectDetails)[number] }) 
         )}
       </div>
 
-      <div className="flex flex-col p-6 flex-grow">
+      <div className="flex flex-col p-5 flex-grow sm:p-6">
         <div className="flex flex-wrap gap-2">
-          <span className="inline-block border-2 border-foreground bg-secondary px-3 py-1 font-code text-[0.65rem] uppercase tracking-[0.15em] text-secondary-foreground">
+          <span className="inline-block border-2 border-foreground bg-secondary px-2.5 py-1 font-code text-[0.6rem] uppercase tracking-[0.12em] text-secondary-foreground sm:px-3 sm:text-[0.65rem] sm:tracking-[0.15em]">
             {project.category ?? 'Kategori'}
           </span>
-          <span className="inline-block border-2 border-foreground bg-card px-3 py-1 font-code text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+          <span className="inline-block border-2 border-foreground bg-card px-2.5 py-1 font-code text-[0.6rem] uppercase tracking-[0.12em] text-muted-foreground sm:px-3 sm:text-[0.65rem] sm:tracking-[0.15em]">
             {project.year ?? 'Tahun'}
           </span>
         </div>
 
-        <h3 className="mt-4 font-display text-xl uppercase tracking-tight sm:text-2xl">
+        <h3 className="mt-4 font-display text-lg uppercase tracking-tight sm:text-2xl">
           {project.title ?? `Proyek ${project.id.replace('project-', '0').slice(-2)}`}
         </h3>
 
@@ -91,9 +91,9 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+      className="bp-grid relative w-full py-16 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
-      <div className="container px-4 md:px-6 z-10 relative">
+      <div className="container px-4 sm:px-6 z-10 relative">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <span className="bp-stamp-ghost">02 — Register</span>
           <div className="space-y-2">
@@ -101,7 +101,7 @@ const Projects = () => {
               Proyek
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
               Proyek yang saya kembangkan dari nol, dirancang untuk kebutuhan
               nyata — mulai dari integrasi data hingga pengalaman pengguna yang
               siap dipakai.
@@ -109,7 +109,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-8 max-w-5xl mx-auto md:grid-cols-2">
+        <div className="mt-10 grid gap-6 sm:gap-8 md:mt-12 md:grid-cols-2 max-w-5xl mx-auto">
           {projectDetails.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

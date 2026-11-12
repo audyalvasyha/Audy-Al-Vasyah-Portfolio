@@ -36,7 +36,7 @@ const socialLinks = [
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/_audysignin/',
+    href: 'https://www.instagram.com/audysignin?dlrf=d3hubDN6eTBnMG8x',
     icon: <Instagram className="h-6 w-6" />,
   },
 ]
@@ -73,9 +73,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bp-grid-fine relative w-full py-20 md:py-32 scroll-mt-20 overflow-hidden">
-      <div ref={ref} className="relative container mx-auto px-4 md:px-6 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <section id="contact" className="bp-grid-fine relative w-full py-16 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
+      <div ref={ref} className="relative container mx-auto px-4 sm:px-6 z-10">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-8">
             <motion.div
               className="space-y-3"
@@ -115,9 +115,9 @@ const Contact = () => {
                 <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
                   <Mail className="h-4 w-4" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-xs font-code uppercase tracking-[0.25em] text-muted-foreground">Email</h3>
-                  <a href="mailto:audialfasha@gmail.com" className="text-foreground hover:text-accent transition-colors">audialfasha@gmail.com</a>
+                  <a href="mailto:audialfasha@gmail.com" className="break-words text-foreground transition-colors hover:text-accent">audialfasha@gmail.com</a>
                 </div>
               </div>
                <div className="flex items-start gap-4">
@@ -139,7 +139,7 @@ const Contact = () => {
             >
               <h3 className="text-xs font-code uppercase tracking-[0.25em] text-muted-foreground">Find me on Social Media</h3>
               <TooltipProvider>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   {socialLinks.map((social) => (
                     <Tooltip key={social.name}>
                       <TooltipTrigger asChild>
@@ -166,15 +166,15 @@ const Contact = () => {
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
           >
             <Card className="shadow-hardlg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
+              <CardHeader className="p-5 sm:p-6">
+                <CardTitle className="flex flex-wrap items-center gap-3">
                   Hubungi Saya
                   <span className="bp-stamp ml-auto">Form Kontak</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <form action={formAction} ref={formRef} className="grid gap-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <CardContent className="p-5 pt-0 sm:p-6 sm:pt-0">
+                <form action={formAction} ref={formRef} className="grid gap-5 sm:gap-6">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
                     <div className="grid gap-2">
                       <Label htmlFor="name" className="text-[0.65rem] font-code uppercase tracking-[0.25em] text-muted-foreground">Name</Label>
                       <Input id="name" name="name" placeholder="Enter your name" required />
@@ -191,7 +191,7 @@ const Contact = () => {
                   <div className="flex flex-col items-center gap-4">
                     <SubmitButton />
                     {formState.message && !isPending && (
-                      <p className={`text-sm font-code ${formState.success ? 'text-accent' : 'text-destructive'}`}>
+                      <p className={`break-words text-center text-sm font-code ${formState.success ? 'text-accent' : 'text-destructive'}`}>
                         {formState.message}
                       </p>
                     )}

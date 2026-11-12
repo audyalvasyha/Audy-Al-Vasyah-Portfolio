@@ -86,9 +86,9 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
+      className="bp-grid relative w-full py-16 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden"
     >
-      <div ref={ref} className="relative container px-4 md:px-6 z-10">
+      <div ref={ref} className="relative container px-4 sm:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <span className="bp-stamp-ghost">03 — SKILL UTAMA</span>
           <div className="space-y-2">
@@ -96,7 +96,7 @@ const Skills = () => {
               Kapabilitas
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
               Kombinasi kemampuan teknis dan pemahaman operasional &mdash;
               dipakai langsung untuk membangun produk, mengelola data, dan
               memperbaiki proses kerja.
@@ -104,7 +104,7 @@ const Skills = () => {
           </div>
         </div>
         <motion.div
-          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+          className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 md:mt-12 lg:grid-cols-3 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={controls}
@@ -135,13 +135,13 @@ const SkillCard = ({
   return (
     <motion.div variants={cardVariants} className="h-full">
       <Card className="flex flex-col h-full group/skill transition-all duration-200 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-hardlg">
-        <CardContent className="flex flex-col flex-grow p-6">
+        <CardContent className="flex flex-col flex-grow p-5 sm:p-6">
           <div className="flex items-start gap-4 mb-4">
             <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center border-2 border-foreground bg-secondary text-foreground">
               {category.icon}
             </div>
             <div className="flex-1">
-              <CardTitle className="font-headline text-base text-foreground">
+              <CardTitle className="font-headline text-sm text-foreground sm:text-base">
                 {category.category}
               </CardTitle>
             </div>
@@ -151,7 +151,7 @@ const SkillCard = ({
               <Badge
                 key={skill.name}
                 variant="secondary"
-                className="font-code"
+                className="max-w-full whitespace-normal break-words py-1 font-code leading-snug"
               >
                 {skill.name}
               </Badge>

@@ -3,6 +3,14 @@ import type {NextConfig} from 'next';
 const nextConfig: NextConfig = {
   // Genkit/Resend tidak boleh dibundle oleh Turbopack — panggil sebagai modul Node asli.
   serverExternalPackages: ['genkit', '@genkit-ai/google-genai', 'resend'],
+  // Preview Freebuff memakai reverse proxy; origin publik ini perlu diizinkan
+  // agar Server Actions (footer & form kontak) tidak ditolak cek CSRF.
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['*.daytonaproxy01.net'],
+    },
+  },
+  allowedDevOrigins: ['*.daytonaproxy01.net'],
   /* config options here */
   async headers() {
     return [

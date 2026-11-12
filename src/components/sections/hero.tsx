@@ -36,7 +36,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative isolate min-h-dvh overflow-hidden bg-secondary pt-24 pb-16 scroll-mt-20"
+      className="relative isolate min-h-dvh overflow-hidden bg-secondary pt-24 pb-16 scroll-mt-20 sm:pb-20"
     >
       {/* Grid hitam tipis di atas kuning */}
       <div
@@ -44,12 +44,12 @@ const Hero = () => {
         aria-hidden="true"
       ></div>
       {/* Strip hitam nomor dokumen ala tape */}
-      <div className="absolute right-0 top-20 z-10 border-2 border-foreground bg-foreground px-3 py-1 font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary">
+      <div className="absolute right-0 top-20 z-10 hidden border-2 border-foreground bg-foreground px-3 py-1 font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary sm:block">
         Open to work · 2026
       </div>
 
       <motion.div
-        className="container relative z-20 px-6"
+        className="container relative z-20 px-4 sm:px-6"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -57,7 +57,7 @@ const Hero = () => {
         <div className="grid items-start gap-12 md:grid-cols-2 md:gap-8 lg:gap-10">
           <div className="max-w-2xl">
             <motion.div variants={revealVariants} className="inline-block">
-              <span className="inline-block border-2 border-foreground bg-foreground px-4 py-2 font-code text-xs uppercase tracking-[0.3em] text-secondary sm:text-sm sm:tracking-[0.35em] lg:text-base">
+              <span className="inline-block max-w-full border-2 border-foreground bg-foreground px-3 py-2 font-code text-[0.65rem] uppercase leading-snug tracking-[0.2em] text-secondary sm:px-4 sm:text-sm sm:tracking-[0.35em] lg:text-base">
                 Audy Al Vasyah // Ops·Tech
               </span>
             </motion.div>
@@ -93,7 +93,7 @@ const Hero = () => {
 
             <motion.div
               variants={revealVariants}
-              className="mt-10 flex flex-wrap items-center gap-6"
+              className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10 sm:gap-6"
             >
               <Button asChild size="lg" className="strip-cyan w-full font-display text-base tracking-normal sm:w-auto">
                 <Link href="#experience">View My Killer Work</Link>
@@ -114,7 +114,7 @@ const Hero = () => {
               className="mt-10 max-w-xl border-2 border-foreground bg-card shadow-hardlg"
               aria-label="Ringkasan profil"
             >
-              <div className="flex items-center justify-between border-b-2 border-foreground bg-foreground px-5 py-2.5">
+              <div className="flex items-center justify-between border-b-2 border-foreground bg-foreground px-4 py-2.5 sm:px-5">
                 <h2 className="font-code text-[0.6rem] uppercase tracking-[0.3em] text-secondary">
                   Profil
                 </h2>
@@ -126,7 +126,7 @@ const Hero = () => {
                 {META_ROWS.map((row) => (
                   <div
                     key={row.label}
-                    className="grid grid-cols-[4.5rem_1fr] items-baseline gap-3 border-b border-foreground/10 px-5 py-2.5 sm:grid-cols-[5.5rem_1fr]"
+                    className="grid grid-cols-[4rem_1fr] items-baseline gap-3 border-b border-foreground/10 px-4 py-2.5 sm:grid-cols-[5.5rem_1fr] sm:px-5"
                   >
                     <dt className="font-code text-[0.58rem] uppercase tracking-[0.22em] text-muted-foreground">
                       {row.label}
@@ -137,7 +137,7 @@ const Hero = () => {
                   </div>
                 ))}
               </dl>
-              <div className="flex items-center gap-2.5 border-t-2 border-foreground bg-secondary px-5 py-3">
+              <div className="flex items-center gap-2.5 border-t-2 border-foreground bg-secondary px-4 py-3 sm:px-5">
                 <span className="h-2 w-2 flex-shrink-0 bg-foreground" aria-hidden="true" />
                 <span className="font-code text-[0.58rem] font-bold uppercase leading-snug tracking-[0.18em] text-foreground">
                   Open untuk proyek & kolaborasi

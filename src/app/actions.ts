@@ -22,6 +22,12 @@ const firebaseConfig = {
 };
 
 function getRtdb() {
+  // View counter bersifat opsional: jangan inisialisasi Firebase kalau env
+  // belum diisi, supaya halaman tidak melempar fatal error di server.
+  if (!firebaseConfig.apiKey || !firebaseConfig.projectId || !firebaseConfig.databaseURL) {
+    return null;
+  }
+
   const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
   return getDatabase(app);
 }
@@ -96,23 +102,29 @@ export async function sendEmail(
  * Membaca jumlah kunjungan TANPA menambah angka.
  * Dipakai saat suatu peramban (session) sudah pernah menambah counter.
  */
-export async function getPageViews(): Promise<number> {
+export async function getPageViews(): Promise<number | null> {
+  const db = getRtdb();
+  if (!db) return null;
+
   try {
-    const snapshot = await get(ref(getRtdb(), 'pageViews'));
+    const snapshot = await get(ref(db, 'pageViews'));
     return snapshot.val() || 0;
   } catch (error) {
     console.error('Error reading page views:', error);
-    return 0;
+    return null;
   }
 }
 
 /**
  * Menambah counter kunjungan dan mengembalikan nilai barunya.
  */
-export async function incrementAndGetViews(): Promise<number> {
+export async function incrementAndGetViews(): Promise<number | null> {
+  const db = getRtdb();
+  if (!db) return null;
+
   try {
     const { snapshot } = await runTransaction(
-      ref(getRtdb(), 'pageViews'),
+      ref(db, 'pageViews'),
       (current: number | null) => (current || 0) + 1
     );
     return snapshot.val() || 0;

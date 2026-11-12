@@ -44,13 +44,13 @@ const DeliverySchedulingTool = () => {
 
   return (
     <div>
-        <div className="text-center mb-8">
-            <h3 className="text-2xl font-headline font-bold">Penjadwalan Pengiriman</h3>
-            <p className="text-muted-foreground">Tanya apa saja soal sistem ML yang saya bangun.</p>
+        <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-xl font-headline font-bold sm:text-2xl">Penjadwalan Pengiriman</h3>
+            <p className="text-sm text-muted-foreground sm:text-base">Tanya apa saja soal sistem ML yang saya bangun.</p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
             <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
-                <CardHeader>
+                <CardHeader className="p-0 md:p-6">
                 <CardTitle className="font-headline sr-only md:not-sr-only">Tanya Tentang Sistem</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
                     Ajukan pertanyaan tentang sistem penjadwalan pengiriman berbasis ML yang saya rancang.
@@ -58,7 +58,7 @@ const DeliverySchedulingTool = () => {
                 </CardHeader>
                 <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <CardContent>
+                    <CardContent className="p-0 md:p-6 md:pt-0">
                     <FormField
                         control={form.control}
                         name="query"
@@ -73,7 +73,7 @@ const DeliverySchedulingTool = () => {
                         )}
                     />
                     </CardContent>
-                    <CardFooter>
+                    <CardFooter className="p-0 pt-4 md:p-6 md:pt-0">
                     <Button type="submit" disabled={isLoading} className="w-full">
                         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                         {isLoading ? 'Menanyakan...' : 'Tanya AI'}
@@ -83,11 +83,11 @@ const DeliverySchedulingTool = () => {
                 </Form>
             </Card>
             <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
-                <CardHeader>
+                <CardHeader className="p-0 md:p-6">
                 <CardTitle className="font-headline sr-only md:not-sr-only">Respons AI</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">Penjelasan sistem dari AI.</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-0 md:p-6 md:pt-0">
                 {isLoading && (
                     <div className="flex justify-center items-center min-h-48">
                     <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -96,7 +96,7 @@ const DeliverySchedulingTool = () => {
                 {error && <p className="text-destructive">{error}</p>}
                 {result && (
                     <div className="min-h-48">
-                    <p className="text-sm text-muted-foreground">{result.details}</p>
+                    <p className="break-words text-sm text-muted-foreground">{result.details}</p>
                     </div>
                 )}
                 {!isLoading && !result && !error && (

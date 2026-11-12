@@ -150,22 +150,22 @@ const TireInspectionTool = () => {
 
   return (
     <div>
-        <div className="text-center mb-8">
-            <h3 className="text-2xl font-headline font-bold">Tire Inspection</h3>
-            <p className="text-muted-foreground">Analyze tire condition with AI.</p>
+        <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-xl font-headline font-bold sm:text-2xl">Tire Inspection</h3>
+            <p className="text-sm text-muted-foreground sm:text-base">Analyze tire condition with AI.</p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
             <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
-                <CardHeader>
+                <CardHeader className="p-0 md:p-6">
                 <CardTitle className="font-headline sr-only md:not-sr-only">Penganalisis Gambar Ban</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
                     Unggah gambar ban untuk mendapatkan analisis kondisi bertenaga AI.
                 </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-0 md:p-6 md:pt-0">
                 <div
                     className={cn(
-                    'border-2 border-dashed border-muted-foreground rounded-lg p-6 text-center cursor-pointer hover:border-primary transition-colors',
+                    'border-2 border-dashed border-muted-foreground rounded-none p-4 text-center cursor-pointer transition-colors hover:border-primary sm:p-6',
                     isDragging && 'border-primary bg-primary/10'
                     )}
                     onClick={() => fileInputRef.current?.click()}
@@ -192,13 +192,13 @@ const TireInspectionTool = () => {
                     ) : (
                     <div className="flex flex-col items-center gap-2 text-muted-foreground py-10">
                         <UploadCloud className="w-12 h-12" />
-                        <p>Klik untuk mengunggah atau seret & jatuhkan</p>
+                        <p className="text-sm sm:text-base">Klik untuk mengunggah atau seret & jatuhkan</p>
                         <p className="text-xs">PNG, JPG, atau WEBP (Maks 4MB)</p>
                     </div>
                     )}
                 </div>
                 </CardContent>
-                <CardFooter className="flex-col items-stretch gap-4">
+                <CardFooter className="flex-col items-stretch gap-4 p-0 pt-4 md:p-6 md:pt-0">
                 {error && (
                     <p className="text-destructive text-center text-sm">{error}</p>
                 )}
@@ -213,13 +213,13 @@ const TireInspectionTool = () => {
                 </CardFooter>
             </Card>
             <Card className="bg-transparent border-0 shadow-none md:border-2 md:bg-card md:shadow-hard">
-                <CardHeader>
+                <CardHeader className="p-0 md:p-6">
                 <CardTitle className="font-headline sr-only md:not-sr-only">Hasil Analisis</CardTitle>
                 <CardDescription className="sr-only md:not-sr-only">
                     Laporan kondisi ban yang dihasilkan oleh AI.
                 </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-0 md:p-6 md:pt-0">
                 {isLoading && (
                     <div className="flex justify-center items-center h-full py-10 min-h-48">
                     <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -242,7 +242,7 @@ const TireInspectionTool = () => {
                     </div>
                     <div className="pt-4">
                         <h4 className="font-semibold mb-2">Rekomendasi:</h4>
-                        <p className="text-muted-foreground p-3 bg-muted/50 rounded-md">
+                        <p className="break-words rounded-none bg-muted/50 p-3 text-muted-foreground">
                         {analysis.recommendation}
                         </p>
                     </div>

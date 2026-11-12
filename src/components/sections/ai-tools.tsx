@@ -7,7 +7,6 @@ import DeliverySchedulingTool from './delivery-scheduling-tool';
 import TireInspectionTool from './tire-inspection-tool';
 import { CalendarClock, ScanLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ScrollArea } from '../ui/scroll-area';
 
 const tools = [
   {
@@ -41,8 +40,8 @@ const AiTools = () => {
   };
 
   return (
-    <section id="tool" className="bp-grid relative w-full py-12 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
-      <div className="relative container px-4 md:px-6 z-10">
+    <section id="tool" className="bp-grid relative w-full py-16 md:py-24 lg:py-32 scroll-mt-20 overflow-hidden">
+      <div className="relative container px-4 sm:px-6 z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <span className="bp-stamp-ghost">04 — LAB TOOLS</span>
           <div className="space-y-2">
@@ -50,7 +49,7 @@ const AiTools = () => {
               Tools yang Saya Bangun
             </h2>
             <div className="bp-dimension mx-auto w-40" aria-hidden="true"></div>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
               Dua tools yang saya bangun dan pakai di pekerjaan. Silakan dicoba
               langsung &mdash; keduanya berjalan di server ini dengan Gemini.
             </p>
@@ -62,30 +61,28 @@ const AiTools = () => {
             initial="hidden"
             animate={controls}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="mt-12 max-w-6xl mx-auto"
+            className="mt-10 max-w-6xl mx-auto md:mt-12"
         >
           <Tabs defaultValue="tire-inspection" className="w-full">
-            <ScrollArea className="w-full pb-4">
-              <TabsList className="flex w-full sm:w-auto sm:mx-auto h-auto p-1.5 rounded-none">
-                {tools.map((tool) => (
-                  <TabsTrigger
-                    key={tool.value}
-                    value={tool.value}
-                    className={cn(
-                      'flex-1 flex items-center justify-center gap-2 h-auto p-2.5 rounded-none font-code uppercase tracking-[0.1em] transition-all whitespace-nowrap text-muted-foreground'
-                    )}
-                  >
-                    {tool.icon}
-                    <span className="text-sm font-medium">{tool.title}</span>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </ScrollArea>
+            <TabsList className="flex h-auto w-full flex-col gap-1.5 p-1.5 sm:mx-auto sm:w-auto sm:flex-row">
+              {tools.map((tool) => (
+                <TabsTrigger
+                  key={tool.value}
+                  value={tool.value}
+                  className={cn(
+                    'flex h-auto w-full flex-1 items-center justify-center gap-2 whitespace-normal p-2.5 rounded-none font-code uppercase tracking-[0.1em] transition-all text-muted-foreground sm:w-auto sm:whitespace-nowrap'
+                  )}
+                >
+                  {tool.icon}
+                  <span className="text-xs font-medium sm:text-sm">{tool.title}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
             <div className="mt-6">
               {tools.map(tool => (
                 <TabsContent key={tool.value} value={tool.value}>
                     <Card className="shadow-hardlg">
-                        <CardContent className="p-6 md:p-8">
+                        <CardContent className="p-4 sm:p-6 md:p-8">
                              {tool.component}
                         </CardContent>
                     </Card>

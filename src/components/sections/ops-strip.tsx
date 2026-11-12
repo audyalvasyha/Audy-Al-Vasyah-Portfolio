@@ -15,7 +15,7 @@ const ITEMS = [
 export default function OpsStrip() {
   return (
     <section aria-label="Ringkasan operasional" className="border-y-2 border-foreground bg-foreground">
-      <div className="container px-6">
+      <div className="container px-4 sm:px-6">
         <dl className="grid grid-cols-2 md:grid-cols-4 [&>*]:border-card/15">
           {ITEMS.map((item, i) => {
             const Icon = item.icon;
@@ -23,7 +23,7 @@ export default function OpsStrip() {
               <div
                 key={item.label}
                 className={cn(
-                  'flex items-center gap-3 px-1 py-5 sm:px-4',
+                  'flex items-center gap-2.5 px-2 py-5 sm:gap-3 sm:px-4 sm:py-6',
                   i % 2 === 1 && 'border-l',
                   i >= 2 && 'border-t',
                   i > 0 && 'md:border-l',
@@ -35,7 +35,7 @@ export default function OpsStrip() {
                   <dd className="font-display text-2xl uppercase leading-none tracking-tight text-secondary sm:text-3xl">
                     {item.value}
                   </dd>
-                  <dt className="mt-1 font-code text-[0.58rem] uppercase leading-snug tracking-[0.22em] text-card/60">
+                  <dt className="mt-1 font-code text-[0.58rem] uppercase leading-snug tracking-[0.18em] text-card/60 sm:tracking-[0.22em]">
                     {item.label}
                   </dt>
                 </div>
