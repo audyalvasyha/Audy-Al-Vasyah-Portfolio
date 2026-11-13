@@ -26,8 +26,8 @@ const revealVariants: Variants = {
 
 const META_ROWS = [
   { label: 'Peran', value: 'Operation Tech' },
-  { label: 'Fokus', value: 'Automasi, Machine Learning' },
-  { label: 'Sistem', value: 'S4 Fiori · SD · WM · TMS' },
+  { label: 'Fokus', value: 'Automasi, Machine Learning & Analitycs' },
+  { label: 'Stack', value: 'Typescript · Python' },
   { label: 'Lokasi', value: 'Bagan Batu, Riau · remote' },
 ];
 
@@ -58,7 +58,7 @@ const Hero = () => {
           <div className="max-w-2xl">
             <motion.div variants={revealVariants} className="inline-block">
               <span className="inline-block max-w-full border-2 border-foreground bg-foreground px-3 py-2 font-code text-[0.65rem] uppercase leading-snug tracking-[0.2em] text-secondary sm:px-4 sm:text-sm sm:tracking-[0.35em] lg:text-base">
-                Audy Al Vasyah // Ops·Tech
+                Audy Al Vasyah - Ops.Tech
               </span>
             </motion.div>
 
@@ -86,7 +86,7 @@ const Hero = () => {
               Operation tech yang juga build sistem sendiri: menyatukan
               proses operasional harian dengan{' '}
               <span className="font-bold">automasi,</span>{' '}
-              <span className="font-bold">dashboard internal,</span> dan{' '}
+              <span className="font-bold">dashboard,</span> dan{' '}
               <span className="font-bold">AI</span> yang benar-benar dipakai
               tim setiap hari.
             </motion.p>
